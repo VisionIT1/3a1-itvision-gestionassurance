@@ -17,11 +17,12 @@ public class Vehicule {
     private int val_venale;
     private int annne_consruct;
     private Marque marque;
+    private Garantie garantie;
 
     public Vehicule() {
     }
 
-    public Vehicule(int id_vehicule, String immat, int puiss, int val_neuf, int val_venale, int annne_consruct, Marque marque) {
+    public Vehicule(int id_vehicule,String immat, int puiss, int val_neuf, int val_venale, int annne_consruct, Marque marque, Garantie garantie) {
         this.id_vehicule = id_vehicule;
         this.immat = immat;
         this.puiss = puiss;
@@ -29,7 +30,18 @@ public class Vehicule {
         this.val_venale = val_venale;
         this.annne_consruct = annne_consruct;
         this.marque = marque;
+        this.garantie = garantie;
     }
+
+    public Garantie getGarantie() {
+        return garantie;
+    }
+
+    public void setGarantie(Garantie garantie) {
+        this.garantie = garantie;
+    }
+
+ 
 
     public int getId_vehicule() {
         return id_vehicule;
@@ -91,10 +103,7 @@ public class Vehicule {
         this.marque = marque;
     }
 
-    @Override
-    public String toString() {
-        return "Vehicule{" + "id_vehicule=" + id_vehicule + ", immat=" + immat + ", puiss=" + puiss + ", val_neuf=" + val_neuf + ", val_venale=" + val_venale + ", annne_consruct=" + annne_consruct + ", marque=" + marque + '}';
-    }
+    
 
   
     
