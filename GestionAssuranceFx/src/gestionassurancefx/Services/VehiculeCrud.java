@@ -5,8 +5,7 @@
  */
 package gestionassurancefx.Services;
 
-import gestionassurancefx.Entities.Garantie;
-import gestionassurancefx.Entities.Marque;
+
 import gestionassurancefx.Entities.Vehicule;
 import gestionassurancefx.Utils.Connexion;
 import java.sql.Connection;
@@ -35,9 +34,9 @@ public class VehiculeCrud {
 			pstmt.setInt(2,v.getVal_neuf());
 			pstmt.setInt(3,v.getVal_venale());
 			pstmt.setInt(4,v.getAnnne_consruct());
-			pstmt.setInt(5,v.getMarque().getId_marque());
+			pstmt.setInt(5,v.getId_marque());
 			pstmt.setString(6,v.getImmat());
-			pstmt.setInt(7,v.getGarantie().getId_garantie());
+			pstmt.setInt(7,v.getId_garantie());
                         pstmt.executeUpdate();
                         pstmt.close(); 
                         
@@ -63,10 +62,9 @@ public class VehiculeCrud {
              List<Vehicule> vehicules= new ArrayList<Vehicule>();
              PreparedStatement pstmt=C.prepareStatement("select * from vehicule");
              ResultSet rs=pstmt.executeQuery();
-             Garantie g1=new Garantie();
-             Marque m1=new Marque();
+           
              while (rs.next()){
-                 vehicules.add(new Vehicule((rs.getInt(1)),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),m1,g1));
+                 vehicules.add(new Vehicule((rs.getInt(1)),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getInt(6),rs.getInt(7),rs.getInt(8)));
              }
              pstmt.close();
              return vehicules;
@@ -83,9 +81,9 @@ public class VehiculeCrud {
              ps.setInt(2, v.getVal_neuf());
              ps.setInt(3, v.getVal_venale());
              ps.setInt(4, v.getAnnne_consruct());
-             ps.setInt(5, v.getMarque().getId_marque());
+             ps.setInt(5, v.getId_marque());
              ps.setString(6, v.getImmat());
-             ps.setInt(7,v.getGarantie().getId_garantie());
+             ps.setInt(7,v.getId_garantie());
              ps.setInt(8,v.getId_vehicule());
              
              

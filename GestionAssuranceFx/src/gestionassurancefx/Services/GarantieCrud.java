@@ -7,7 +7,6 @@ package gestionassurancefx.Services;
 
 
 import gestionassurancefx.Entities.Garantie;
-import gestionassurancefx.Entities.Voyage;
 import gestionassurancefx.Utils.Connexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

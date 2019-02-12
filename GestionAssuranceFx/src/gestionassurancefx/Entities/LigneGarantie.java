@@ -5,42 +5,49 @@
  */
 package gestionassurancefx.Entities;
 
-import sun.security.provider.PolicyParser;
+
 
 /**
  *
  * @author Psico
  */
 public class LigneGarantie {
-    private Garantie garantie;
-    private Voyage  voyage;
+    private int id_ligne;
+    private int id_garantie;
+    private int  id_voyage;
     private float prime;
     
 
-    public LigneGarantie(Garantie garantie, Voyage voyage, float prime) {
-        this.garantie = garantie;
-        this.voyage = voyage;
-        this.prime = prime;
-    }
+  
 
     public LigneGarantie() {
     }
 
-    public Garantie getGarantie() {
-        return garantie;
+    public LigneGarantie(int id_ligne, int id_garantie, int id_voyage, float prime) {
+        this.id_ligne = id_ligne;
+        this.id_garantie = id_garantie;
+        this.id_voyage = id_voyage;
+        this.prime = prime;
     }
 
-    public void setGarantie(Garantie garantie) {
-        this.garantie = garantie;
+   
+    public int getId_garantie() {
+        return id_garantie;
     }
 
-    public Voyage getVoyage() {
-        return voyage;
+    public void setId_garantie(int id_garantie) {
+        this.id_garantie = id_garantie;
     }
 
-    public void setVoyage(Voyage voyage) {
-        this.voyage = voyage;
+    public int getId_voyage() {
+        return id_voyage;
     }
+
+    public void setId_voyage(int id_voyage) {
+        this.id_voyage = id_voyage;
+    }
+
+
 
     public float getPrime() {
         return prime;
@@ -50,9 +57,21 @@ public class LigneGarantie {
         this.prime = prime;
     }
 
+    public int getId_ligne() {
+        return id_ligne;
+    }
+
+    public void setId_ligne(int id_ligne) {
+        this.id_ligne = id_ligne;
+    }
+
     @Override
     public String toString() {
-        return "LigneGarantie{" + "garantie=" + garantie + ", voyage=" + voyage + ", prime=" + prime + '}';
+        return "LigneGarantie{" + "id_ligne=" + id_ligne + ", id_garantie=" + id_garantie + ", id_voyage=" + id_voyage + ", prime=" + prime + '}';
     }
+
+   
+
+   
     
 }

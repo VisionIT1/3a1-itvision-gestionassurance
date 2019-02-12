@@ -5,7 +5,7 @@
  */
 package gestionassurancefx.Services;
 
-import gestionassurancefx.Entities.Garantie;
+
 import gestionassurancefx.Entities.Marque;
 import gestionassurancefx.Utils.Connexion;
 import java.sql.Connection;

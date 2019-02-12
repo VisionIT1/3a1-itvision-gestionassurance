@@ -1,11 +1,8 @@
 package gestionassurancefx.Services;
 
 
-import gestionassurancefx.Entities.Garantie;
-import gestionassurancefx.Entities.Marque;
-import gestionassurancefx.Entities.Vehicule;
+
 import gestionassurancefx.Entities.Voyage;
-import gestionassurancefx.Services.VehiculeCrud;
 import gestionassurancefx.Utils.Connexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

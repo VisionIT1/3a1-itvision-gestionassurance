@@ -16,30 +16,41 @@ public class Vehicule {
     private int val_neuf;
     private int val_venale;
     private int annne_consruct;
-    private Marque marque;
-    private Garantie garantie;
+    private int id_marque;
+    private int id_garantie;
 
     public Vehicule() {
     }
 
-    public Vehicule(int id_vehicule,String immat, int puiss, int val_neuf, int val_venale, int annne_consruct, Marque marque, Garantie garantie) {
+    public Vehicule(int id_vehicule, String immat, int puiss, int val_neuf, int val_venale, int annne_consruct, int id_marque, int id_garantie) {
         this.id_vehicule = id_vehicule;
         this.immat = immat;
         this.puiss = puiss;
         this.val_neuf = val_neuf;
         this.val_venale = val_venale;
         this.annne_consruct = annne_consruct;
-        this.marque = marque;
-        this.garantie = garantie;
+        this.id_marque = id_marque;
+        this.id_garantie = id_garantie;
     }
 
-    public Garantie getGarantie() {
-        return garantie;
+    public int getId_marque() {
+        return id_marque;
     }
 
-    public void setGarantie(Garantie garantie) {
-        this.garantie = garantie;
+    public void setId_marque(int id_marque) {
+        this.id_marque = id_marque;
     }
+
+    public int getId_garantie() {
+        return id_garantie;
+    }
+
+    public void setId_garantie(int id_garantie) {
+        this.id_garantie = id_garantie;
+    }
+
+  
+
 
  
 
@@ -95,13 +106,12 @@ public class Vehicule {
         this.annne_consruct = annne_consruct;
     }
 
-    public Marque getMarque() {
-        return marque;
+    @Override
+    public String toString() {
+        return "Vehicule{" + "id_vehicule=" + id_vehicule + ", immat=" + immat + ", puiss=" + puiss + ", val_neuf=" + val_neuf + ", val_venale=" + val_venale + ", annne_consruct=" + annne_consruct + ", id_marque=" + id_marque + ", id_garantie=" + id_garantie + '}';
     }
 
-    public void setMarque(Marque marque) {
-        this.marque = marque;
-    }
+  
 
     
 
