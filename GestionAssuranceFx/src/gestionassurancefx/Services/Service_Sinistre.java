@@ -4,11 +4,10 @@
  * and open the template in the editor.
  */
 
-package Services;
+package gestionassurancefx.Services;
 
-import DataSource.Connexion;
-import Entities.Reglement;
-import Entities.Sinistre;
+import gestionassurancefx.Utils.Connexion;
+import gestionassurancefx.Entities.Sinistre;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +19,7 @@ import java.sql.SQLException;
  */
 public class Service_Sinistre {
     
-    Connection c= Connexion.getInstance().getConn();
+    Connection c= Connexion.getInstance().getCon();
     public Service_Sinistre(){}
     public void ajouterReglement(Sinistre R){
        try{

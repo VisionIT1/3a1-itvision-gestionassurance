@@ -4,24 +4,21 @@
  * and open the template in the editor.
  */
 
-package Services;
+package gestionassurancefx.Services;
 
-import DataSource.Connexion;
-import Entities.Reglement;
+import gestionassurancefx.Utils.Connexion;
+import gestionassurancefx.Entities.Reglement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author youssef
  */
 public class Service_Reglement {
-    Connection c= Connexion.getInstance().getConn();
+      Connection c= Connexion.getInstance().getCon();
     public Service_Reglement(){}
     public void ajouterReglement(Reglement R){
        try{
