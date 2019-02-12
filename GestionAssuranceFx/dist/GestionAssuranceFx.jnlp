@@ -7,18 +7,15 @@
     <offline-allowed/>
   </information>
   <resources>
-    <jfx:javafx-runtime version="2.2+" href="http://javadl.sun.com/webapps/download/GetFile/javafx-latest/windows-i586/javafx2.jnlp"/>
-  </resources>
-  <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="GestionAssuranceFx.jar" size="12372" download="eager" />
-    <jar href="lib/mysql-connector-java-5.1.23-bin.jar" size="860449" download="eager" />
+    <jar href="GestionAssuranceFx.jar" size="22620" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="860457" download="eager" />
   </resources>
 <security>
   <all-permissions/>
 </security>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="GestionAssuranceFx" >
-    <param name="requiredFXVersion" value="2.2+"/>
+    <param name="requiredFXVersion" value="8.0+"/>
   </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="gestionassurancefx.GestionAssuranceFx"  name="GestionAssuranceFx" />
   <update check="always"/>
