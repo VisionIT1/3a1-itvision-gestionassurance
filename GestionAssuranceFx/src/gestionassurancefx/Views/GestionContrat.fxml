@@ -7,37 +7,43 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="gestionassurancefx.Controllers.GestionContratController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="737.0" prefWidth="1582.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.GestionContratController">
    <children>
-      <TabPane layoutX="66.0" layoutY="116.0" prefHeight="448.0" prefWidth="668.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" layoutY="115.0" prefHeight="448.0" prefWidth="1401.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Ajout Contrat">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="1401.0">
                      <children>
-                        <Button fx:id="ajouterBtn" layoutX="493.0" layoutY="330.0" mnemonicParsing="false" onAction="#ajouterClicked" text="Ajouter" />
-                        <Label layoutX="60.0" layoutY="55.0" text="Nom Contrat" />
-                        <TextField fx:id="nomContratField" layoutX="202.0" layoutY="50.0" />
-                        <Label layoutX="60.0" layoutY="98.0" text="Description" />
-                        <TextArea fx:id="descriptionContratField" layoutX="202.0" layoutY="98.0" prefHeight="68.0" prefWidth="221.0" />
-                        <Label layoutX="60.0" layoutY="184.0" text="ID Client" />
-                        <TextField fx:id="idClientField" layoutX="202.0" layoutY="179.0" />
-                        <Label layoutX="60.0" layoutY="237.0" text="Type" />
-                        <ComboBox fx:id="typeContratField" layoutX="202.0" layoutY="232.0" prefWidth="150.0" />
-                        <Label layoutX="61.0" layoutY="287.0" text="Date début" />
-                        <Label layoutX="55.0" layoutY="335.0" text="Date Echeance" />
-                        <DatePicker fx:id="dateDebutField" layoutX="202.0" layoutY="282.0" />
-                        <DatePicker fx:id="dateEcheanceField" layoutX="202.0" layoutY="330.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Modifier Contrat">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="afficherBtn" layoutX="240.0" layoutY="165.0" mnemonicParsing="false" onAction="#afficherClicked" text="afficher" />
+                        <Label layoutX="19.0" layoutY="13.0" text="Nom Contrat" />
+                        <TextField fx:id="nomContratField" layoutX="161.0" layoutY="8.0" />
+                        <Label layoutX="19.0" layoutY="56.0" text="Description" />
+                        <TextArea fx:id="descriptionContratField" layoutX="149.0" layoutY="56.0" prefHeight="68.0" prefWidth="221.0" />
+                        <Label layoutX="19.0" layoutY="142.0" text="ID Client" />
+                        <TextField fx:id="idClientField" layoutX="161.0" layoutY="137.0" />
+                        <Label layoutX="19.0" layoutY="195.0" text="Type" />
+                        <ComboBox fx:id="typeContratField" layoutX="161.0" layoutY="190.0" prefWidth="150.0" />
+                        <Label layoutX="20.0" layoutY="245.0" text="Date début" />
+                        <Label layoutX="14.0" layoutY="293.0" text="Date Echeance" />
+                        <DatePicker fx:id="dateDebutField" layoutX="151.0" layoutY="240.0" />
+                        <DatePicker fx:id="dateEcheanceField" layoutX="151.0" layoutY="288.0" />
+                        <TableView fx:id="contratview" layoutX="390.0" layoutY="13.0" onMouseClicked="#ItemSelected" prefHeight="368.0" prefWidth="1000.0">
+                           <columns>
+                              <TableColumn fx:id="id" prefWidth="49.0" text="ID" />
+                              <TableColumn fx:id="nom" prefWidth="101.0" text="Nom" />
+                              <TableColumn fx:id="desc" prefWidth="162.0" text="Description" />
+                              <TableColumn fx:id="idassure" prefWidth="88.0" text="id_assure" />
+                              <TableColumn fx:id="type" prefWidth="105.0" text="Type" />
+                              <TableColumn fx:id="datedebut" prefWidth="114.0" text="Date Début" />
+                              <TableColumn fx:id="dateecheance" prefWidth="119.0" text="Date Echeance" />
+                              <TableColumn fx:id="etat" minWidth="0.0" prefWidth="100.0" text="Etat" />
+                              <TableColumn fx:id="prime" prefWidth="170.0" text="Prime" />
+                           </columns>
+                        </TableView>
+                        <Label layoutX="16.0" layoutY="336.0" prefHeight="21.0" prefWidth="50.0" text="Etat" />
+                        <Label layoutX="12.0" layoutY="378.0" prefHeight="21.0" prefWidth="50.0" text="Prime" />
+                        <TextField fx:id="primeField" layoutX="141.0" layoutY="372.0" />
+                        <ComboBox fx:id="etatField" layoutX="149.0" layoutY="331.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
             </content>
@@ -49,5 +55,8 @@
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
+      <Button fx:id="ajouterBtn" layoutX="137.0" layoutY="586.0" mnemonicParsing="false" onAction="#ajouterClicked" text="Ajouter" />
+      <Button fx:id="deleteBtn" layoutX="234.0" layoutY="586.0" mnemonicParsing="false" onAction="#deleteContrat" text="Supprimer" />
+      <Button fx:id="updateBtn" layoutX="352.0" layoutY="586.0" mnemonicParsing="false" onAction="#updateClicked" text="Update" />
    </children>
 </AnchorPane>
