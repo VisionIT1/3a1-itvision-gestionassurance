@@ -16,25 +16,52 @@ public class Contrat {
     int id;
     String nom;
     String description;
-    int id_client;
+    int id_assure;
     String type;
     Date date_debut;
     Date date_Echeance;
-
+    int etat;
+    float prime;
     public Contrat(){
         
     }
-    
-    public Contrat(int id, String nom, String description, int id_client, String type, Date date_debut, Date date_Echeance) {
+
+    public Contrat(int id, String nom, String description, int id_assure, String type, Date date_debut, Date date_Echeance, int etat, float prime) {
         this.id = id;
         this.nom = nom;
         this.description = description;
-        this.id_client = id_client;
+        this.id_assure = id_assure;
         this.type = type;
         this.date_debut = date_debut;
         this.date_Echeance = date_Echeance;
+        this.etat = etat;
+        this.prime = prime;
     }
 
+    public int getId_assure() {
+        return id_assure;
+    }
+
+    public void setId_assure(int id_assure) {
+        this.id_assure = id_assure;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
+    }
+
+    public float getPrime() {
+        return prime;
+    }
+
+    public void setPrime(float prime) {
+        this.prime = prime;
+    }
+  
     public int getId() {
         return id;
     }
@@ -57,14 +84,6 @@ public class Contrat {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getId_client() {
-        return id_client;
-    }
-
-    public void setId_client(int id_client) {
-        this.id_client = id_client;
     }
 
     public String getType() {
@@ -93,9 +112,10 @@ public class Contrat {
 
     @Override
     public String toString() {
-        return "Contrat{" + "id=" + id + ", nom=" + nom + ", description=" + description + ", id_client=" + id_client + ", type=" + type + ", date_debut=" + date_debut + ", date_Echeance=" + date_Echeance + '}';
+        return "Contrat{" + "id=" + id + ", nom=" + nom + ", description=" + description + ", id_assure=" + id_assure + ", type=" + type + ", date_debut=" + date_debut + ", date_Echeance=" + date_Echeance + ", etat=" + etat + ", prime=" + prime + '}';
     }
-    
+
+   
     
     
 }
