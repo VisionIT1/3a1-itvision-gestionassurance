@@ -228,7 +228,7 @@ public class GestionContratController implements Initializable {
             crud.modifierContrat(cr);
             contratview.getItems().clear();
             contratview.setItems(crud.getAllContrat());
-        }else {
+        }else {	
             System.out.println("clicker sur un object");
         }
     }
