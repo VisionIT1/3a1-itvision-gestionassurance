@@ -15,8 +15,17 @@ public class OffreBonConducteur extends Offre {
     private int numReglement;
     private int nbrAnnee;
 
+    public OffreBonConducteur() {
+        super(null, null, null, 0, null);
+    }
+    
     public OffreBonConducteur(int numReglement, int nbrAnnee,String libOffre, Date dateDebutOffre, Date dateFinOffre, int pourcentageReduction, String descripOffre) {
         super(libOffre, dateDebutOffre, dateFinOffre, pourcentageReduction, descripOffre);
+        this.numReglement = numReglement;
+        this.nbrAnnee = nbrAnnee;
+    }
+    public OffreBonConducteur(int idOffre,int numReglement, int nbrAnnee,String libOffre, Date dateDebutOffre, Date dateFinOffre, int pourcentageReduction, String descripOffre) {
+        super(idOffre,libOffre, dateDebutOffre, dateFinOffre, pourcentageReduction, descripOffre);
         this.numReglement = numReglement;
         this.nbrAnnee = nbrAnnee;
     }

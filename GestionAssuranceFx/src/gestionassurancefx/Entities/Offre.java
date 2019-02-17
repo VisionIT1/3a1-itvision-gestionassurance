@@ -27,6 +27,15 @@ public class Offre {
         this.pourcentageReduction = pourcentageReduction;
         this.descripOffre = descripOffre;
     }
+   public Offre(int idOffre,String libOffre, Date dateDebutOffre, Date dateFinOffre, int pourcentageReduction, String descripOffre) 
+   {
+        this.idOffre=idOffre;
+        this.libOffre = libOffre;
+        this.dateDebutOffre = dateDebutOffre;
+        this.dateFinOffre = dateFinOffre;
+        this.pourcentageReduction = pourcentageReduction;
+        this.descripOffre = descripOffre;
+    }    
     
     
     public String getDescripOffre() {

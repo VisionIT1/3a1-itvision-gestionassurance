@@ -15,50 +15,58 @@ import java.util.logging.Logger;
 import gestionassurancefx.Utils.*;
 import gestionassurancefx.Entities.*;
 import java.sql.Date;
-
-
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author ADMIN
  */
 public class ServiceOffreBonConducteur {
+
     Connection C = Connexion.getInstance().getCon();
+    ObservableList<OffreBonConducteur> listE = FXCollections.observableArrayList();
+
     public void ajouterOffreBonConducteur(OffreBonConducteur O) {
         try {
-            PreparedStatement pst=C.prepareStatement("insert into offrebonconducteur values (null,?,?,?,?,?,?,?)");
-             
-             pst.setString(1,O.getLibOffre());
-             pst.setDate(2, O.getDateDebutOffre());
-             pst.setDate(3, (Date) O.getDateFinOffre());
-             pst.setInt(4,O.getPourcentageReduction());
-             pst.setInt(5,O.getNumReglement());
-             pst.setInt(6,O.getNbrAnnee());
-             pst.setString(7,O.getDescripOffre());
-             pst.executeUpdate();
-             
-            
+            PreparedStatement pst = C.prepareStatement("insert into offrebonconducteur values (null,?,?,?,?,?,?,?)");
+
+            pst.setString(1, O.getLibOffre());
+            pst.setDate(2, O.getDateDebutOffre());
+            pst.setDate(3, (Date) O.getDateFinOffre());
+            pst.setInt(4, O.getPourcentageReduction());
+            pst.setInt(5, O.getNumReglement());
+            pst.setInt(6, O.getNbrAnnee());
+            pst.setString(7, O.getDescripOffre());
+            pst.executeUpdate();
+
         } catch (SQLException ex) {
             Logger.getLogger(ServiceOffreBonConducteur.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public void afficherOffreBonConducteur() {
+    public ObservableList<OffreBonConducteur> afficherOffreBonConducteur() {
+
         try {
+             listE.removeAll(listE);
             Statement st = C.createStatement();
-
-            String req = "select * from offrebonconducteur";
-
+            String req = "Select * from offrebonconducteur";
             ResultSet rs = st.executeQuery(req); //retourne un résulat
+           
+
             while (rs.next()) {
-                System.out.println("lib: " + rs.getString("libOffre") + " dateDebut: " + rs.getDate("datedebutoffre") + " dateFin: " + rs.getDate("datefinoffre")+ " pourcentage: " + rs.getInt("pourcentagereduction")+" numReg: " + rs.getInt("numReglement")+" nbAnnee: " + rs.getInt("nbrannee")+" description: " + rs.getString("descripoffre"));
+                listE.add(new OffreBonConducteur(rs.getInt("idOffre"), rs.getInt("numReglement"), rs.getInt("nbrAnnee"), rs.getString("libOffre"), rs.getDate("dateDebutOffre"), rs.getDate("dateFinOffre"), rs.getInt("pourcentageReduction"), rs.getString("descripOffre")));
+
+                
+
             }
+            return listE;     
         } catch (SQLException ex) {
             Logger.getLogger(ServiceOffreBonConducteur.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-
-
     }
 
     public void modifierOffreBonConducteur(OffreBonConducteur e) {
@@ -67,20 +75,20 @@ public class ServiceOffreBonConducteur {
             ps.setString(1, e.getLibOffre());
             ps.setDate(2, e.getDateDebutOffre());
             ps.setDate(3, e.getDateFinOffre());
-            ps.setInt(4,e.getPourcentageReduction());
+            ps.setInt(4, e.getPourcentageReduction());
             ps.setInt(5, e.getNumReglement());
             ps.setInt(6, e.getNbrAnnee());
             ps.setString(7, e.getDescripOffre());
-            ps.setInt(8,2);
+            ps.setInt(8, e.getIdOffre());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceOffreBonConducteur.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-    public void supprimerOffreBonConducteur(int id)
-    {
-       PreparedStatement ps;
+
+    public void supprimerOffreBonConducteur(int id) {
+        PreparedStatement ps;
         try {
             ps = C.prepareStatement("delete from offrebonconducteur where idoffre=?");
             ps.setInt(1, id);
@@ -88,8 +96,7 @@ public class ServiceOffreBonConducteur {
         } catch (SQLException ex) {
             Logger.getLogger(ServiceOffreBonConducteur.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
-    
-    
+
 }
