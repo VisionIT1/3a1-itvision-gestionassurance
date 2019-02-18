@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="475.0" prefWidth="770.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.LoginController">
+   <children>
+      <ImageView fitHeight="542.0" fitWidth="850.0" layoutX="-79.0" opacity="0.12" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../login.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="390.0" layoutY="55.0" opacity="0.82" prefHeight="354.0" prefWidth="297.0" style="-fx-background-color: #9C2B27;">
+         <children>
+            <TextField fx:id="usernameLoginField" layoutX="38.0" layoutY="110.0" prefHeight="25.0" prefWidth="223.0" promptText="Nom utilisateur" styleClass="textf" stylesheets="@newCascadeStyleSheet.css" />
+            <PasswordField fx:id="mdpLoginField" layoutX="38.0" layoutY="186.0" prefHeight="25.0" prefWidth="223.0" promptText="Mot de passe" styleClass="textf" stylesheets="@newCascadeStyleSheet.css" />
+            <Label layoutX="86.0" layoutY="37.0" text="Authentification" textFill="#e8dcdc">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="connectBtn" layoutX="70.0" layoutY="254.0" mnemonicParsing="false" onAction="#ConnectBtnClicked" prefHeight="31.0" prefWidth="143.0" style="-fx-background-color: #E45652;" text="Se conncter" textFill="#f8e7e7" />
+         </children>
+      </AnchorPane>
+     
+   </children>
+</AnchorPane>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" onMouseClicked="#itemClickedR" prefHeight="700.0" prefWidth="1500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assurancefx.ReparateurFXMLController">
+   <children>
+      <TextField fx:id="idT" layoutX="62.0" layoutY="66.0" />
+      <TextField fx:id="cinT" layoutX="62.0" layoutY="102.0" />
+      <TextField fx:id="faxT" layoutX="62.0" layoutY="140.0" />
+      <TextField fx:id="nomT" layoutX="62.0" layoutY="176.0" />
+      <TextField fx:id="prenomT" layoutX="62.0" layoutY="218.0" />
+      <TextField fx:id="mailT" layoutX="62.0" layoutY="258.0" />
+      <TextField fx:id="numeroT" layoutX="62.0" layoutY="296.0" />
+      <TextField fx:id="adresseT" layoutX="62.0" layoutY="338.0" />
+      <TextField fx:id="descriptionT" layoutX="62.0" layoutY="420.0" />
+      <Button fx:id="ajouter" layoutX="151.0" layoutY="486.0" mnemonicParsing="false" onAction="#ajouterReparateur" text="ajouter" />
+      <ComboBox fx:id="etatT" layoutX="62.0" layoutY="383.0" prefWidth="150.0" />
+      <TableView fx:id="tableRep" layoutX="263.0" layoutY="40.0" onMouseClicked="#itemClickedR" prefHeight="205.0" prefWidth="759.0">
+        <columns>
+          <TableColumn fx:id="idRep" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="cinRep" prefWidth="75.0" text="Cin" />
+            <TableColumn fx:id="faxRep" prefWidth="75.0" text="Fax" />
+            <TableColumn fx:id="nomRep" prefWidth="75.0" text="Nom" />
+            <TableColumn fx:id="prenomRep" prefWidth="75.0" text="Prenom" />
+            <TableColumn fx:id="mailRep" prefWidth="75.0" text="Mail" />
+            <TableColumn fx:id="numeroRep" prefWidth="75.0" text="Téléphone" />
+            <TableColumn fx:id="adresseRep" prefWidth="75.0" text="Adresse" />
+            <TableColumn fx:id="etatRep" prefWidth="75.0" text="Disponibilité" />
+            <TableColumn fx:id="descriptionRep" prefWidth="75.0" text="Description" />
+        </columns>
+      </TableView>
+      <Button fx:id="modifier" layoutX="90.0" layoutY="486.0" mnemonicParsing="false" onAction="#modifierReparateur" text="modifier" />
+      <Button fx:id="supprimer" layoutX="655.0" layoutY="284.0" mnemonicParsing="false" onAction="#supprimerReparateur" text="supprimer" />
+   </children>
+</AnchorPane>

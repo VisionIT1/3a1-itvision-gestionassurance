@@ -118,7 +118,7 @@ public class GestionContratController implements Initializable {
         etatField.getItems().addAll("Paye", "Non paye");
         cinAssureField.setText(cinCont);
         //cinAssureField.setText(nomEntrCont);
-        contratview.setItems(crud.getAllContrat());
+//        contratview.setItems(crud.getAllContrat());
     //        System.out.println(crud.getNomAss());              
     }
 

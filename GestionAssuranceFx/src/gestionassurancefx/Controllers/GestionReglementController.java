@@ -12,7 +12,7 @@ import com.jfoenix.controls.JFXToggleButton;
 import static gestionassurancefx.Controllers.SinistreController.cinAssu;
 import static gestionassurancefx.Controllers.SinistreController.cinExx;
 import static gestionassurancefx.Controllers.SinistreController.cinRepp;
-import gestionassurancefx.Entities.Assure_Particulier;
+import gestionassurancefx.Entities.AssureParticulier;
 import gestionassurancefx.Entities.Expert;
 import gestionassurancefx.Entities.Reglement;
 import gestionassurancefx.Entities.Sinistre;
