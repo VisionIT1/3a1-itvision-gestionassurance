@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -31,8 +33,8 @@ public class VehiculeCrud {
                     PreparedStatement pstmt=C.prepareStatement("insert into vehicule (puissance,valNeuf,valVenale,anneConst,id_marque,immat,id_garantie) values (?,?,?,?,?,?,?)");
                        
 			pstmt.setInt(1, v.getPuiss());
-			pstmt.setInt(2,v.getVal_neuf());
-			pstmt.setInt(3,v.getVal_venale());
+			pstmt.setFloat(2,v.getVal_neuf());
+			pstmt.setFloat(3,v.getVal_venale());
 			pstmt.setInt(4,v.getAnnne_consruct());
 			pstmt.setInt(5,v.getId_marque());
 			pstmt.setString(6,v.getImmat());
@@ -56,10 +58,10 @@ public class VehiculeCrud {
 
 
     
-     public List<Vehicule> afficherVehicule() {
+     public ObservableList<Vehicule> afficherVehicule() {
       
          try {
-             List<Vehicule> vehicules= new ArrayList<Vehicule>();
+             ObservableList<Vehicule> vehicules= FXCollections.observableArrayList();
              PreparedStatement pstmt=C.prepareStatement("select * from vehicule");
              ResultSet rs=pstmt.executeQuery();
            
@@ -78,8 +80,8 @@ public class VehiculeCrud {
          try {
              PreparedStatement ps = C.prepareStatement("update vehicule set puissance=?,valNeuf=?,valVenale=?,anneConst=?,id_marque=?,immat=?,id_garantie=? where id_vehicule=?");
              ps.setInt(1,v.getPuiss());
-             ps.setInt(2, v.getVal_neuf());
-             ps.setInt(3, v.getVal_venale());
+             ps.setFloat(2, v.getVal_neuf());
+             ps.setFloat(3, v.getVal_venale());
              ps.setInt(4, v.getAnnne_consruct());
              ps.setInt(5, v.getId_marque());
              ps.setString(6, v.getImmat());
@@ -107,4 +109,22 @@ public class VehiculeCrud {
            
       
 }
+    
+     public int retourneidvehicule() {
+      
+         try {
+             
+             PreparedStatement pstmt=C.prepareStatement("select id_vehicule from vehicule order by id_vehicule desc  limit 1");
+             ResultSet rs=pstmt.executeQuery();
+             int idd=0;
+             while (rs.next()){
+                 idd=rs.getInt(1);
+             }
+             pstmt.close();
+             return idd;
+         } catch (SQLException ex) {
+             return 0;
+         }
+
+    }
 }

@@ -29,6 +29,12 @@ public class LigneGarantie {
         this.id_voyage = id_voyage;
         this.prime = prime;
     }
+        public LigneGarantie( int id_garantie, int id_voyage, float prime) {
+        this.id_ligne = id_ligne;
+        this.id_garantie = id_garantie;
+        this.id_voyage = id_voyage;
+        this.prime = prime;
+    }
 
    
     public int getId_garantie() {

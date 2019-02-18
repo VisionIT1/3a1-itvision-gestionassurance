@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -45,10 +47,10 @@ public class LigneGarantieCrud {
 
     }
 
-     public List<LigneGarantie> afficherListeGarantie() {
+     public ObservableList<LigneGarantie> afficherListeGarantie() {
       
          try {
-             List<LigneGarantie> LigneGaranties= new ArrayList<LigneGarantie>();
+             ObservableList<LigneGarantie> LigneGaranties= FXCollections.observableArrayList();
              PreparedStatement pstmt=C.prepareStatement("select * from ligne_garantie");
              ResultSet rs=pstmt.executeQuery();
             
@@ -73,6 +75,7 @@ public class LigneGarantieCrud {
             ps.setInt(2,lg.getId_garantie());
             ps.setFloat(3,lg.getPrime());
             ps.setInt(4,lg.getId_ligne());
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(LigneGarantieCrud.class.getName()).log(Level.SEVERE, null, ex);
         }

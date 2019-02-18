@@ -13,8 +13,8 @@ public class Vehicule {
     private int id_vehicule;
     private String immat;
     private int puiss;
-    private int val_neuf;
-    private int val_venale;
+    private float val_neuf;
+    private float val_venale;
     private int annne_consruct;
     private int id_marque;
     private int id_garantie;
@@ -22,7 +22,18 @@ public class Vehicule {
     public Vehicule() {
     }
 
-    public Vehicule(int id_vehicule, String immat, int puiss, int val_neuf, int val_venale, int annne_consruct, int id_marque, int id_garantie) {
+    public Vehicule(int id_vehicule, String immat, int puiss, float val_neuf, float val_venale, int annne_consruct, int id_marque, int id_garantie) {
+        this.id_vehicule = id_vehicule;
+        this.immat = immat;
+        this.puiss = puiss;
+        this.val_neuf = val_neuf;
+        this.val_venale = val_venale;
+        this.annne_consruct = annne_consruct;
+        this.id_marque = id_marque;
+        this.id_garantie = id_garantie;
+    }
+    
+     public Vehicule( String immat, int puiss, float val_neuf, float val_venale, int annne_consruct, int id_marque, int id_garantie) {
         this.id_vehicule = id_vehicule;
         this.immat = immat;
         this.puiss = puiss;
@@ -82,19 +93,19 @@ public class Vehicule {
         this.puiss = puiss;
     }
 
-    public int getVal_neuf() {
+    public float getVal_neuf() {
         return val_neuf;
     }
 
-    public void setVal_neuf(int val_neuf) {
+    public void setVal_neuf(float val_neuf) {
         this.val_neuf = val_neuf;
     }
 
-    public int getVal_venale() {
+    public float getVal_venale() {
         return val_venale;
     }
 
-    public void setVal_venale(int val_venale) {
+    public void setVal_venale(float val_venale) {
         this.val_venale = val_venale;
     }
 

@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -46,10 +48,10 @@ public class MarqueCrud {
 
 
     
-     public List<Marque> afficherMarque() {
+     public ObservableList<Marque> afficherMarque() {
       
          try {
-             List<Marque> marques= new ArrayList<Marque>();
+             ObservableList<Marque> marques= FXCollections.observableArrayList();
              PreparedStatement pstmt=C.prepareStatement("select * from marque");
              ResultSet rs=pstmt.executeQuery();
             
@@ -72,6 +74,7 @@ public class MarqueCrud {
             ps.setString(1,m.getLib_mrq());
             
             ps.setInt(2,m.getId_marque());
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(MarqueCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -85,7 +88,7 @@ public class MarqueCrud {
 
     }
       
-    public void SupprimerVoyage(int id) {
+    public void SupprimerMarque(int id) {
        
        
       
