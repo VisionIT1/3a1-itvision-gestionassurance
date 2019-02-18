@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -33,7 +35,7 @@ public class HabitationCrud {
             
             pstmt.setInt(1,h.getBaie_vitre());
             pstmt.setInt(2,h.getNb_pieces());
-            pstmt.setInt(3,h.getValeur_mob());
+            pstmt.setFloat(3,h.getValeur_mob());
             pstmt.setInt(4,h.getSys_alarm());
             pstmt.setString(5,h.getNature_local());
             
@@ -57,10 +59,10 @@ public class HabitationCrud {
 
 
     
-     public List<Habitation> afficherHabitation() {
+     public ObservableList<Habitation> afficherHabitation() {
       
          try {
-             List<Habitation> habitations= new ArrayList<Habitation>();
+             ObservableList<Habitation> habitations= FXCollections.observableArrayList();
              PreparedStatement pstmt=C.prepareStatement("select * from habitation");
              ResultSet rs=pstmt.executeQuery();
              
@@ -80,7 +82,7 @@ public class HabitationCrud {
             PreparedStatement ps = C.prepareStatement("update habitation set baieVitre=?,nbPieces=?,valmobile=?,sysAlarm=?,natureLocal=? where id_habitat=?");
             ps.setInt(1,h.getBaie_vitre());
             ps.setInt(2, h.getNb_pieces());
-            ps.setInt(3, h.getValeur_mob());
+            ps.setFloat(3, h.getValeur_mob());
             ps.setInt(4, h.getSys_alarm());
             ps.setString(5, h.getNature_local());
             ps.setInt(6, h.getId_habitat());
@@ -108,4 +110,22 @@ public class HabitationCrud {
       
 
 }
+    
+       public int retourneidHabitation() {
+      
+         try {
+             
+             PreparedStatement pstmt=C.prepareStatement("select id_habitat from habitation order by id_habitat desc  limit 1");
+             ResultSet rs=pstmt.executeQuery();
+             int idd=0;
+             while (rs.next()){
+                 idd=rs.getInt(1);
+             }
+             pstmt.close();
+             return idd;
+         } catch (SQLException ex) {
+             return 0;
+         }
+
+    }
 }

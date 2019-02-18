@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -57,10 +59,10 @@ public class VoyageCrud {
 
 
     
-     public List<Voyage> afficherVoyage() {
+     public ObservableList<Voyage> afficherVoyage() {
       
          try {
-             List<Voyage> voyages= new ArrayList<Voyage>();
+             ObservableList<Voyage> voyages=FXCollections.observableArrayList();
              PreparedStatement pstmt=C.prepareStatement("select * from voyage");
              ResultSet rs=pstmt.executeQuery();
             
@@ -108,4 +110,21 @@ public class VoyageCrud {
            
       
 }
+      public int retourneidvoyage() {
+      
+         try {
+             
+             PreparedStatement pstmt=C.prepareStatement("select id_voyage from voyage order by id_voyage desc limit 1");
+             ResultSet rs=pstmt.executeQuery();
+             int idd=0;
+             while (rs.next()){
+                 idd=rs.getInt(1);
+             }
+             pstmt.close();
+             return idd;
+         } catch (SQLException ex) {
+             return 0;
+         }
+
+    }
 }

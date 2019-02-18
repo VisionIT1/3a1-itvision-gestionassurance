@@ -14,8 +14,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -57,15 +60,19 @@ public class GarantieCrud {
 
 
     
-     public List<Garantie> afficherGarantie() {
+     public ObservableList<Garantie> afficherGarantie() {
       
          try {
-             List<Garantie> garanties= new ArrayList<Garantie>();
+             ObservableList<Garantie> garanties= FXCollections.observableArrayList();
              PreparedStatement pstmt=C.prepareStatement("select * from garantie");
              ResultSet rs=pstmt.executeQuery();
             
              while (rs.next()){
-                 garanties.add(new Garantie((rs.getInt(1)),rs.getString(2),rs.getFloat(3),rs.getString(4)));
+                 if (rs.getString(4).trim().equals("voy")){
+                 garanties.add(new Garantie((rs.getInt(1)),rs.getString(2),rs.getFloat(3),"Voyage"));
+                 }else{
+                    garanties.add(new Garantie((rs.getInt(1)),rs.getString(2),rs.getFloat(3),"Vehicule")); 
+                 }
              }
              pstmt.close();
              return garanties;
@@ -84,6 +91,7 @@ public class GarantieCrud {
                 ps.setFloat(2, g.getPrime());
                 ps.setString(3,g.getCategorie());
                 ps.setInt(4,g.getId_garantie());
+                ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(GarantieCrud.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -96,7 +104,7 @@ public class GarantieCrud {
 
     }
       
-    public void SupprimerVoyage(int id) {
+    public void SupprimerGarantie(int id) {
        
        
       

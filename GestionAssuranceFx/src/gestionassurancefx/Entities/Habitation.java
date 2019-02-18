@@ -13,14 +13,22 @@ public class Habitation {
     private int id_habitat;
     private int baie_vitre;
     private int nb_pieces;
-    private int valeur_mob;
+    private float valeur_mob;
     private int sys_alarm;
     private String nature_local;
 
     public Habitation() {
     }
 
-    public Habitation(int id_habitat, int baie_vitre, int nb_pieces, int valeur_mob, int sys_alarm, String nature_local) {
+    public Habitation(int id_habitat, int baie_vitre, int nb_pieces, float valeur_mob, int sys_alarm, String nature_local) {
+        this.id_habitat = id_habitat;
+        this.baie_vitre = baie_vitre;
+        this.nb_pieces = nb_pieces;
+        this.valeur_mob = valeur_mob;
+        this.sys_alarm = sys_alarm;
+        this.nature_local = nature_local;
+    }
+        public Habitation( int baie_vitre, int nb_pieces, float valeur_mob, int sys_alarm, String nature_local) {
         this.id_habitat = id_habitat;
         this.baie_vitre = baie_vitre;
         this.nb_pieces = nb_pieces;
@@ -59,11 +67,11 @@ public class Habitation {
         this.nb_pieces = nb_pieces;
     }
 
-    public int getValeur_mob() {
+    public float getValeur_mob() {
         return valeur_mob;
     }
 
-    public void setValeur_mob(int valeur_mob) {
+    public void setValeur_mob(float valeur_mob) {
         this.valeur_mob = valeur_mob;
     }
 

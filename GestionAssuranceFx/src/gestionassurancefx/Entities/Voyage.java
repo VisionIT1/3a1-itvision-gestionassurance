@@ -24,7 +24,13 @@ public class Voyage {
         this.duree_sej = duree_sej;
         this.tranche_age = tranche_age;
     }
-
+   
+      public Voyage(String dest, int duree_sej, int tranche_age) {
+        this.id_voyage = id_voyage;
+        this.dest = dest;
+        this.duree_sej = duree_sej;
+        this.tranche_age = tranche_age;
+    }
     public int getId_voyage() {
         return id_voyage;
     }

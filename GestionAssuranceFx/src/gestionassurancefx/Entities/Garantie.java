@@ -24,6 +24,12 @@ public class Garantie {
         this.prime = prime;
         this.categorie = categorie;
     }
+      public Garantie(String lib, float prime, String categorie) {
+        this.id_garantie = id_garantie;
+        this.lib = lib;
+        this.prime = prime;
+        this.categorie = categorie;
+    }
 
     public int getId_garantie() {
         return id_garantie;
