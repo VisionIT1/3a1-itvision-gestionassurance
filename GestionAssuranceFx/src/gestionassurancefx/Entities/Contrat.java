@@ -16,7 +16,7 @@ public class Contrat {
     int id;
     String nom;
     String description;
-    int id_assure;
+    int cin_assure;
     String type;
     Date date_debut;
     Date date_Echeance;
@@ -26,11 +26,11 @@ public class Contrat {
         
     }
 
-    public Contrat(int id, String nom, String description, int id_assure, String type, Date date_debut, Date date_Echeance, int etat, float prime) {
+    public Contrat(int id, String nom, String description, int cin_assure, String type, Date date_debut, Date date_Echeance, int etat, float prime) {
         this.id = id;
         this.nom = nom;
         this.description = description;
-        this.id_assure = id_assure;
+        this.cin_assure = cin_assure;
         this.type = type;
         this.date_debut = date_debut;
         this.date_Echeance = date_Echeance;
@@ -38,12 +38,12 @@ public class Contrat {
         this.prime = prime;
     }
 
-    public int getId_assure() {
-        return id_assure;
+    public int getCin_assure() {
+        return cin_assure;
     }
 
-    public void setId_assure(int id_assure) {
-        this.id_assure = id_assure;
+    public void setCin_assure(int cin_assure) {
+        this.cin_assure = cin_assure;
     }
 
     public int getEtat() {
@@ -112,7 +112,7 @@ public class Contrat {
 
     @Override
     public String toString() {
-        return "Contrat{" + "id=" + id + ", nom=" + nom + ", description=" + description + ", id_assure=" + id_assure + ", type=" + type + ", date_debut=" + date_debut + ", date_Echeance=" + date_Echeance + ", etat=" + etat + ", prime=" + prime + '}';
+        return "Contrat{" + "id=" + id + ", nom=" + nom + ", description=" + description + ", cin_assure=" + cin_assure + ", type=" + type + ", date_debut=" + date_debut + ", date_Echeance=" + date_Echeance + ", etat=" + etat + ", prime=" + prime + '}';
     }
 
    

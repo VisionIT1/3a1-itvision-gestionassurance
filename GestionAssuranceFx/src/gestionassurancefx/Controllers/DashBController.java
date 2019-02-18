@@ -46,13 +46,22 @@ public class DashBController  implements Initializable  {
     private Button btnGExpert;
     @FXML
     private Button btnGReparateur;
+	
+	 @FXML
+    private AnchorPane mainAnchor;
+AnchorPane contrat;
+
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            contrat = FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionAssureParticulier.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(DashBController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }   
     @FXML
     private void constatView(ActionEvent event) throws IOException{
@@ -66,6 +75,32 @@ public class DashBController  implements Initializable  {
           AnchorPane pane = FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sin.fxml"));
         System.out.println(getClass().getResource("/gestionassurancefx/Views/sin.fxml"));
        mainView.getChildren().setAll(pane);
+    }
+	
+	
+	 @FXML
+    private void btnConstatClicked(ActionEvent event) throws IOException{
+   
+         setNode(contrat);
+             }
+
+      private void setNode(Node node) {
+        mainView.getChildren().clear();
+        mainView.getChildren().add((Node) node);
+
+        FadeTransition ft = new FadeTransition(Duration.millis(1500));
+        ft.setNode(node);
+        ft.setFromValue(0.1);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.setAutoReverse(false);
+        ft.play();
+    }
+     
+    @FXML
+    private void dashBoardClicked(MouseEvent event) throws IOException {
+            AnchorPane pane =FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/DashB.fxml"));
+       mainAnchor.getChildren().setAll(pane);
     }
     
 }

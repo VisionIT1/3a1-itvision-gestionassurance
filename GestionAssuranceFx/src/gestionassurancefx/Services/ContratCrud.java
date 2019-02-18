@@ -5,7 +5,6 @@
  */
 package gestionassurancefx.Services;
 
-import gestionassurancefx.Controllers.GestionContratController;
 import gestionassurancefx.Entities.Contrat;
 import gestionassurancefx.Utils.Connexion;
 import java.sql.Connection;
@@ -13,11 +12,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -34,11 +32,11 @@ public class ContratCrud {
             Statement st = Cn.createStatement(); //l'element qui va éxécuter la requete sql
 
             //  String req = "insert into assurance values('" + C.getNom()+ "','" + C.getDescription()+ "','" + C.getId_client()+ "','" + C.getType()+ "','" + C.getDate_debut() + "','" + C.getDate_Echeance()+"')";
-            String req = "insert into contrat ( nom, description, id_assure, type, date_debut, date_echeance,etat,prime) VALUES (?,?,?,?,?,?,?,?)";
+            String req = "insert into contrat ( nom, description, cin_assure, type, date_debut, date_echeance,etat,prime) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement ste = Cn.prepareStatement(req);
             ste.setString(1, C.getNom());
             ste.setString(2, C.getDescription());
-            ste.setInt(3, 1);
+            ste.setInt(3, C.getCin_assure());
             ste.setString(4, C.getType());
             ste.setDate(5, C.getDate_debut());
             ste.setDate(6, C.getDate_Echeance());
@@ -78,7 +76,7 @@ public class ContratCrud {
                 c.setId(rs.getInt(1));
                 c.setNom(rs.getString(2));
                 c.setDescription(rs.getString(3));
-                c.setId_assure(rs.getInt(4));
+                c.setCin_assure(rs.getInt(4));
                 c.setType(rs.getString(5));
                 c.setDate_debut(rs.getDate(6));
                 c.setDate_Echeance(rs.getDate(7));
@@ -99,7 +97,7 @@ public class ContratCrud {
             PreparedStatement ps = Cn.prepareStatement("update contrat set nom=?,description=?,id_assure=?,type=?,date_debut=?,date_echeance=?,etat=?,prime=? where id=?");
             ps.setString(1, c.getNom());
             ps.setString(2, c.getDescription());
-            ps.setInt(3, c.getId_assure());
+            ps.setInt(3, c.getCin_assure());
             ps.setString(4, c.getType());
             ps.setDate(5, c.getDate_debut());
             ps.setDate(6, c.getDate_Echeance());
@@ -113,5 +111,48 @@ public class ContratCrud {
         }
 
     }
+    
+    public ObservableList<String> getNomAss(){
+        ObservableList<String> listid = FXCollections.observableArrayList();
+        try {
+            Statement st = Cn.createStatement();
+            String req = "select a.id,a.nom , a.prenom from  assure_particulier a ;";
+            ResultSet rs = st.executeQuery(req); //retourne un résulat
+
+            while (rs.next()) {
+               
+               
+                listid.add(rs.getInt("id")+" "+ rs.getString("nom")+" "+rs.getString("prenom"));
+            }
+
+            return listid;
+        } catch (SQLException ex) {
+            System.out.println("erreur" + ex.getMessage());
+            return null;
+        }
+    }
+    
+   public int getIdAss(int id){
+        try {
+            Statement st = Cn.createStatement();
+            String req = "select a.id from  assure_particulier a where a.id ="+ id;
+            ResultSet rs = st.executeQuery(req); //retourne un résulat
+                int idass=0;
+            while (rs.next()) {
+               
+               idass=rs.getInt("id");
+            }
+
+            return idass;
+        } catch (SQLException ex) {
+            System.out.println("erreur" + ex.getMessage());
+           return 0;
+        }
+        
+   }
+   
+  
+   
+   
 
 }

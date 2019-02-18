@@ -5,16 +5,17 @@
  */
 package gestionassurancefx.Controllers;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
+import static gestionassurancefx.Controllers.GestionAssureParticulierController.cinCont;
+import static gestionassurancefx.Controllers.GestionAssureParticulierController.nomEntrCont;
+
 import gestionassurancefx.Entities.Contrat;
 import gestionassurancefx.Services.ContratCrud;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import javafx.beans.property.IntegerProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -22,9 +23,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.RadioButton;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -45,7 +45,6 @@ public class GestionContratController implements Initializable {
     private TextField nomContratField;
     @FXML
     private TextArea descriptionContratField;
-    @FXML
     private TextField idClientField;
     @FXML
     private ComboBox<String> typeContratField;
@@ -90,21 +89,47 @@ public class GestionContratController implements Initializable {
     private Button updateBtn;
 
     Contrat updateContrat;
-
+   
+    @FXML
+    private Button printBtn;
+   
+    @FXML
+    private TextField cinAssureField;
+    private GestionAssureParticulierController ApCont; 
+    @FXML
+    private Label nomAssLabel;
+    @FXML
+    private TextField nomAssField;
+    @FXML
+    private Label cinAssLabel;
+    
     public void initialize(URL url, ResourceBundle rb) {
+       
+        if(nomEntrCont != null ){
+            nomAssLabel.setVisible(true);
+            nomAssField.setVisible(true);
+            cinAssLabel.setVisible(false);
+            cinAssureField.setVisible(false);
+        }
+        
         initColumns();
         crud = new ContratCrud();
         typeContratField.getItems().addAll("Habitation", "Voyage", "Voiture");
         etatField.getItems().addAll("Paye", "Non paye");
+        cinAssureField.setText(cinCont);
+        //cinAssureField.setText(nomEntrCont);
         contratview.setItems(crud.getAllContrat());
-        //      System.out.println(crud.getAllContrat());
+    //        System.out.println(crud.getNomAss());              
     }
 
+    
+    
+   
     public void initColumns() {
         id.setCellValueFactory(new PropertyValueFactory<Contrat, Integer>("id"));
         nom.setCellValueFactory(new PropertyValueFactory<Contrat, String>("nom"));
         desc.setCellValueFactory(new PropertyValueFactory<Contrat, String>("Description"));
-        idassure.setCellValueFactory(new PropertyValueFactory<Contrat, Integer>("id_assure"));
+        idassure.setCellValueFactory(new PropertyValueFactory<Contrat, Integer>("cin_assure"));
         type.setCellValueFactory(new PropertyValueFactory<Contrat, String>("type"));
         datedebut.setCellValueFactory(new PropertyValueFactory<Contrat, LocalDate>("date_debut"));
         dateecheance.setCellValueFactory(new PropertyValueFactory<Contrat, LocalDate>("date_Echeance"));
@@ -113,44 +138,40 @@ public class GestionContratController implements Initializable {
 
     }
 
+    
+    
+    
     @FXML
     private void ajouterClicked(ActionEvent event) {
         //contratview.getItems().clear();
-
+        
         Date date_debut = java.sql.Date.valueOf(dateDebutField.getValue());
         Date date_echeance = java.sql.Date.valueOf(dateEcheanceField.getValue());
         int prime = Integer.parseInt(primeField.getText());
         int etat = 0;
-        int idass = Integer.parseInt(idClientField.getText());
+      //  int idass = Integer.parseInt(etatField.getSelectionModel().getSelectedItem());
         if (etatField.getSelectionModel().getSelectedItem().equalsIgnoreCase("Paye")) {
             etat = 1;
         } else {
             etat = 0;
         }
-        System.out.println(date_debut);
-        System.out.println(date_echeance);
-        System.out.println("Nom : " + nomContratField.getText());
-        System.out.println("Description : " + descriptionContratField.getText());
-        System.out.println("Id Assure: " + idClientField.getText());
-        System.out.println("type contrat" + typeContratField.getSelectionModel().getSelectedItem());
-        System.out.println("Etat du compte" + etatField.getSelectionModel().getSelectedItem());
-        System.out.println("");
-        //  Contrat cr = new Contrat(1,nomContratField.getText(),descriptionContratField.getText(),Integer.getInteger(idClientField.getText()),typeContratField.getSelectionModel().getSelectedItem(),date_debut,date_echeance);
         Contrat cr = new Contrat();
         cr.setDate_Echeance(date_echeance);
         cr.setDate_debut(date_debut);
         cr.setNom(nomContratField.getText());
         cr.setDescription(descriptionContratField.getText());
-        cr.setId_assure(idass);
-        cr.setType(typeContratField.getSelectionModel().getSelectedItem());
+        
+       //String[ ] arr=idAssureField.getSelectionModel().getSelectedItem().split(" ");
+       cr.setCin_assure(Integer.parseInt(cinAssureField.getText()));
+       cr.setType(typeContratField.getSelectionModel().getSelectedItem());
         cr.setEtat(etat);
         cr.setPrime(prime);
-
+        
         crud.ajouterContrat(cr);
         contratview.getItems().clear();
         contratview.setItems(crud.getAllContrat());
         System.out.println("Contrat Ajouter");
-        //   contratview.setItems(crud.getAllContrat());
+       contratview.setItems(crud.getAllContrat());
 
     }
 
@@ -182,13 +203,9 @@ public class GestionContratController implements Initializable {
         cr = contratview.getSelectionModel().getSelectedItem();
         if (cr != null) {
             String etat = "";
-            String idass = "";
-            idass += cr.getId_assure();
             String prime = "";
             prime += cr.getPrime();
-            //ObservableList<String> typeliste = FXCollections.observableArrayList();
-            // typeliste.add(cr.getType());
-            //typeliste.add(cr.getType());
+           
             if (cr.getEtat() == 0) {
                 etat = "non paye";
             } else {
@@ -197,8 +214,7 @@ public class GestionContratController implements Initializable {
 
             nomContratField.setText(cr.getNom());
             descriptionContratField.setText(cr.getDescription());
-            idClientField.setText(idass);
-            //typeContratField.setItems(typeliste);
+            cinAssureField.setText(Integer.toString(cr.getCin_assure()));
             typeContratField.getSelectionModel().select(cr.getType());
             dateDebutField.setValue(cr.getDate_debut().toLocalDate());
             dateEcheanceField.setValue(cr.getDate_Echeance().toLocalDate());
@@ -217,8 +233,11 @@ public class GestionContratController implements Initializable {
             cr.setDate_debut(date_debut);
             cr.setNom(nomContratField.getText());
             cr.setDescription(descriptionContratField.getText());
-            cr.setId_assure(Integer.parseInt(idClientField.getText()));
-            cr.setType(typeContratField.getSelectionModel().getSelectedItem());
+            
+          //String[ ] arr=cinAssureField.getSelectionModel().getSelectedItem().split(" ");
+          //cr.setId_assure(Integer.parseInt(arr[0]));
+           
+          cr.setType(typeContratField.getSelectionModel().getSelectedItem());
             cr.setPrime(Integer.parseInt(primeField.getText()));
             if (etatField.getSelectionModel().getSelectedItem().equals("Non paye")) {
                 cr.setEtat(0);
@@ -228,9 +247,16 @@ public class GestionContratController implements Initializable {
             crud.modifierContrat(cr);
             contratview.getItems().clear();
             contratview.setItems(crud.getAllContrat());
-        }else {	
+        }else {
             System.out.println("clicker sur un object");
         }
+    }
+
+    @FXML
+    private void printClicked(ActionEvent event) {
+        /* PrinterJob printerJob = PrinterJob.createPrinterJob();
+   if(printerJob.showPrintDialog(primaryStage.getOwner()) && printerJob.printPage(yourNode))
+       printerJob.endJob();*/
     }
 
 }

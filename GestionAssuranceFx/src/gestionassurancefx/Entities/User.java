@@ -20,7 +20,6 @@ public class User {
     String email;
     String email_canonical;
     boolean enabled;
-    
     String salt;
     String password;
     Date last_login;
@@ -43,6 +42,15 @@ public class User {
         this.last_login = last_login;
         this.confirmation_token = confirmation_token;
         this.password_requested_at = password_requested_at;
+        this.roles = roles;
+    }
+
+    public User(int id, String username, String email, boolean enabled, String password, String roles) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.enabled = enabled;
+        this.password = password;
         this.roles = roles;
     }
 
