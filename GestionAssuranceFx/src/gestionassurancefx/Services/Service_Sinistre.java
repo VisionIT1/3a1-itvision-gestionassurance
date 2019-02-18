@@ -1,4 +1,4 @@
-﻿/*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -132,7 +132,7 @@ public class Service_Sinistre {
     //***************************************************
         public int trouverCin(int cin) {
         try {
-            PreparedStatement pstmt = c.prepareStatement("select * from assure_particulier where cin ="+cin);
+            PreparedStatement pstmt = c.prepareStatement("select * from assure_particulier where id ="+cin);
             ResultSet rs = pstmt.executeQuery();
              while (rs.next()) {
             return rs.getInt(1);
