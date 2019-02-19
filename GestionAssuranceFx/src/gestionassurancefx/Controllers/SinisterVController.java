@@ -174,5 +174,12 @@ public class SinisterVController implements Initializable {
         
         
     }
+       @FXML
+    private void search(ActionEvent event) {
+        String ch = search.getText();
+        Service_Sinistre ss=new Service_Sinistre();
+        sinistreView.getItems().clear();
+        sinistreView.setItems(ss.trouverAll(ch));
+    }
     
 }
