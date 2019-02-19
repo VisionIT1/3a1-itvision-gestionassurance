@@ -65,8 +65,7 @@ public class SinisterVController implements Initializable {
     private JFXTextArea desc;
     @FXML
     private JFXTextField search;
-    @FXML
-    private Button btnsearch;
+  
 
     /**
      * Initializes the controller class.
