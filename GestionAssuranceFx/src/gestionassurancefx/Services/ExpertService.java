@@ -23,7 +23,6 @@ import javafx.collections.ObservableList;
  * @author ASUS
  */
 public class ExpertService {
-    
      Connection C = Connexion.getInstance().getCon();
      
     public ObservableList<Expert> data=FXCollections.observableArrayList();
@@ -45,7 +44,7 @@ public class ExpertService {
             pst.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(ExpertService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gestionassurancefx.Services.ExpertService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -83,7 +82,7 @@ public class ExpertService {
             }
             return data;     
         } catch (SQLException ex) {
-            Logger.getLogger(ExpertService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gestionassurancefx.Services.ExpertService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -105,7 +104,7 @@ public class ExpertService {
             ps.setInt(10, e.getIdEx());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ExpertService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gestionassurancefx.Services.ExpertService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -119,11 +118,65 @@ public class ExpertService {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ExpertService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gestionassurancefx.Services.ExpertService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
+     public ObservableList<String> getNomExpert() throws SQLException{
+        ObservableList<String> listnom= FXCollections.observableArrayList();
+        
+        Statement st=C.createStatement();
+        String req="select cinEx,nomEx from expert where etatEx='oui'";
+        ResultSet rs=st.executeQuery(req);
+        while(rs.next()){
+            listnom.add(rs.getInt("cinEx")+ " "+rs.getString("nomEx"));
+        }
+        return listnom;
+        
+    }
+    
+   public ObservableList<Expert> rechercherExpert(String nom) {
+        Statement ps;
+  ObservableList<Expert>d= FXCollections.observableArrayList();
+   
+        try {
+           //  data.removeAll(data);
+          
+            ps=C.createStatement();
+            //String req="select * from expert where nomEx='"+nom+"' ";
+             String req="select * from expert where nomEx='"+nom+"'or adresseEx='"+nom+"' or numeroEx='"+nom+"' ";
+            
+         ResultSet rs=ps.executeQuery(req);
+while (rs.next()) {
+               // data.add(new Expert(rs.getInt("idex"), rs.getInt("cinex"), rs.getInt("faxex"), rs.getString("nomex"), rs.getString("prenomex"), rs.getString("mailex"), rs.getInt("numeroex"), rs.getString("adresseex"), rs.getString("etatex"), rs.getString("descriptionex")));
+
+                
+                Expert c = new Expert();
+                c.setIdEx(rs.getInt(1));
+                c.setCinEx(rs.getInt(2));
+                c.setFaxEx(rs.getInt(3));
+                c.setNomEx(rs.getString(4));
+                c.setPrenomEx(rs.getString(5));
+                c.setMailEx(rs.getString(6));
+                c.setNumeroEx(rs.getInt(7));
+                c.setAdresseEx(rs.getString(8));
+               c.setEtatEx(rs.getString(9));
+               c.setDescriptionEx(rs.getString(10));
+                d.add(c);
 
 
+            }
+            return d;     
+        } catch (SQLException ex) {
+            Logger.getLogger(gestionassurancefx.Services.ExpertService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("tiiir");
+            return null;
+        }
+    
+
+   }
+
+   
+    
 }

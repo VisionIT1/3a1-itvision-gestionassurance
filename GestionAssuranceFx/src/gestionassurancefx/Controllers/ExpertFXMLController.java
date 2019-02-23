@@ -8,14 +8,24 @@ package gestionassurancefx.Controllers;
 
 import gestionassurancefx.Entities.Expert;
 import gestionassurancefx.Services.ExpertService;
-import gestionassurancefx.Utils.Alerte;
+import gestionassurancefx.Utils.Alert;
+import gestionassurancefx.Utils.Connexion;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterAttributes;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -24,17 +34,19 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 
 /**
+ * FXML Controller class
  *
  * @author ASUS
  */
-public class FXMLExpertController implements Initializable {
-    
+public class ExpertFXMLController implements Initializable {
+    @FXML
+    private AnchorPane mainViewExpert;
     @FXML
     private Label label;
-    @FXML
-    private TextField idT;
     @FXML
     private TextField cinT;
     @FXML
@@ -50,12 +62,10 @@ public class FXMLExpertController implements Initializable {
     @FXML
     private TextField adresseT;
     @FXML
-    private TextField etatT;
-    @FXML
     private TextField descriptionT;
-    @FXML private ComboBox<String> comboBox ;
-     
-    
+    @FXML
+    private Button ajouter;
+  
     @FXML private TableView<Expert> table;
      @FXML  private TableColumn<Expert,Integer> id;
      @FXML  private TableColumn<Expert,Integer> cin;
@@ -69,41 +79,66 @@ public class FXMLExpertController implements Initializable {
       @FXML  private TableColumn<Expert,String> description;
 
     
-         
-      ExpertService ES=new ExpertService();
     @FXML
-    private Button ajouter;
+    private TextField idT;
     @FXML
-    private Button afficher;
-      @FXML
     private Button modifier;
-           @FXML
+    @FXML
     private Button supprimer;
+    @FXML
+    private ComboBox<String> comboBox;
+    @FXML
+    private Button affecter;
+    @FXML
+    private TextField rechercherT;
+    @FXML
+    private Button rechercher;
+    @FXML
+    private Button raf;
+    @FXML
+    private Button affi;
+    @FXML
+    private Button imprimer;
     
-    
+    public static int cinexpert;
+     Connection C = Connexion.getInstance().getCon();
+    ExpertService ES=new ExpertService();
+
+
+
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+        
+        supprimer.setVisible(false);
+           
+             affecter.setVisible(false);
        modifier.setVisible(false);
        idT.setVisible(false);
        afficherExpert();
        comboBox.getItems().addAll("oui","non");
+       raf.setVisible(false);
+     
+    
+
+
     }    
 
     @FXML
-    public void ajouterEx(ActionEvent event) {
-    
-     
-     
+    private void ajouterEx(ActionEvent event) {
+        
+        
      String erreur="";
      if(numeroT.getText().length()!=8)
-         erreur= erreur+ "verifier la longueur du téléphone";
+         erreur= erreur+ "verifier la longueur du telephone";
     if(!mailT.getText().matches("(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)*\\@(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)+" )) 
-           erreur=erreur+"vérifier votre adresseMail";
+           erreur=erreur+"verifier votre adresseMail";
 
     
     if (!erreur.equals("")) {
-            Alerte.desplay("erreur", erreur);
+            Alert.desplay("erreur", erreur);
         } else {
        
      Expert e= new Expert();
@@ -114,8 +149,9 @@ public class FXMLExpertController implements Initializable {
           e.setMailEx(mailT.getText());
       e.setNumeroEx(Integer.parseInt( numeroT.getText()));
          e.setAdresseEx(adresseT.getText()); 
-        e.setEtatEx( comboBox.getSelectionModel().getSelectedItem());
-        // e.setEtatEx(etatT.getText());
+       e.setEtatEx( comboBox.getSelectionModel().getSelectedItem());
+
+      
           e.setDescriptionEx(descriptionT.getText());
 
         ES.ajouterExpert(e);
@@ -123,11 +159,10 @@ public class FXMLExpertController implements Initializable {
     }
 
     }
-      
-    @FXML
+    
         public void afficherExpert() {
         id.setCellValueFactory(new PropertyValueFactory<Expert, Integer>("idEx"));
-       cin.setCellValueFactory(new PropertyValueFactory<Expert, Integer>("cinEx"));
+        cin.setCellValueFactory(new PropertyValueFactory<Expert, Integer>("cinEx"));
         fax.setCellValueFactory(new PropertyValueFactory<Expert, Integer>("faxEx"));
         nom.setCellValueFactory(new PropertyValueFactory<Expert, String>("nomEx"));
        prenom.setCellValueFactory(new PropertyValueFactory<Expert, String>("prenomEx"));
@@ -144,11 +179,11 @@ public class FXMLExpertController implements Initializable {
 
     }
 
-    @FXML
+    
+
+   @FXML
     private void itemClicked(MouseEvent event) {
         
-        
-
         Expert Os = table.getSelectionModel().getSelectedItem();
          idT.setText(""+Os.getIdEx());
         cinT.setText(""+Os.getCinEx());
@@ -161,30 +196,34 @@ public class FXMLExpertController implements Initializable {
       
             comboBox.getSelectionModel().select(Os.getEtatEx());
           
-      //  etatT.setText(Os.getEtatEx());
+    
            descriptionT.setText(Os.getDescriptionEx());
         
      
         ajouter.setVisible(false);
      modifier.setVisible(true);
+     affecter.setVisible(true);
+raf.setVisible(true);
+
+     supprimer.setVisible(true);
 
 
     }
-    
-    
 
     @FXML
     private void modifierExpert(ActionEvent event) {
         
+        
+        
           String erreur="";
      if(numeroT.getText().length()!=8)
-         erreur= erreur+ "verifier la longueur du téléphone";
+         erreur= erreur+ "verifier la longueur du telephone";
     if(!mailT.getText().matches("(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)*\\@(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)+" )) 
-           erreur=erreur+"vérifier votre adresseMail";
+           erreur=erreur+"verifier votre adresseMail";
 
     
     if (!erreur.equals("")) {
-            Alerte.desplay("erreur", erreur);
+            Alert.desplay("erreur", erreur);
         } else {
         Expert O = new Expert(Integer.parseInt(idT.getText()), Integer.parseInt(cinT.getText()), Integer.parseInt(faxT.getText()), nomT.getText(), prenomT.getText(),mailT.getText(), Integer.parseInt(numeroT.getText()),adresseT.getText(),comboBox.getSelectionModel().getSelectedItem(),descriptionT.getText());
         ES.modifierExpert(O);
@@ -199,8 +238,7 @@ public class FXMLExpertController implements Initializable {
         numeroT.clear();
         adresseT.clear();
         
-        //comboBox.disableProperty();
-       // etatT.clear();
+       
         descriptionT.clear();
 
         afficherExpert();
@@ -218,24 +256,104 @@ public class FXMLExpertController implements Initializable {
        mailT.clear();
         numeroT.clear();
         adresseT.clear();
-        etatT.clear();
+      
         descriptionT.clear();
         
       
         ajouter.setVisible(true);
         modifier.setVisible(false);
+        supprimer.setVisible(false);
+        affecter.setVisible(false);
+   
+
     }
 
-
-     @FXML
+    @FXML
     private void supprimerExpert(ActionEvent event) {
         
+        
         Expert Os = table.getSelectionModel().getSelectedItem();
+       
         ES.supprimerExpert(Os.getIdEx());
         afficherExpert();
        Rafraichir();
+
+    }
+    
+
+    @FXML
+    private void affecter(ActionEvent event) throws IOException {
+        String message="";
+        
+        cinexpert=Integer.parseInt(cinT.getText());
+     AnchorPane paneExpert=FXMLLoader.load(getClass().getResource("gestionassurancefx/Views/ReparateurFXML.fxml"));
+      mainViewExpert.getChildren().setAll(paneExpert);
+       Alert.desplay("affectation","vous avec affectÃ© l'expert avec le cin: /n"+cinexpert);
+        
+
     }
 
+    @FXML
+    private void rechercher(ActionEvent event) {
+                  table.setItems(ES.rechercherExpert(rechercherT.getText()));
+      table.setEditable(true);
+        affi.setVisible(true);
+
+    }
+
+    @FXML
+    private void raf(ActionEvent event) {
+        Rafraichir();
+
+    }
+
+    @FXML
+    private void affi(ActionEvent event) {
+        id.setCellValueFactory(new PropertyValueFactory<Expert, Integer>("idEx"));
+        cin.setCellValueFactory(new PropertyValueFactory<Expert, Integer>("cinEx"));
+        fax.setCellValueFactory(new PropertyValueFactory<Expert, Integer>("faxEx"));
+        nom.setCellValueFactory(new PropertyValueFactory<Expert, String>("nomEx"));
+       prenom.setCellValueFactory(new PropertyValueFactory<Expert, String>("prenomEx"));
+        mail.setCellValueFactory(new PropertyValueFactory<Expert, String>("mailEx"));
+        numero.setCellValueFactory(new PropertyValueFactory<Expert, Integer>("numeroEx"));
+        adresse.setCellValueFactory(new PropertyValueFactory<Expert, String>("adresseEx"));
+        etat.setCellValueFactory(new PropertyValueFactory<Expert, String>("etatEx"));
+        description.setCellValueFactory(new PropertyValueFactory<Expert, String>("descriptionEx"));
+        
+        table.setItems(ES.afficherExpert());
+        table.setEditable(true);
+
+    }
     
+    public static void printNode(final Node node) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    Printer printer = Printer.getDefaultPrinter();
+    PageLayout pageLayout
+        = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+    PrinterAttributes attr = printer.getPrinterAttributes();
+    PrinterJob job = PrinterJob.createPrinterJob();
+    double scaleX
+        = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
+    double scaleY
+        = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
+    Scale scale = new Scale(scaleX, scaleY);
+    node.getTransforms().add(scale);
+
+    if (job != null && job.showPrintDialog(node.getScene().getWindow())) {
+      boolean success = job.printPage(pageLayout, node);
+      if (success) {
+        job.endJob();
+
+      }
+    }
+    node.getTransforms().remove(scale);
+  }
+
+
+
+    @FXML
+    private void imprimer(ActionEvent event) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        printNode(table);
+
+    }
     
 }

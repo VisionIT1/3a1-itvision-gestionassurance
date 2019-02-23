@@ -6,20 +6,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" onMouseClicked="#itemClickedR" prefHeight="700.0" prefWidth="1500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assurancefx.ReparateurFXMLController">
+<AnchorPane id="AnchorPane" fx:id="mainViewReparateur" onMouseClicked="#itemClickedR" prefHeight="731.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.ReparateurFXMLController">
    <children>
-      <TextField fx:id="idT" layoutX="62.0" layoutY="66.0" />
-      <TextField fx:id="cinT" layoutX="62.0" layoutY="102.0" />
-      <TextField fx:id="faxT" layoutX="62.0" layoutY="140.0" />
-      <TextField fx:id="nomT" layoutX="62.0" layoutY="176.0" />
-      <TextField fx:id="prenomT" layoutX="62.0" layoutY="218.0" />
-      <TextField fx:id="mailT" layoutX="62.0" layoutY="258.0" />
-      <TextField fx:id="numeroT" layoutX="62.0" layoutY="296.0" />
-      <TextField fx:id="adresseT" layoutX="62.0" layoutY="338.0" />
-      <TextField fx:id="descriptionT" layoutX="62.0" layoutY="420.0" />
-      <Button fx:id="ajouter" layoutX="151.0" layoutY="486.0" mnemonicParsing="false" onAction="#ajouterReparateur" text="ajouter" />
-      <ComboBox fx:id="etatT" layoutX="62.0" layoutY="383.0" prefWidth="150.0" />
-      <TableView fx:id="tableRep" layoutX="263.0" layoutY="40.0" onMouseClicked="#itemClickedR" prefHeight="205.0" prefWidth="759.0">
+      <TextField fx:id="idT" layoutX="82.0" layoutY="66.0" />
+      <TextField fx:id="cinT" layoutX="81.0" layoutY="102.0" />
+      <TextField fx:id="faxT" layoutX="80.0" layoutY="140.0" />
+      <TextField fx:id="nomT" layoutX="81.0" layoutY="176.0" />
+      <TextField fx:id="prenomT" layoutX="77.0" layoutY="218.0" />
+      <TextField fx:id="mailT" layoutX="76.0" layoutY="258.0" />
+      <TextField fx:id="numeroT" layoutX="73.0" layoutY="296.0" />
+      <TextField fx:id="adresseT" layoutX="73.0" layoutY="338.0" />
+      <TextField fx:id="descriptionT" layoutX="76.0" layoutY="420.0" />
+      <Button fx:id="ajouter" layoutX="483.0" layoutY="433.0" mnemonicParsing="false" onAction="#ajouterReparateur" prefHeight="25.0" prefWidth="70.0" text="ajouter" />
+      <ComboBox fx:id="etatT" layoutX="70.0" layoutY="383.0" prefWidth="150.0" />
+      <TableView fx:id="tableRep" layoutX="252.0" layoutY="74.0" onMouseClicked="#itemClickedR" prefHeight="205.0" prefWidth="420.0">
         <columns>
           <TableColumn fx:id="idRep" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="cinRep" prefWidth="75.0" text="Cin" />
@@ -33,7 +33,24 @@
             <TableColumn fx:id="descriptionRep" prefWidth="75.0" text="Description" />
         </columns>
       </TableView>
-      <Button fx:id="modifier" layoutX="90.0" layoutY="486.0" mnemonicParsing="false" onAction="#modifierReparateur" text="modifier" />
-      <Button fx:id="supprimer" layoutX="655.0" layoutY="284.0" mnemonicParsing="false" onAction="#supprimerReparateur" text="supprimer" />
+      <Button fx:id="modifier" layoutX="414.0" layoutY="474.0" mnemonicParsing="false" onAction="#modifierReparateur" text="modifier" />
+      <Button fx:id="supprimer" layoutX="483.0" layoutY="474.0" mnemonicParsing="false" onAction="#supprimerReparateur" text="supprimer" />
+      <Button fx:id="affecterRep" layoutX="338.0" layoutY="474.0" mnemonicParsing="false" onAction="#affecterRep" prefHeight="25.0" prefWidth="70.0" text="affecter" />
+      <Label layoutX="20.0" layoutY="144.0" prefHeight="17.0" prefWidth="45.0" text="Fax" />
+      <Label layoutX="21.0" layoutY="106.0" text="CIN" />
+      <Label layoutX="21.0" layoutY="180.0" text="Nom" />
+      <Label layoutX="14.0" layoutY="222.0" text="Prénom" />
+      <Label layoutX="14.0" layoutY="262.0" />
+      <Label layoutX="11.0" layoutY="262.0" prefHeight="17.0" prefWidth="42.0" text="Mail" />
+      <Label layoutX="3.0" layoutY="424.0" prefHeight="17.0" prefWidth="77.0" text="Description" />
+      <Label layoutX="14.0" layoutY="342.0" text="Adresse" />
+      <Label layoutX="1.0" layoutY="387.0" text="Disponiblité" />
+      <Label layoutX="21.0" layoutY="424.0" />
+      <Label layoutY="301.0" text="Téléphone" />
+      <TextField fx:id="rechercherT" layoutX="16.0" layoutY="14.0" />
+      <Button fx:id="rechercherRep" layoutX="170.0" layoutY="14.0" mnemonicParsing="false" onAction="#rechercherRep" text="rechercher" />
+      <Button fx:id="affi" layoutX="413.0" layoutY="433.0" mnemonicParsing="false" onAction="#affi" prefHeight="25.0" prefWidth="63.0" text="afficher" />
+      <Button fx:id="imprimer" layoutX="341.0" layoutY="433.0" mnemonicParsing="false" onAction="#imprimer" text="imprimer" />
+      <Button fx:id="raf" layoutX="611.0" layoutY="27.0" mnemonicParsing="false" onAction="#raf" prefHeight="25.0" prefWidth="77.0" text="rafraichir" />
    </children>
 </AnchorPane>

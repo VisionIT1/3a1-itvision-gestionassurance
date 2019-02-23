@@ -4,17 +4,28 @@
  * and open the template in the editor.
  */
 
-package  gestionassurancefx.Controllers;
-
+package gestionassurancefx.Controllers;
 
 import gestionassurancefx.Entities.Reparateur;
 import gestionassurancefx.Services.ReparateurService;
-import  gestionassurancefx.Utils.Alerte;
+import gestionassurancefx.Utils.Alert;
+import gestionassurancefx.Utils.Connexion;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterAttributes;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -23,6 +34,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Scale;
 
 /**
  * FXML Controller class
@@ -30,6 +42,8 @@ import javafx.scene.layout.AnchorPane;
  * @author ASUS
  */
 public class ReparateurFXMLController implements Initializable {
+    @FXML
+    private AnchorPane mainViewReparateur;
     @FXML
     private TextField idT;
     @FXML
@@ -47,17 +61,12 @@ public class ReparateurFXMLController implements Initializable {
     @FXML
     private TextField adresseT;
     @FXML
-    private ComboBox<String> etatT;
-    @FXML
     private TextField descriptionT;
     @FXML
     private Button ajouter;
-    
-    
-       ReparateurService ES=new ReparateurService();
-    
-    
-     @FXML private TableView<Reparateur> tableRep;
+    @FXML
+    private ComboBox<String> etatT;
+        @FXML private TableView<Reparateur> tableRep;
      @FXML  private TableColumn<Reparateur,Integer> idRep;
      @FXML  private TableColumn<Reparateur, Integer> cinRep;
       @FXML  private TableColumn<Reparateur, Integer> faxRep; 
@@ -68,35 +77,55 @@ public class ReparateurFXMLController implements Initializable {
       @FXML  private TableColumn<Reparateur, String> adresseRep;
      @FXML  private TableColumn<Reparateur, String> etatRep;
       @FXML  private TableColumn<Reparateur, String> descriptionRep;
+
     @FXML
     private Button modifier;
     @FXML
     private Button supprimer;
+    @FXML
+    private Button affecterRep;
+    @FXML
+    private TextField rechercherT;
+    @FXML
+    private Button rechercherRep;
+    @FXML
+    private Button affi;
+    ReparateurService ES=new ReparateurService();
+     public static int cinreparateur;
+     Connection C = Connexion.getInstance().getCon();
+    @FXML
+    private Button imprimer;
+    @FXML
+    private Button raf;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          modifier.setVisible(false);
+        modifier.setVisible(false);
+        supprimer.setVisible(false);
+   affecterRep.setVisible(false);
        idT.setVisible(false);
        afficherReparateur();
        etatT.getItems().addAll("oui","non");
+       affi.setVisible(true);
+
+        // TODO
     }    
 
     @FXML
     private void ajouterReparateur(ActionEvent event) {
         
-        
          String erreur="";
      if(numeroT.getText().length()!=8)
-         erreur= erreur+ "verifier la longueur du téléphone";
+         erreur= erreur+ "verifier la longueur du telephone";
     if(!mailT.getText().matches("(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)*\\@(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)+" )) 
-           erreur=erreur+"vérifier votre adresseMail";
+           erreur=erreur+"verifier votre adresseMail";
 
     
     if (!erreur.equals("")) {
-            Alerte.desplay("erreur", erreur);
+            Alert.desplay("erreur", erreur);
         } else {
        
      Reparateur e= new Reparateur();
@@ -114,8 +143,8 @@ public class ReparateurFXMLController implements Initializable {
         ES.ajouterReparateur(e);
         afficherReparateur();
     }
+
     }
-    
     
       public void afficherReparateur() {
         idRep.setCellValueFactory(new PropertyValueFactory<Reparateur, Integer>("idRep"));
@@ -133,6 +162,7 @@ public class ReparateurFXMLController implements Initializable {
         tableRep.setEditable(true);
     
 }
+
 
     @FXML
     private void itemClickedR(MouseEvent event) {
@@ -155,25 +185,29 @@ public class ReparateurFXMLController implements Initializable {
      
         ajouter.setVisible(false);
      modifier.setVisible(true);
+     supprimer.setVisible(true);
+     affecterRep.setVisible(true);
 
         
         
+    
     }
+    
 
     @FXML
     private void modifierReparateur(ActionEvent event) {
         
         
-         
+        
          String erreur="";
      if(numeroT.getText().length()!=8)
-         erreur= erreur+ "verifier la longueur du téléphone";
+         erreur= erreur+ "verifier la longueur du telephone";
     if(!mailT.getText().matches("(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)*\\@(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)+" )) 
-           erreur=erreur+"vérifier votre adresseMail";
+           erreur=erreur+"verifier votre adresseMail";
 
     
     if (!erreur.equals("")) {
-            Alerte.desplay("erreur", erreur);
+            Alert.desplay("erreur", erreur);
         } else {
        
         
@@ -217,15 +251,90 @@ public class ReparateurFXMLController implements Initializable {
       
         ajouter.setVisible(true);
         modifier.setVisible(false);
+        supprimer.setVisible(false);
+        affecterRep.setVisible(false);
         
+
     }
 
     @FXML
     private void supprimerReparateur(ActionEvent event) {
+        
         Reparateur Os = tableRep.getSelectionModel().getSelectedItem();
         ES.supprimerReparateur(Os.getIdRep());
         afficherReparateur();
        Rafraichir();
+
     }
 
+    @FXML
+    private void affecterRep(ActionEvent event) throws IOException {
+        cinreparateur=Integer.parseInt(cinT.getText());
+     AnchorPane paneExpert=FXMLLoader.load(getClass().getResource("affectationFXML.fxml"));
+      mainViewReparateur.getChildren().setAll(paneExpert);
+       Alert.desplay("affectation","vous avec affectÃ© l'expert avec le cin:"+cinreparateur);
+        
+
+    }
+
+    @FXML
+    private void rechercherRep(ActionEvent event) {
+        tableRep.setItems(ES.rechercherReparateur(rechercherT.getText()));
+      tableRep.setEditable(true);
+      affi.setVisible(true);
+
+    }
+
+    @FXML
+    private void affi(ActionEvent event) {
+        
+         idRep.setCellValueFactory(new PropertyValueFactory<Reparateur, Integer>("idRep"));
+       cinRep.setCellValueFactory(new PropertyValueFactory<Reparateur, Integer>("cinRep"));
+        faxRep.setCellValueFactory(new PropertyValueFactory<Reparateur, Integer>("faxRep"));
+        nomRep.setCellValueFactory(new PropertyValueFactory<Reparateur, String>("nomRep"));
+       prenomRep.setCellValueFactory(new PropertyValueFactory<Reparateur, String>("prenomRep"));
+        mailRep.setCellValueFactory(new PropertyValueFactory<Reparateur, String>("mailRep"));
+        numeroRep.setCellValueFactory(new PropertyValueFactory<Reparateur, Integer>("numeroRep"));
+        adresseRep.setCellValueFactory(new PropertyValueFactory<Reparateur, String>("adresseRep"));
+        etatRep.setCellValueFactory(new PropertyValueFactory<Reparateur, String>("etatRep"));
+        descriptionRep.setCellValueFactory(new PropertyValueFactory<Reparateur, String>("descriptionRep"));
+        
+        tableRep.setItems(ES.afficherReparateur());
+        tableRep.setEditable(true);
+    }
+    
+      public static void printNode(final Node node) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    Printer printer = Printer.getDefaultPrinter();
+    PageLayout pageLayout
+        = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
+    PrinterAttributes attr = printer.getPrinterAttributes();
+    PrinterJob job = PrinterJob.createPrinterJob();
+    double scaleX
+        = pageLayout.getPrintableWidth() / node.getBoundsInParent().getWidth();
+    double scaleY
+        = pageLayout.getPrintableHeight() / node.getBoundsInParent().getHeight();
+    Scale scale = new Scale(scaleX, scaleY);
+    node.getTransforms().add(scale);
+
+    if (job != null && job.showPrintDialog(node.getScene().getWindow())) {
+      boolean success = job.printPage(pageLayout, node);
+      if (success) {
+        job.endJob();
+
+      }
+    }
+    node.getTransforms().remove(scale);
+  }
+
+
+    @FXML
+    private void imprimer(ActionEvent event) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+          printNode(tableRep);
+    }
+
+    @FXML
+    private void raf(ActionEvent event) {
+     Rafraichir();
+    }
+    
 }
