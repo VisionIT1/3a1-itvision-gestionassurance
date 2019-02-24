@@ -8,13 +8,15 @@ package gestionassurancefx.Controllers;
 
 import gestionassurancefx.Entities.Expert;
 import gestionassurancefx.Services.ExpertService;
-import gestionassurancefx.Utils.Alert;
 import gestionassurancefx.Utils.Connexion;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Connection;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,12 +28,16 @@ import javafx.print.Printer;
 import javafx.print.PrinterAttributes;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -120,6 +126,26 @@ public class ExpertFXMLController implements Initializable {
        afficherExpert();
        comboBox.getItems().addAll("oui","non");
        raf.setVisible(false);
+       
+             Pattern intPattern = Pattern.compile("-?\\d*");
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            if (intPattern.matcher(change.getControlNewText()).matches()) {
+                return change;
+            }
+            return null;
+        };
+        TextFormatter textFormatter = new TextFormatter(filter);
+        TextFormatter tF1 = new TextFormatter(filter);
+        TextFormatter tF2 = new TextFormatter(filter);
+        TextFormatter tF3 = new TextFormatter(filter);
+     
+        
+        idT.setTextFormatter(textFormatter);
+        cinT.setTextFormatter(tF1);
+        faxT.setTextFormatter(tF2);
+    
+    
+        numeroT.setTextFormatter(tF3);
      
     
 
@@ -138,7 +164,11 @@ public class ExpertFXMLController implements Initializable {
 
     
     if (!erreur.equals("")) {
-            Alert.desplay("erreur", erreur);
+  Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate Fields");
+                alert.setHeaderText(null);
+                alert.setContentText(erreur);
+                alert.showAndWait();
         } else {
        
      Expert e= new Expert();
@@ -223,7 +253,11 @@ raf.setVisible(true);
 
     
     if (!erreur.equals("")) {
-            Alert.desplay("erreur", erreur);
+       Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Validate Fields");
+                alert.setHeaderText(null);
+                alert.setContentText(erreur);
+                alert.showAndWait();
         } else {
         Expert O = new Expert(Integer.parseInt(idT.getText()), Integer.parseInt(cinT.getText()), Integer.parseInt(faxT.getText()), nomT.getText(), prenomT.getText(),mailT.getText(), Integer.parseInt(numeroT.getText()),adresseT.getText(),comboBox.getSelectionModel().getSelectedItem(),descriptionT.getText());
         ES.modifierExpert(O);
@@ -270,26 +304,38 @@ raf.setVisible(true);
 
     @FXML
     private void supprimerExpert(ActionEvent event) {
-        
+       
+          supprimer.setOnAction(e->{
+            Alert alert=new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure to delete");
+           Optional <ButtonType> action=alert.showAndWait();
+           if(action.get()==ButtonType.OK)
+                {
         
         Expert Os = table.getSelectionModel().getSelectedItem();
        
         ES.supprimerExpert(Os.getIdEx());
         afficherExpert();
        Rafraichir();
+                  }
+                   });
 
     }
     
 
     @FXML
     private void affecter(ActionEvent event) throws IOException {
-        String message="";
+        //String message="";
         
         cinexpert=Integer.parseInt(cinT.getText());
      AnchorPane paneExpert=FXMLLoader.load(getClass().getResource("gestionassurancefx/Views/ReparateurFXML.fxml"));
       mainViewExpert.getChildren().setAll(paneExpert);
-       Alert.desplay("affectation","vous avec affectÃ© l'expert avec le cin: /n"+cinexpert);
-        
+       //Alert.desplay("affectation","vous avec affecter l'expert avec le cin: /n"+cinexpert);
+       
+       
+       
 
     }
 
