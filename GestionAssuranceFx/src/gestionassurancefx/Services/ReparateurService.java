@@ -6,7 +6,6 @@
 
 package gestionassurancefx.Services;
 
-
 import gestionassurancefx.Entities.Reparateur;
 import gestionassurancefx.Utils.Connexion;
 import java.sql.Connection;
@@ -46,7 +45,7 @@ public class ReparateurService {
             pst.executeUpdate();
 
         } catch (SQLException ex) {
-            Logger.getLogger(ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gestionassurancefx.Services.ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -81,7 +80,7 @@ public class ReparateurService {
             }
             return data;     
         } catch (SQLException ex) {
-            Logger.getLogger(ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gestionassurancefx.Services.ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -101,7 +100,7 @@ public class ReparateurService {
             ps.setInt(10, e.getIdRep());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gestionassurancefx.Services.ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -113,8 +112,52 @@ public class ReparateurService {
             ps.setInt(1, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(gestionassurancefx.Services.ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
+    
+    
+    
+    public ObservableList<Reparateur> rechercherReparateur(String nom) {
+        Statement ps;
+  ObservableList<Reparateur>d= FXCollections.observableArrayList();
+   
+        try {
+           //  data.removeAll(data);
+          
+            ps=C.createStatement();
+             String req="select * from reparateur where nomRep='"+nom+"'or adresseRep='"+nom+"' or numeroRep='"+nom+"' ";
+         
+            
+         ResultSet rs=ps.executeQuery(req);
+while (rs.next()) {
+               // data.add(new Expert(rs.getInt("idex"), rs.getInt("cinex"), rs.getInt("faxex"), rs.getString("nomex"), rs.getString("prenomex"), rs.getString("mailex"), rs.getInt("numeroex"), rs.getString("adresseex"), rs.getString("etatex"), rs.getString("descriptionex")));
+
+                
+                Reparateur c = new Reparateur();
+                c.setIdRep(rs.getInt(1));
+                c.setCinRep(rs.getInt(2));
+                c.setFaxRep(rs.getInt(3));
+                c.setNomRep(rs.getString(4));
+                c.setPrenomRep(rs.getString(5));
+                c.setMailRep(rs.getString(6));
+                c.setNumeroRep(rs.getInt(7));
+                c.setAdresseRep(rs.getString(8));
+               c.setEtatRep(rs.getString(9));
+               c.setDescriptionRep(rs.getString(10));
+                d.add(c);
+
+
+            }
+            return d;     
+        } catch (SQLException ex) {
+            Logger.getLogger(gestionassurancefx.Services.ReparateurService.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("tiiir");
+            return null;
+        }
+    
+
+   }
+    
 }

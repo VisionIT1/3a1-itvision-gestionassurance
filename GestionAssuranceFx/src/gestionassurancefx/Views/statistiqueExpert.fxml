@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="606.0" prefWidth="620.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assurancefx.StatistiqueExpertController">
+<AnchorPane id="AnchorPane" prefHeight="606.0" prefWidth="620.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.StatistiqueExpertController">
    <children>
       <BarChart fx:id="bar" layoutX="42.0" layoutY="71.0" prefHeight="491.0" prefWidth="536.0">
         <xAxis>
@@ -17,6 +17,6 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </BarChart>
-      <Button fx:id="load" layoutX="178.0" layoutY="46.0" mnemonicParsing="false" onAction="#load" prefHeight="25.0" prefWidth="74.0" text="Load" />
+     
    </children>
 </AnchorPane>

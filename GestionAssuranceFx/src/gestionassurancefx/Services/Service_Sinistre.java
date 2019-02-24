@@ -158,4 +158,35 @@ public class Service_Sinistre {
             return 0;
     }
 
+    public ObservableList<Sinistre> trouverAll(String ch) {
+              ObservableList<Sinistre> l = FXCollections.observableArrayList();
+        try {
+           // PreparedStatement pstmt = c.prepareStatement("select * from sinstre where date_declaration LIKE %?% OR date_sinistre LIKE %?% OR lieu_sinistre LIKE %?% OR numero_sinistre LIKE %?% OR description LIKE %?%");
+           Statement pstmt =c.createStatement();
+           String req = "select *from sinistre where date_declaration LIKE '%"+ch+"%' OR date_sinistre LIKE '%"+ch+"%' OR lieu_sinistre LIKE '%"+ch+"%' OR description LIKE '%"+ch+"%'";
+            ResultSet rs= pstmt.executeQuery(req);
+        
+         
+             while (rs.next()) {
+                Sinistre sn = new Sinistre();
+                sn.setCode_sinistre(rs.getInt(1));
+                sn.setDate_declaration(rs.getDate(2));
+                sn.setDate_sinistre(rs.getDate(3));
+                sn.setLieu_sinistre(rs.getString(4));
+                sn.setNumero_sinistre(rs.getInt(5));
+                sn.setDomage_mat(rs.getInt(6));
+                sn.setDomage_corps(rs.getInt(7));
+                sn.setCode_assureur(rs.getInt(8));
+                sn.setDescription(rs.getString(9));
+                l.add(sn);
+            }
+             return l;
+
+        } catch (SQLException ex) {
+            System.out.println("echec affichage");
+        }
+            return null;
+    }
+
+
 }
