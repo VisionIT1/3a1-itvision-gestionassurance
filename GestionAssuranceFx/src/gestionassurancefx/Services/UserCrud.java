@@ -92,7 +92,7 @@ public class UserCrud {
             ps.setString(1, u.getUsername());
             ps.setString(2, u.getEmail());
             ps.setBoolean(3, u.getEnabled());
-            ps.setString(4, u.getPassword());
+            ps.setString(4, BCrypt.hashpw(u.getPassword(), BCrypt.gensalt(12)));
             ps.setString(5, u.getRoles());            
             ps.setInt(6, u.getId());
             ps.executeUpdate();

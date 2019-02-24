@@ -33,6 +33,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import com.teknikindustries.bulksms.SMS;
 
 /**
  * FXML Controller class
@@ -274,7 +275,7 @@ public class GestionAssureParticulierController implements Initializable {
     private void btnClicked(ActionEvent event) throws IOException {
      
             AssureParticulier ap=new AssureParticulier();
-            
+            SMS smstut=new SMS();
             if(validateCin() && validateNom()&& validatePrenom() && validateEmail() && validateMobileNo() && validateAdresse() && validateFields()  ){
             ap.setCin(Integer.parseInt(cinField.getText()));
             ap.setNom(nomFIeld.getText());
@@ -283,14 +284,10 @@ public class GestionAssureParticulierController implements Initializable {
             ap.setNumtel(Integer.parseInt(numtelField.getText()));
             ap.setAdresse(adresseField.getText());
             crud.ajouterAssureParticulier(ap);
-            crudEntr=new AssureEntrepriseCrud();
+           // smstut.SendSMS("ahmedderbel","j25w5nkg","Bienvneue chez notre assurance","numtelField.getText()","https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
+
             cinCont=getCinFromCont();
-            
-             
-            
-            
             AnchorPane pane=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionContrat.fxml"));
-            
             assPartPane1.getChildren().setAll(pane);
             
                 Alert alert = new Alert(AlertType.INFORMATION);
@@ -303,15 +300,21 @@ public class GestionAssureParticulierController implements Initializable {
 
     @FXML
     private void EntrbtnClicked(ActionEvent event) throws IOException {
+        
          AssureEntreprise Ar = new AssureEntreprise();
         Ar.setNomEntr(nomFIeldEntr.getText());
         Ar.setEmailEntr(emailFieldEntr.getText());
         Ar.setNumTel(numtelFieldEntr.getText());
         Ar.setAdresseEntr(adresseFieldEntr.getText());
         crudEntr.ajouterAssureEntreprise(Ar);
+          
         nomEntrCont=getNomEntrFromCont();
-         AnchorPane pane=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionContrat.fxml"));
-         assEntrPane.getChildren().setAll(pane);
+        AnchorPane pane=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionContrat.fxml"));
+        assPartPane1.getChildren().setAll(pane);
+      
+       //SendSms();
+        
+        
         System.out.println("Entreprise Ajoute");
     }
     

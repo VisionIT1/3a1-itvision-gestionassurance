@@ -18,7 +18,8 @@ import javafx.stage.Stage;
  * @author Ahmed Derbel
  */
 public class GestionAssuranceFx extends Application {
-    
+        public static Stage LoginStage=null;
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Views/Login.fxml"));
@@ -26,6 +27,7 @@ public class GestionAssuranceFx extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+         LoginStage=stage;
         stage.show();
     }
 

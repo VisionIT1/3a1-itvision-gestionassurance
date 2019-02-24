@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="737.0" prefWidth="1582.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.GestionContratController">
    <children>
-      <TabPane layoutX="14.0" layoutY="82.0" prefHeight="605.0" prefWidth="1401.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" layoutY="82.0" prefHeight="605.0" prefWidth="1547.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Ajout Contrat">
                <content>
@@ -22,35 +22,43 @@
                         <TextArea fx:id="descriptionContratField" layoutX="149.0" layoutY="56.0" prefHeight="68.0" prefWidth="221.0" />
                         <Label fx:id="cinAssLabel" layoutX="19.0" layoutY="142.0" text="Cin assuré" />
                         <Label layoutX="21.0" layoutY="194.0" text="Type" />
-                        <ComboBox fx:id="typeContratField" layoutX="163.0" layoutY="189.0" prefWidth="150.0" />
-                        <Label layoutX="22.0" layoutY="244.0" text="Date début" />
-                        <Label layoutX="16.0" layoutY="292.0" text="Date Echeance" />
-                        <DatePicker fx:id="dateDebutField" layoutX="153.0" layoutY="239.0" />
-                        <DatePicker fx:id="dateEcheanceField" layoutX="153.0" layoutY="287.0" />
-                        <Label layoutX="18.0" layoutY="335.0" prefHeight="21.0" prefWidth="50.0" text="Etat" />
-                        <Label layoutX="14.0" layoutY="377.0" prefHeight="21.0" prefWidth="50.0" text="Prime" />
-                        <TextField fx:id="primeField" layoutX="143.0" layoutY="371.0" />
-                        <ComboBox fx:id="etatField" layoutX="151.0" layoutY="330.0" prefWidth="150.0" />
-                        <TextField fx:id="cinAssureField" layoutX="151.0" layoutY="137.0" />
-                        <Label fx:id="nomAssLabel" layoutX="18.0" layoutY="142.0" text="Nom assuré" visible="false" />
-                        <TextField fx:id="nomAssField" layoutX="151.0" layoutY="148.0" visible="false" />
-                        <TableView fx:id="contratview" layoutX="420.0" layoutY="15.0" onMouseClicked="#ItemSelected" prefHeight="410.0" prefWidth="967.0">
-                           <columns>
-                              <TableColumn fx:id="id" prefWidth="49.0" text="ID" />
-                              <TableColumn fx:id="nom" prefWidth="101.0" text="Nom" />
-                              <TableColumn fx:id="desc" prefWidth="162.0" text="Description" />
-                              <TableColumn fx:id="idassure" prefWidth="88.0" text="Cin assure" />
-                              <TableColumn fx:id="type" prefWidth="105.0" text="Type" />
-                              <TableColumn fx:id="datedebut" prefWidth="114.0" text="Date Début" />
-                              <TableColumn fx:id="dateecheance" prefWidth="119.0" text="Date Echeance" />
-                              <TableColumn fx:id="etat" minWidth="0.0" prefWidth="100.0" text="Etat" />
-                              <TableColumn fx:id="prime" prefWidth="170.0" text="Prime" />
-                           </columns>
-                        </TableView>
-                        <Button fx:id="ajouterBtn" layoutX="109.0" layoutY="425.0" mnemonicParsing="false" onAction="#ajouterClicked" text="Ajouter" />
-                        <Button fx:id="deleteBtn" layoutX="200.0" layoutY="425.0" mnemonicParsing="false" onAction="#deleteContrat" text="Supprimer" />
-                        <Button fx:id="updateBtn" layoutX="304.0" layoutY="425.0" mnemonicParsing="false" onAction="#updateClicked" text="Update" />
-                        <Button fx:id="printBtn" layoutX="1207.0" layoutY="433.0" mnemonicParsing="false" onAction="#printClicked" text="Imprimer" />
+                        <ComboBox fx:id="typeContratField" layoutX="150.0" layoutY="184.0" prefWidth="150.0" />
+                        <Label layoutX="26.0" layoutY="275.0" text="Date début" />
+                        <Label layoutX="20.0" layoutY="323.0" text="Date Echeance" />
+                        <DatePicker fx:id="dateDebutField" layoutX="157.0" layoutY="270.0" />
+                        <DatePicker fx:id="dateEcheanceField" layoutX="157.0" layoutY="318.0" />
+                        <Label layoutX="22.0" layoutY="366.0" prefHeight="21.0" prefWidth="50.0" text="Etat" />
+                        <Label layoutX="18.0" layoutY="408.0" prefHeight="21.0" prefWidth="50.0" text="Prime" />
+                        <TextField fx:id="primeField" layoutX="147.0" layoutY="402.0" />
+                        <ComboBox fx:id="etatField" layoutX="155.0" layoutY="361.0" prefWidth="150.0" />
+                        <TextField fx:id="cinAssureField" disable="true" layoutX="151.0" layoutY="137.0" />
+                        <Label fx:id="nomAssLabel" layoutX="18.0" layoutY="142.0" text="Nom Entreprise" visible="false" />
+                        <TextField fx:id="nomEntrField" layoutX="151.0" layoutY="148.0" visible="false" />
+                        <Button fx:id="ajouterBtn" layoutX="105.0" layoutY="449.0" mnemonicParsing="false" onAction="#ajouterClicked" styleClass="btns" stylesheets="@StyleSheet.css" text="Ajouter" />
+                        <Button fx:id="deleteBtn" layoutX="196.0" layoutY="449.0" mnemonicParsing="false" onAction="#deleteContrat" styleClass="btns" stylesheets="@StyleSheet.css" text="Supprimer" />
+                        <Button fx:id="updateBtn" layoutX="300.0" layoutY="449.0" mnemonicParsing="false" onAction="#updateClicked" styleClass="btns" stylesheets="@StyleSheet.css" text="Update" />
+                        <Button fx:id="printBtn" layoutX="1207.0" layoutY="440.0" mnemonicParsing="false" onAction="#printClicked" styleClass="btns" stylesheets="@StyleSheet.css" text="Imprimer" />
+                        <Label layoutX="20.0" layoutY="230.0" text="ID du Type" />
+                        <TextField fx:id="idTypeField" layoutX="151.0" layoutY="226.0" />
+                        <AnchorPane fx:id="tableviewPane" layoutX="401.0" layoutY="16.0" prefHeight="416.0" prefWidth="1136.0">
+                           <children>
+                              <TableView fx:id="contratview" layoutY="7.0" onMouseClicked="#ItemSelected" prefHeight="410.0" prefWidth="1142.0">
+                                 <columns>
+                                    <TableColumn fx:id="id" prefWidth="49.0" text="ID" />
+                                    <TableColumn fx:id="nom" prefWidth="101.0" text="Nom" />
+                                    <TableColumn fx:id="desc" prefWidth="112.0" text="Description" />
+                                    <TableColumn fx:id="idassure" prefWidth="116.0" text="Cin assure" />
+                                    <TableColumn fx:id="type" prefWidth="127.0" text="Type" />
+                                    <TableColumn fx:id="datedebut" prefWidth="114.0" text="Date Début" />
+                                    <TableColumn fx:id="dateecheance" prefWidth="119.0" text="Date Echeance" />
+                                    <TableColumn fx:id="etat" minWidth="0.0" prefWidth="100.0" text="Etat" />
+                                    <TableColumn fx:id="prime" prefWidth="115.0" text="Prime" />
+                                    <TableColumn fx:id="nomEntr" prefWidth="111.0" text="Nom Entreprise" />
+                                    <TableColumn fx:id="id_type" prefWidth="75.0" text="ID Type" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </content>
@@ -62,6 +70,5 @@
             <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
-      <VBox layoutX="1445.0" layoutY="107.0" prefHeight="200.0" prefWidth="100.0" />
    </children>
 </AnchorPane>

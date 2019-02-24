@@ -51,6 +51,7 @@ public class GestionAssureEntrepriseController implements Initializable {
         Ar.setAdresseEntr(adresseField.getText());
         crud.ajouterAssureEntreprise(Ar);
         System.out.println("Entreprise Ajoute");
+        
     }
     
 }

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="518.0" prefWidth="1543.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="gestionassurancefx.Controllers.UpdateDeleteContratController">
+   <children>
+      <TextField fx:id="idTypeField" layoutX="161.0" layoutY="236.0" />
+      <Label layoutX="30.0" layoutY="240.0" text="ID du Type" />
+      <Button fx:id="printBtn" layoutX="1217.0" layoutY="456.0" mnemonicParsing="false" onAction="#printClicked" styleClass="btns" stylesheets="@StyleSheet.css" text="Imprimer" />
+      <Button fx:id="updateBtn" layoutX="272.0" layoutY="466.0" mnemonicParsing="false" onAction="#updateClicked" styleClass="btns" stylesheets="@StyleSheet.css" text="Update" />
+      <Button fx:id="deleteBtn" layoutX="168.0" layoutY="466.0" mnemonicParsing="false" onAction="#deleteContrat" styleClass="btns" stylesheets="@StyleSheet.css" text="Supprimer" />
+      <TextField fx:id="cinAssureField" disable="true" layoutX="161.0" layoutY="147.0" />
+      <ComboBox fx:id="etatField" layoutX="165.0" layoutY="371.0" prefWidth="150.0" />
+      <TextField fx:id="primeField" layoutX="157.0" layoutY="412.0" />
+      <Label layoutX="28.0" layoutY="418.0" prefHeight="21.0" prefWidth="50.0" text="Prime" />
+      <Label layoutX="32.0" layoutY="376.0" prefHeight="21.0" prefWidth="50.0" text="Etat" />
+      <DatePicker fx:id="dateEcheanceField" layoutX="167.0" layoutY="328.0" />
+      <DatePicker fx:id="dateDebutField" layoutX="167.0" layoutY="280.0" />
+      <Label layoutX="30.0" layoutY="333.0" text="Date Echeance" />
+      <Label layoutX="36.0" layoutY="285.0" text="Date début" />
+      <ComboBox fx:id="typeContratField" layoutX="160.0" layoutY="194.0" prefWidth="150.0" />
+      <Label layoutX="31.0" layoutY="204.0" text="Type" />
+      <Label fx:id="cinAssLabel" layoutX="29.0" layoutY="152.0" text="Cin assuré" />
+      <TextArea fx:id="descriptionContratField" layoutX="159.0" layoutY="66.0" prefHeight="68.0" prefWidth="221.0" />
+      <Label layoutX="29.0" layoutY="66.0" text="Description" />
+      <TextField fx:id="nomContratField" layoutX="171.0" layoutY="18.0" />
+      <Label layoutX="29.0" layoutY="23.0" text="Nom Contrat" />
+      <TextField fx:id="nomEntrField" layoutX="161.0" layoutY="158.0" visible="false" />
+      <Label fx:id="nomAssLabel" layoutX="28.0" layoutY="152.0" text="Nom Entreprise" visible="false" />
+      <AnchorPane fx:id="tableviewPane" layoutX="385.0" layoutY="17.0" prefHeight="439.0" prefWidth="1144.0">
+         <children>
+            <TableView fx:id="contratview" layoutX="6.0" layoutY="15.0" onMouseClicked="#ItemSelected" prefHeight="410.0" prefWidth="1136.0">
+               <columns>
+                  <TableColumn fx:id="id" prefWidth="49.0" text="ID" />
+                  <TableColumn fx:id="nom" prefWidth="101.0" text="Nom" />
+                  <TableColumn fx:id="desc" prefWidth="112.0" text="Description" />
+                  <TableColumn fx:id="idassure" prefWidth="116.0" text="Cin assure" />
+                  <TableColumn fx:id="type" prefWidth="127.0" text="Type" />
+                  <TableColumn fx:id="datedebut" prefWidth="114.0" text="Date Début" />
+                  <TableColumn fx:id="dateecheance" prefWidth="119.0" text="Date Echeance" />
+                  <TableColumn fx:id="etat" minWidth="0.0" prefWidth="100.0" text="Etat" />
+                  <TableColumn fx:id="prime" prefWidth="115.0" text="Prime" />
+                  <TableColumn fx:id="nomEntr" prefWidth="111.0" text="Nom Entreprise" />
+                  <TableColumn fx:id="id_type" prefWidth="75.0" text="ID Type" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Button fx:id="UpdateTypeContrat" layoutX="358.0" layoutY="466.0" mnemonicParsing="false" onAction="#UpdateTypeContratClicked" styleClass="btns" stylesheets="@StyleSheet.css" text="Modifier type du contrat" />
+   </children>
+</AnchorPane>

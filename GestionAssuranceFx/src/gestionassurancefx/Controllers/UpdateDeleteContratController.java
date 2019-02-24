@@ -3,24 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package gestionassurancefx.Controllers;
 
 import static gestionassurancefx.Controllers.GestionAssureParticulierController.cinCont;
 import static gestionassurancefx.Controllers.GestionAssureParticulierController.nomEntrCont;
+import static gestionassurancefx.Controllers.GestionContratController.printNode;
 import gestionassurancefx.Entities.Contrat;
 import gestionassurancefx.Services.ContratCrud;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.print.PageLayout;
@@ -48,24 +44,7 @@ import javafx.scene.transform.Scale;
  *
  * @author Ahmed Derbel
  */
-public class GestionContratController implements Initializable {
-
-    @FXML
-    private AnchorPane AnchorPane;
-    @FXML
-    private TextField nomContratField;
-    @FXML
-    private TextArea descriptionContratField;
-    private TextField idClientField;
-    @FXML
-    private ComboBox<String> typeContratField;
-    @FXML
-    private DatePicker dateDebutField;
-    @FXML
-    private DatePicker dateEcheanceField;
-    private ContratCrud crud;
-    @FXML
-    private Button ajouterBtn;
+public class UpdateDeleteContratController implements Initializable {
     @FXML
     private TableView<Contrat> contratview;
     @FXML
@@ -82,80 +61,71 @@ public class GestionContratController implements Initializable {
     private TableColumn<Contrat, LocalDate> datedebut;
     @FXML
     private TableColumn<Contrat, LocalDate> dateecheance;
-    @FXML
+     @FXML
     private TableColumn<Contrat, Integer> etat;
     @FXML
     private TableColumn<Contrat, Float> prime;
     @FXML
-    private TextField primeField;
-    @FXML
-    private ComboBox<String> etatField;
-    
-    /**
-     * Initializes the controller class.
-     */
-    @FXML
-    private Button deleteBtn;
-    @FXML
-    private Button updateBtn;
-
-    Contrat updateContrat;
-   
-    @FXML
-    private Button printBtn;
-   
-    @FXML
-    private TextField cinAssureField;
-    private GestionAssureParticulierController ApCont; 
-    @FXML
-    private Label nomAssLabel;
-    private TextField nomAssField;
-    @FXML
-    private Label cinAssLabel;
-    @FXML
     private TableColumn<Contrat,String> nomEntr;
     @FXML
-    private TextField nomEntrField;
+    private TableColumn<Contrat,Integer> id_type;
     @FXML
     private TextField idTypeField;
     @FXML
-    private TableColumn<Contrat,Integer> id_type;
+    private Button printBtn;
+    @FXML
+    private Button updateBtn;
+    @FXML
+    private Button deleteBtn;
+    @FXML
+    private TextField cinAssureField;
+    @FXML
+    private ComboBox<String> etatField;
+    @FXML
+    private TextField primeField;
+    @FXML
+    private DatePicker dateEcheanceField;
+    @FXML
+    private DatePicker dateDebutField;
+    @FXML
+    private ComboBox<String> typeContratField;
+    @FXML
+    private Label cinAssLabel;
+    @FXML
+    private TextArea descriptionContratField;
+    @FXML
+    private TextField nomContratField;
+   private ContratCrud crud;
+    @FXML
+    private TextField nomEntrField;
+    @FXML
+    private Label nomAssLabel;
     @FXML
     private AnchorPane tableviewPane;
     @FXML
     private Button UpdateTypeContrat;
+     static String typeselected="";
+        static int idtypeselected;
     
-       
-    
+
+    /**
+     * Initializes the controller class.
+     */
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
         if(nomEntrCont != null ){
             nomAssLabel.setVisible(true);//label du nom d entreprise
             nomEntrField.setVisible(true);
             cinAssLabel.setVisible(false);
             cinAssureField.setVisible(false);
-        }
-        
-        initColumns();
-        crud = new ContratCrud();
-        typeContratField.getItems().addAll("Habitation", "Voyage", "Voiture");
-        etatField.getItems().addAll("Paye", "Non paye");
-        cinAssureField.setText(cinCont);
-        nomEntrField.setText(nomEntrCont);
-        //cinAssureField.setText(nomEntrCont);
-        contratview.setItems(crud.getAllContrat());
-     
-        try {
-            crud.getExpiredContrat();
-        } catch (SQLException ex) {
-            Logger.getLogger(GestionContratController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+        }           
+         crud = new ContratCrud();
+                    initColumns();
+       contratview.setItems(crud.getAllContrat());
 
-    
-    
-   
-    public void initColumns() {
+    }    
+
+     public void initColumns() {
         id.setCellValueFactory(new PropertyValueFactory<Contrat, Integer>("id"));
         nom.setCellValueFactory(new PropertyValueFactory<Contrat, String>("nom"));
         desc.setCellValueFactory(new PropertyValueFactory<Contrat, String>("Description"));
@@ -169,77 +139,10 @@ public class GestionContratController implements Initializable {
         id_type.setCellValueFactory(new PropertyValueFactory<Contrat,Integer>("id_type"));
 
     }
-
-    
-    
-    
-    @FXML
-    private void ajouterClicked(ActionEvent event) {
-        //contratview.getItems().clear();
-        
-        Date date_debut = java.sql.Date.valueOf(dateDebutField.getValue());
-        Date date_echeance = java.sql.Date.valueOf(dateEcheanceField.getValue());
-        int prime = Integer.parseInt(primeField.getText());
-        int etat = 0;
-      //  int idass = Integer.parseInt(etatField.getSelectionModel().getSelectedItem());
-        if (etatField.getSelectionModel().getSelectedItem().equalsIgnoreCase("Paye")) {
-            etat = 1;
-        } else {
-            etat = 0;
-        }
-        Contrat cr = new Contrat();
-        cr.setDate_Echeance(date_echeance);
-        cr.setDate_debut(date_debut);
-        cr.setNom(nomContratField.getText());
-        cr.setDescription(descriptionContratField.getText());
-        
-       //String[ ] arr=idAssureField.getSelectionModel().getSelectedItem().split(" ");
-        
-      if(cinCont != null ){
-           cr.setCin_assure(Integer.parseInt(cinAssureField.getText()));
-      }
-        
-       if(nomEntrCont != null ){
-           cr.setNomEntr(nomEntrField.getText());
-        }
-        
-       
-        cr.setType(typeContratField.getSelectionModel().getSelectedItem());
-        cr.setId_type(Integer.parseInt(idTypeField.getText()));
-        cr.setEtat(etat);
-        cr.setPrime(prime);
-        crud.ajouterContrat(cr);
-        contratview.getItems().clear();
-        contratview.setItems(crud.getAllContrat());
-        System.out.println("Contrat Ajouter");
-
-    }
-
-    private void AfficherClicked(Event event) {
-        System.out.println(crud.getAllContrat());
-    }
-
-    @FXML
-    private void deleteContrat(ActionEvent event) {
-        crud.SupprimerContrat(contratview.getSelectionModel().getSelectedItem().getId());
-        nomContratField.setText("");
-        descriptionContratField.setText("");
-        cinAssureField.setText("");
-        nomEntrField.setText("");
-        //typeContratField.setItems(typeliste);
-        typeContratField.getSelectionModel().select("");
-        idTypeField.setText("");
-        dateDebutField.setValue(null);
-        dateEcheanceField.setValue(null);
-        etatField.getSelectionModel().select("");
-        primeField.setText("");
-        contratview.getItems().clear();
-        contratview.setItems(crud.getAllContrat());
-        System.out.println("deleted");
-    }
-
     private Contrat cr = new Contrat();
 
+    
+    
     @FXML
     private void ItemSelected(MouseEvent event) {
         cr = contratview.getSelectionModel().getSelectedItem();
@@ -280,10 +183,11 @@ public class GestionContratController implements Initializable {
 
         }
     }
-
+    
+   
     @FXML
     private void updateClicked(ActionEvent event) {
-       
+        
         if (cr != null) {
             Date date_debut = java.sql.Date.valueOf(dateDebutField.getValue());
             Date date_echeance = java.sql.Date.valueOf(dateEcheanceField.getValue());
@@ -318,10 +222,30 @@ public class GestionContratController implements Initializable {
         }else {
             System.out.println("clicker sur un object");
         }
+        
+    }
+
+    @FXML
+    private void deleteContrat(ActionEvent event) {
+        crud.SupprimerContrat(contratview.getSelectionModel().getSelectedItem().getId());
+
+        nomContratField.setText("");
+        descriptionContratField.setText("");
+        cinAssureField.setText("");
+        nomEntrField.setText("");
+        //typeContratField.setItems(typeliste);
+        typeContratField.getSelectionModel().select("");
+        idTypeField.setText("");
+        dateDebutField.setValue(null);
+        dateEcheanceField.setValue(null);
+        etatField.getSelectionModel().select("");
+        primeField.setText("");
+        contratview.getItems().clear();
+        contratview.setItems(crud.getAllContrat());
+        System.out.println("deleted");
     }
     
-    
-    public static void printNode(final Node node) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+     public static void printNode(final Node node) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
     Printer printer = Printer.getDefaultPrinter();
     PageLayout pageLayout
         = printer.createPageLayout(Paper.A4, PageOrientation.LANDSCAPE, Printer.MarginType.DEFAULT);
@@ -344,11 +268,23 @@ public class GestionContratController implements Initializable {
     node.getTransforms().remove(scale);
   }
 
+
     @FXML
     private void printClicked(ActionEvent event) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        printNode(tableviewPane);
+                printNode(tableviewPane);
+
     }
 
-   
+    @FXML
+    private void UpdateTypeContratClicked(ActionEvent event) {
+         typeselected = contratview.getSelectionModel().getSelectedItem().getType();
+        idtypeselected=contratview.getSelectionModel().getSelectedItem().getId_type();
+        
+        System.out.println(typeselected);
+        System.out.println(idtypeselected);
+    }
 
+    
+    
+    
 }
