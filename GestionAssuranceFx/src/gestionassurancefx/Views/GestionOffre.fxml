@@ -13,7 +13,7 @@
         <tabs>
           <Tab text="Offre Bon Conducteur">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="472.0" prefWidth="948.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#refresh" prefHeight="472.0" prefWidth="948.0">
                      <children>
                         <GridPane layoutX="39.0" layoutY="18.0" prefHeight="387.0" prefWidth="294.0" AnchorPane.leftAnchor="15.0">
                           <columnConstraints>
@@ -47,12 +47,12 @@
                               <TextField fx:id="nbAnnee" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" GridPane.rowIndex="7" />
                               <TextArea fx:id="Descrip" prefHeight="68.0" prefWidth="179.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                              <Button fx:id="BoutonAjoutOBC" mnemonicParsing="false" onAction="#ajouterOffreBC" prefHeight="29.0" prefWidth="175.0" text="Ajouter offre" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                              <Button fx:id="btnModifOBC" mnemonicParsing="false" onAction="#ModifierOffreBC" prefHeight="26.0" prefWidth="180.0" text="Modifier Offre" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                              <Button fx:id="BoutonAjoutOBC" mnemonicParsing="false" onAction="#ajouterOffreBC" prefHeight="29.0" prefWidth="175.0" styleClass="btns" stylesheets="@StyleSheet.css" text="Ajouter offre" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <Button fx:id="btnModifOBC" mnemonicParsing="false" onAction="#ModifierOffreBC" prefHeight="26.0" prefWidth="180.0" styleClass="btns" stylesheets="@StyleSheet.css" text="Modifier Offre" textFill="#f2f2f2" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                               <TextField fx:id="idBC" GridPane.columnIndex="1" />
                            </children>
                         </GridPane>
-                        <TableView fx:id="tableOBC" layoutX="324.0" layoutY="24.0" onMouseClicked="#itemClicked" prefHeight="380.0" prefWidth="603.0">
+                        <TableView fx:id="tableOBC" layoutX="325.0" layoutY="22.0" onMouseClicked="#itemClicked" prefHeight="370.0" prefWidth="603.0">
                           <columns>
                               <TableColumn fx:id="idBCT" prefWidth="30.0" text="ID" />
                             <TableColumn fx:id="libelleBCT" prefWidth="92.0" text="Libelle" />
@@ -65,18 +65,123 @@
                           </columns>
                         </TableView>
                         <Button fx:id="suppBtn" layoutX="830.0" layoutY="414.0" mnemonicParsing="false" onAction="#suppimerOffBC" prefHeight="25.0" prefWidth="98.0" text="Supprimer" />
+                        <Button fx:id="rafraichir" layoutX="715.0" layoutY="414.0" mnemonicParsing="false" onAction="#btnRafraichir" prefHeight="25.0" prefWidth="104.0" text="Rafraichir" />
+                        <TextField fx:id="recherche" layoutX="325.0" layoutY="402.0" prefHeight="25.0" prefWidth="189.0" />
+                        <Button fx:id="btnRechercher" layoutX="522.0" layoutY="402.0" mnemonicParsing="false" onAction="#rechercher" text="Rechercher" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
           <Tab text="Offre Fidélité">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#refrechF" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane prefHeight="387.0" prefWidth="294.0" AnchorPane.leftAnchor="5.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle :" GridPane.rowIndex="1" />
+                              <TextField fx:id="libOffBC1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Debut :" wrappingWidth="89.75" GridPane.rowIndex="2" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Fin :" wrappingWidth="80.306640625" GridPane.rowIndex="3" />
+                              <DatePicker fx:id="DDBC1" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="DFBC1" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="pourcentageRed1" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <TextField fx:id="nbContMin" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reduction (%) :" GridPane.rowIndex="4" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NombreContratMin:" wrappingWidth="97.0" GridPane.rowIndex="5" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" GridPane.rowIndex="6" />
+                              <TextArea fx:id="Descrip1" prefHeight="68.0" prefWidth="179.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Button fx:id="BoutonAjoutOBC1" mnemonicParsing="false" onAction="#ajouterOffreF" prefHeight="29.0" prefWidth="175.0" text="Ajouter offre" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Button fx:id="btnModifOBC1" mnemonicParsing="false" onAction="#ModifierOffreF" prefHeight="26.0" prefWidth="180.0" text="Modifier Offre" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <TextField fx:id="idBC1" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="158.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="223.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <TableView fx:id="tableOBC1" layoutX="320.0" layoutY="14.0" onMouseClicked="#itemClickedF" prefHeight="380.0" prefWidth="603.0">
+                           <columns>
+                              <TableColumn fx:id="idBCT1" prefWidth="30.0" text="ID" />
+                              <TableColumn fx:id="libelleBCT1" prefWidth="92.0" text="Libelle" />
+                              <TableColumn fx:id="DDBCT1" prefWidth="91.0" text="Date Debut" />
+                              <TableColumn fx:id="DFBCT1" prefWidth="87.0" text="Date Fin" />
+                              <TableColumn fx:id="reductionBCT1" prefWidth="82.0" text="Reduction(%)" />
+                              <TableColumn fx:id="nbContMinT" prefWidth="104.0" text="nbContratMin" />
+                              <TableColumn fx:id="descripT1" prefWidth="116.0" text="Description" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="suppBtn1" layoutX="802.0" layoutY="402.0" mnemonicParsing="false" onAction="#suppimerOffF" prefHeight="25.0" prefWidth="121.0" text="Supprimer" />
+                        <Button fx:id="rafraichir1" layoutX="672.0" layoutY="402.0" mnemonicParsing="false" onAction="#btnRafraichir1" prefHeight="25.0" prefWidth="104.0" text="Rafraichir" />
+                        <TextField fx:id="rechercheF" layoutX="320.0" layoutY="402.0" prefHeight="25.0" prefWidth="189.0" />
+                        <Button fx:id="btnRechercherF" layoutX="521.0" layoutY="402.0" mnemonicParsing="false" onAction="#rechercherF" text="Rechercher" />
+                     </children></AnchorPane>
             </content>
           </Tab>
             <Tab text="Offre Partenaire">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#refreshP" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane prefHeight="387.0" prefWidth="294.0" AnchorPane.leftAnchor="5.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Libelle :" GridPane.rowIndex="1" />
+                              <TextField fx:id="libOffBC11" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Debut :" wrappingWidth="89.75" GridPane.rowIndex="2" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date Fin :" wrappingWidth="80.306640625" GridPane.rowIndex="3" />
+                              <DatePicker fx:id="DDBC11" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="DFBC11" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="pourcentageRed11" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reduction (%) :" GridPane.rowIndex="4" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Partenaire" wrappingWidth="97.0" GridPane.rowIndex="5" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" GridPane.rowIndex="6" />
+                              <TextArea fx:id="Descrip11" prefHeight="68.0" prefWidth="179.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <Button fx:id="BoutonAjoutP" mnemonicParsing="false" onAction="#ajouterOffreP" prefHeight="29.0" prefWidth="175.0" text="Ajouter offre" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                              <Button fx:id="btnModifP" mnemonicParsing="false" onAction="#ModifierOffreP" prefHeight="26.0" prefWidth="180.0" text="Modifier Offre" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                              <TextField fx:id="idBC11" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="partenaire" prefHeight="25.0" prefWidth="187.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0" minWidth="10.0" prefWidth="158.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="223.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <TableView fx:id="tableOBC11" layoutX="320.0" layoutY="14.0" onMouseClicked="#itemClickedP" prefHeight="380.0" prefWidth="603.0">
+                           <columns>
+                              <TableColumn fx:id="idBCT11" prefWidth="30.0" text="ID" />
+                              <TableColumn fx:id="libelleBCT11" prefWidth="92.0" text="Libelle" />
+                              <TableColumn fx:id="DDBCT11" prefWidth="91.0" text="Date Debut" />
+                              <TableColumn fx:id="DFBCT11" prefWidth="87.0" text="Date Fin" />
+                              <TableColumn fx:id="reductionBCT11" prefWidth="82.0" text="Reduction(%)" />
+                              <TableColumn fx:id="partenaireT" prefWidth="104.0" text="Partenaire" />
+                              <TableColumn fx:id="descripT11" prefWidth="116.0" text="Description" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="suppBtnP" layoutX="802.0" layoutY="406.0" mnemonicParsing="false" onAction="#suppimerOffP" prefHeight="25.0" prefWidth="121.0" text="Supprimer" />
+                        <Button fx:id="rafraichirP" layoutX="690.0" layoutY="406.0" mnemonicParsing="false" onAction="#btnRafraichir11" prefHeight="25.0" prefWidth="104.0" text="Rafraichir" />
+                        <TextField fx:id="rechercheP" layoutX="320.0" layoutY="406.0" prefHeight="25.0" prefWidth="189.0" />
+                        <Button fx:id="btnRechercherP" layoutX="517.0" layoutY="406.0" mnemonicParsing="false" onAction="#rechercherP" text="Rechercher" />
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>

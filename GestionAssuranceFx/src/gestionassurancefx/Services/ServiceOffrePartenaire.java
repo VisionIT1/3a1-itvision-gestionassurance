@@ -5,6 +5,8 @@
  */
 package gestionassurancefx.Services;
 
+
+import gestionassurancefx.Entities.OffrePartenaire;
 import gestionassurancefx.Entities.OffrePartenaire;
 import gestionassurancefx.Utils.Connexion;
 import java.sql.Connection;
@@ -15,6 +17,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -22,6 +26,8 @@ import java.util.logging.Logger;
  */
 public class ServiceOffrePartenaire {
     Connection C = Connexion.getInstance().getCon();
+    ObservableList<OffrePartenaire> listE = FXCollections.observableArrayList();
+    ObservableList<String> ListMarque=FXCollections.observableArrayList();
     public void ajouterOffrePartenaire(OffrePartenaire O) {
         try {
             PreparedStatement pst=C.prepareStatement("insert into offrepartenaire values (null,?,?,?,?,?,?)");
@@ -41,18 +47,21 @@ public class ServiceOffrePartenaire {
 
     }
 
-    public void afficherOffrePartenaire() {
+    public ObservableList<OffrePartenaire> afficherOffrePartenaire() {
         try {
+            listE.removeAll(listE);
             Statement st = C.createStatement();
 
             String req = "select * from offrepartenaire";
 
             ResultSet rs = st.executeQuery(req); //retourne un résulat
             while (rs.next()) {
-                System.out.println("lib: " + rs.getString("libOffre") + " dateDebut: " + rs.getDate("datedebutoffre") + " dateFin: " + rs.getDate("datefinoffre")+ " pourcentage: " + rs.getInt("pourcentagereduction")+" partenaire: " + rs.getString("partenaire")+" description: " + rs.getString("descripoffre"));
-            }
+                listE.add(new OffrePartenaire(rs.getInt("idOffre"), rs.getString("partenaire"), rs.getString("libOffre"), rs.getDate("dateDebutOffre"), rs.getDate("dateFinOffre"), rs.getInt("pourcentageReduction"), rs.getString("descripOffre")));
+               }
+             return listE;
         } catch (SQLException ex) {
-            Logger.getLogger(ServiceOffrePartenaire.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ServiceOffrePartenaire.class.getName()).log(Level.SEVERE, null, ex); 
+            return null;
         }
 
 
@@ -67,7 +76,7 @@ public class ServiceOffrePartenaire {
             ps.setInt(4,e.getPourcentageReduction());
             ps.setString(5, e.getPartenaire());
             ps.setString(6, e.getDescripOffre());
-            ps.setInt(7,2);
+            ps.setInt(7,e.getIdOffre());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ServiceOffrePartenaire.class.getName()).log(Level.SEVERE, null, ex);
@@ -85,5 +94,49 @@ public class ServiceOffrePartenaire {
             Logger.getLogger(ServiceOffrePartenaire.class.getName()).log(Level.SEVERE, null, ex);
         }
        
+    }
+    public ObservableList<String> getNomMarque() // A mettre dans service marque
+    {
+         try {
+            listE.removeAll(listE);
+            Statement st = C.createStatement();
+
+            String req = "select libelle from marque";
+
+            ResultSet rs = st.executeQuery(req); //retourne un résulat
+            while (rs.next()) {
+                ListMarque.add(rs.getString("libelle"));
+               }
+             return ListMarque;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceOffrePartenaire.class.getName()).log(Level.SEVERE, null, ex); 
+            return null;
+        }
+        
+    }
+     public ObservableList<OffrePartenaire> rechercherOffrePartenaire(String lib) {
+        Statement ps;
+        ObservableList<OffrePartenaire> d = FXCollections.observableArrayList();
+
+        try {
+
+            ps = C.createStatement();
+            String req = "select * from offrepartenaire where libOffre='" + lib + "' ";
+
+            ResultSet rs = ps.executeQuery(req);
+            while (rs.next()) {
+
+                OffrePartenaire c = new OffrePartenaire(rs.getInt("idOffre"), rs.getString("partenaire"), rs.getString("libOffre"), rs.getDate("dateDebutOffre"), rs.getDate("dateFinOffre"), rs.getInt("pourcentageReduction"), rs.getString("descripOffre"));
+
+                d.add(c);
+
+            }
+            return d;
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceOffrePartenaire.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("tiiir");
+            return null;
+        }
+
     }
 }
