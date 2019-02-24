@@ -16,24 +16,22 @@
          </font>
       </Label>
       <Label layoutX="23.0" layoutY="91.0" text="Choisir type d'assurance :" />
-      <AnchorPane fx:id="c1" layoutX="106.0" layoutY="138.0" prefHeight="322.0" prefWidth="584.0" visible="false">
+      <AnchorPane fx:id="c1" layoutX="106.0" layoutY="138.0" prefHeight="322.0" prefWidth="584.0">
          <children>
-            <Label layoutX="14.0" layoutY="23.0" text="Nombre de places" />
-            <TextField fx:id="txtnbplace" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="178.0" />
-            <Label layoutX="14.0" layoutY="97.0" text="Puissance" />
-            <TextField fx:id="txtpuiss" layoutX="14.0" layoutY="115.0" prefHeight="25.0" prefWidth="178.0" />
-            <Label layoutX="14.0" layoutY="153.0" text="Valeur à neuf du véhicule" />
-            <TextField fx:id="txtvalneuf" layoutX="14.0" layoutY="169.0" prefHeight="25.0" prefWidth="178.0" />
+            <Label layoutX="14.0" layoutY="23.0" text="Puissance" />
+            <TextField fx:id="txtpuiss" layoutX="14.0" layoutY="40.0" prefHeight="25.0" prefWidth="178.0" />
+            <Label layoutX="15.0" layoutY="97.0" text="Valeur à neuf du véhicule" />
+            <TextField fx:id="txtvalneuf" layoutX="14.0" layoutY="115.0" prefHeight="25.0" prefWidth="178.0" />
             <Label layoutX="348.0" layoutY="23.0" text="Année de construction" />
             <TextField fx:id="txtannconst" layoutX="348.0" layoutY="40.0" prefHeight="25.0" prefWidth="178.0" />
             <Label layoutX="348.0" layoutY="97.0" text="Valeur vénale du véhicule" />
             <TextField fx:id="txtvalven" layoutX="348.0" layoutY="115.0" prefHeight="25.0" prefWidth="178.0" />
             <Label layoutX="348.0" layoutY="173.0" text="Assurance demandée" />
             <VBox fx:id="c1radio" layoutX="348.0" layoutY="190.0" prefHeight="119.0" prefWidth="193.0" />
-            <ComboBox fx:id="cbmrqv" layoutX="13.0" layoutY="276.0" onAction="#retourneidmrq" prefHeight="25.0" prefWidth="178.0" promptText="--Choisissez la marque de la véhicule--" />
-            <Label layoutX="13.0" layoutY="259.0" text="Marque véhicule" />
-            <Label layoutX="15.0" layoutY="207.0" text="Immatriculation" />
-            <TextField fx:id="txtimat" layoutX="14.0" layoutY="224.0" prefHeight="25.0" prefWidth="178.0" />
+            <ComboBox fx:id="cbmrqv" layoutX="14.0" layoutY="250.0" onAction="#retourneidmrq" prefHeight="25.0" prefWidth="178.0" promptText="--Choisissez la marque de la véhicule--" />
+            <Label layoutX="13.0" layoutY="233.0" text="Marque véhicule" />
+            <Label layoutX="15.0" layoutY="173.0" text="Immatriculation" />
+            <TextField fx:id="txtimat" layoutX="14.0" layoutY="190.0" prefHeight="25.0" prefWidth="178.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="c2" layoutX="106.0" layoutY="138.0" prefHeight="322.0" prefWidth="584.0" visible="false">
@@ -54,7 +52,7 @@
          </children>
       </AnchorPane>
       <Button fx:id="btnsuiv" layoutX="570.0" layoutY="460.0" mnemonicParsing="false" onAction="#suivantAjout" prefHeight="33.0" prefWidth="120.0" text="Suivant" />
-      <AnchorPane fx:id="c3" layoutX="106.0" layoutY="138.0" prefHeight="322.0" prefWidth="584.0">
+      <AnchorPane fx:id="c3" layoutX="106.0" layoutY="138.0" prefHeight="322.0" prefWidth="584.0" visible="false">
          <children>
             <Label layoutX="14.0" layoutY="23.0" text="Destination" />
             <Label layoutX="14.0" layoutY="97.0" text="Durée du séjour" />

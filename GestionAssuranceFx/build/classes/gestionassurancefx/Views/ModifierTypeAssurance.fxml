@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="449.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.ModifierTypeAssuranceController">
+   <children>
+      <Label layoutX="382.0" text="Modifier Type Assurance">
+         <font>
+            <Font name="Aparajita Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <Label fx:id="labass" layoutX="452.0" layoutY="32.0" text="Nom assurance">
+         <font>
+            <Font name="Arial Italic" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnmodif" layoutX="214.0" layoutY="394.0" mnemonicParsing="false" onAction="#validerModification" prefHeight="25.0" prefWidth="150.0" text="Valider Modification" />
+      <TableView fx:id="tbhabitat" layoutX="376.0" layoutY="74.0" onMouseClicked="#cliqueme" prefHeight="323.0" prefWidth="557.0" visible="false">
+         <columns>
+            <TableColumn fx:id="colbv" prefWidth="64.0" text="Baie_vitre" />
+            <TableColumn fx:id="colnbpiece" prefWidth="99.0" text="Nombre_piéces" />
+            <TableColumn fx:id="colvalmob" prefWidth="124.0" text="Valeur_mobilier" />
+            <TableColumn fx:id="colsysalrm" prefWidth="110.0" text="Systéme_Alarme" />
+            <TableColumn fx:id="colnatloc" prefWidth="159.0" text="Nature_local" />
+         </columns>
+         <columnResizePolicy>
+        
+         </columnResizePolicy>
+      </TableView>
+      <TableView fx:id="tbvoyage" layoutX="376.0" layoutY="74.0" onMouseClicked="#cliqueme" prefHeight="323.0" prefWidth="557.0" visible="false">
+         <columns>
+            <TableColumn fx:id="tbdest" prefWidth="202.0" text="Destination" />
+            <TableColumn fx:id="tbdursej" minWidth="0.0" prefWidth="202.0" text="Durée_Séjour" />
+            <TableColumn fx:id="tbage" minWidth="9.0" prefWidth="152.0" text="Age" />
+         </columns>
+         <columnResizePolicy>
+       
+         </columnResizePolicy></TableView>
+      <AnchorPane fx:id="c1habitat" layoutX="20.0" layoutY="79.0" prefHeight="313.0" prefWidth="338.0">
+         <children>
+            <Label layoutX="14.0" layoutY="164.0" prefHeight="17.0" prefWidth="150.0" text="Existe-t-il une baie vitrée" />
+            <RadioButton fx:id="rbbvo" layoutX="14.0" layoutY="181.0" mnemonicParsing="false" text="Oui" />
+            <RadioButton fx:id="rbbvn" layoutX="73.0" layoutY="181.0" mnemonicParsing="false" text="Non" />
+            <Label layoutX="14.0" layoutY="14.0" text="Nombres de pièces principales" />
+            <TextField fx:id="txtnbp" layoutX="15.0" layoutY="31.0" prefHeight="25.0" prefWidth="163.0" />
+            <Label layoutX="15.0" layoutY="65.0" prefHeight="17.0" prefWidth="163.0" text="Capital assuré sur le mobilier" />
+            <TextField fx:id="txtcapmob" layoutX="15.0" layoutY="82.0" prefHeight="25.0" prefWidth="163.0" />
+            <Label layoutX="14.0" layoutY="121.0" text="Nature du local assuré" />
+            <RadioButton fx:id="rbappart" layoutX="15.0" layoutY="138.0" mnemonicParsing="false" text="Appartement" />
+            <RadioButton fx:id="rbvilla" layoutX="121.0" layoutY="138.0" mnemonicParsing="false" text="Villa" />
+            <Label layoutX="14.0" layoutY="210.0" text="Existe-t-il un système d'alarme " />
+            <RadioButton fx:id="rbsysao" layoutX="15.0" layoutY="227.0" mnemonicParsing="false" text="Oui" />
+            <RadioButton fx:id="rbsysan" layoutX="74.0" layoutY="227.0" mnemonicParsing="false" text="Non" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="c2voy" layoutX="19.0" layoutY="74.0" prefHeight="313.0" prefWidth="338.0" visible="false">
+         <children>
+            <Label layoutX="28.0" layoutY="34.0" text="Destination" />
+            <TextField fx:id="txtdest" layoutX="28.0" layoutY="58.0" prefHeight="25.0" prefWidth="196.0" />
+            <Label layoutX="28.0" layoutY="106.0" text="Durée_Sejour" />
+            <ComboBox fx:id="cbdursej" layoutX="28.0" layoutY="132.0" prefHeight="25.0" prefWidth="196.0" />
+            <Label layoutX="28.0" layoutY="186.0" text="Age" />
+            <TextField fx:id="txtage" layoutX="28.0" layoutY="215.0" prefHeight="25.0" prefWidth="196.0" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tbvehicule" layoutX="364.0" layoutY="69.0" prefHeight="323.0" prefWidth="476.0">
+        <columns>
+          <TableColumn fx:id="tbpuiss" prefWidth="66.0" text="Puissance" />
+          <TableColumn fx:id="tbvalneuf" prefWidth="88.0" text="Valeur_Neuf" />
+            <TableColumn fx:id="tbvalven" prefWidth="94.0" text="Valeur_Vénale" />
+            <TableColumn fx:id="tabanneconst" prefWidth="124.0" text="Année_Construction" />
+            <TableColumn fx:id="tbimmat" prefWidth="101.0" text="Immatriculation" />
+        </columns>
+         <columnResizePolicy>
+            
+         </columnResizePolicy>
+      </TableView>
+      <AnchorPane fx:id="c3vehicule" layoutX="19.0" layoutY="69.0" prefHeight="323.0" prefWidth="338.0" visible="false">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Puissance" />
+            <TextField fx:id="txtpf" layoutX="73.0" layoutY="10.0" prefHeight="25.0" prefWidth="52.0" />
+            <Label layoutX="14.0" layoutY="50.0" text="Valeur_Neuf" />
+            <Label layoutX="14.0" layoutY="86.0" text="Valeur_Vénale" />
+            <TextField fx:id="txtvalneuf" layoutX="125.0" layoutY="46.0" />
+            <TextField fx:id="txtvalven" layoutX="125.0" layoutY="82.0" />
+            <Label layoutX="14.0" layoutY="123.0" text="Année_Construction" />
+            <TextField fx:id="txtannconst" layoutX="125.0" layoutY="119.0" />
+            <Label layoutX="14.0" layoutY="162.0" text="Immatriculation" />
+            <Label layoutX="14.0" layoutY="198.0" text="Marque" />
+            <TextField fx:id="txtimmat" layoutX="125.0" layoutY="158.0" />
+            <ComboBox fx:id="cbmrq" layoutX="125.0" layoutY="194.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tbmarque" layoutX="840.0" layoutY="69.0" prefHeight="323.0" prefWidth="113.0" visible="false">
+        <columns>
+          <TableColumn fx:id="tblibmrq" prefWidth="93.0" text="Libelle_Marque" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>
