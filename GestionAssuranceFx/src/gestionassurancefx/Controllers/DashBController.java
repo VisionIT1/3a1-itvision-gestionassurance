@@ -52,10 +52,9 @@ public class DashBController  implements Initializable  {
     @FXML
     private Button btnGReparateur;
 	
-	 @FXML
     private AnchorPane mainAnchor;
 AnchorPane contrat;
-
+AnchorPane expert,reparateur;
 
     /**
      * Initializes the controller class.
@@ -64,6 +63,8 @@ AnchorPane contrat;
     public void initialize(URL url, ResourceBundle rb) {
         try {
             contrat = FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionAssureParticulier.fxml"));
+            expert=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ExpertFXML.fxml"));
+            reparateur=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ReparateurFXML.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(DashBController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,7 +84,6 @@ AnchorPane contrat;
     }
 	
 	
-	 @FXML
     private void btnConstatClicked(ActionEvent event) throws IOException{
    
          setNode(contrat);
@@ -102,10 +102,22 @@ AnchorPane contrat;
         ft.play();
     }
      
-    @FXML
     private void dashBoardClicked(MouseEvent event) throws IOException {
             AnchorPane pane =FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/DashB.fxml"));
        mainAnchor.getChildren().setAll(pane);
     }
+
+    @FXML
+    private void btnExpertClicked(ActionEvent event) {
+                setNode(expert);
+
+    }
+
+    @FXML
+    private void btnReparteurClicked(ActionEvent event) {
+                setNode(reparateur);
+
+    }
+    
     
 }
