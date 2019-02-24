@@ -59,7 +59,8 @@ public class DashBController  implements Initializable  {
     private Button btnGestonstat;
     @FXML
     private AnchorPane mainAnchor;
-AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
+AnchorPane contrat,user,login,AssurePart,ajoutcontrat;
+AnchorPane sinistre,sinistreview;
     @FXML
     private Label projectBtn;
     @FXML
@@ -78,7 +79,8 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
             user=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionUser1.fxml"));
             login=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/Login.fxml"));
             AssurePart=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionAssurePartEntr.fxml"));
-            constat=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sinistre.fxml"));
+            sinistre=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sinistre.fxml"));
+            sinistreview=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sin.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(DashBController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -100,7 +102,7 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
     
     @FXML
     private void constatView(ActionEvent event) throws IOException{
-        setNode(constat);
+        setNode(sinistre);
     }
     
      @FXML
@@ -159,6 +161,11 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
         ((Node)(event.getSource())).getScene().getWindow().hide();
        stage.show();
        closeDashB();
+    }
+
+    @FXML
+    private void SinistreViewClicked(MouseEvent event) {
+        setNode(sinistreview);
     }
     
 }

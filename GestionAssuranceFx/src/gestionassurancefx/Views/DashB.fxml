@@ -168,7 +168,7 @@
                      <HBox.margin>
                      </HBox.margin>
                   </FontAwesomeIcon>
-                  <Label text="Documents" textFill="#7c8184">
+                  <Label onMouseClicked="#SinistreViewClicked" text="Documents" textFill="#7c8184">
                      <font>
                         <Font name="Calibri Light" size="15.0" />
                      </font>
