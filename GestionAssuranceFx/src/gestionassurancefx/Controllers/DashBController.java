@@ -57,6 +57,7 @@ public class DashBController  implements Initializable  {
 AnchorPane contrat;
 
 
+
     /**
      * Initializes the controller class.
      */
