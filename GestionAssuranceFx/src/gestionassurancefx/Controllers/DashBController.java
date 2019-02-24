@@ -66,7 +66,7 @@ AnchorPane offre,reclamation;
             contrat = FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionAssureParticulier.fxml"));
             expert=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ExpertFXML.fxml"));
             reparateur=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ReparateurFXML.fxml"));
-			  offre= FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionOffre.fxml"));
+            offre= FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionOffre.fxml"));
             reclamation=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionReclamation.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(DashBController.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,12 +122,11 @@ AnchorPane offre,reclamation;
 
     }
 	
-	@FXML
     private void btnOffreClicked(ActionEvent event) {
             setNode(offre);
+            System.out.println("testtt");
     }
 
-    @FXML
     private void btnReclamationClicked(ActionEvent event) {
             setNode(reclamation);
     
