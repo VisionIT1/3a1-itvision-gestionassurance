@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="737.0" prefWidth="1582.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.GestionContratController">
+   <children>
+      <TabPane layoutX="14.0" layoutY="82.0" prefHeight="605.0" prefWidth="1401.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Ajout Contrat">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="506.0" prefWidth="1401.0">
+                     <children>
+                        <Label layoutX="19.0" layoutY="13.0" text="Nom Contrat" />
+                        <TextField fx:id="nomContratField" layoutX="161.0" layoutY="8.0" />
+                        <Label layoutX="19.0" layoutY="56.0" text="Description" />
+                        <TextArea fx:id="descriptionContratField" layoutX="149.0" layoutY="56.0" prefHeight="68.0" prefWidth="221.0" />
+                        <Label fx:id="cinAssLabel" layoutX="19.0" layoutY="142.0" text="Cin assuré" />
+                        <Label layoutX="21.0" layoutY="194.0" text="Type" />
+                        <ComboBox fx:id="typeContratField" layoutX="163.0" layoutY="189.0" prefWidth="150.0" />
+                        <Label layoutX="22.0" layoutY="244.0" text="Date début" />
+                        <Label layoutX="16.0" layoutY="292.0" text="Date Echeance" />
+                        <DatePicker fx:id="dateDebutField" layoutX="153.0" layoutY="239.0" />
+                        <DatePicker fx:id="dateEcheanceField" layoutX="153.0" layoutY="287.0" />
+                        <Label layoutX="18.0" layoutY="335.0" prefHeight="21.0" prefWidth="50.0" text="Etat" />
+                        <Label layoutX="14.0" layoutY="377.0" prefHeight="21.0" prefWidth="50.0" text="Prime" />
+                        <TextField fx:id="primeField" layoutX="143.0" layoutY="371.0" />
+                        <ComboBox fx:id="etatField" layoutX="151.0" layoutY="330.0" prefWidth="150.0" />
+                        <TextField fx:id="cinAssureField" layoutX="151.0" layoutY="137.0" />
+                        <Label fx:id="nomAssLabel" layoutX="18.0" layoutY="142.0" text="Nom assuré" visible="false" />
+                        <TextField fx:id="nomAssField" layoutX="151.0" layoutY="148.0" visible="false" />
+                        <TableView fx:id="contratview" layoutX="420.0" layoutY="15.0" onMouseClicked="#ItemSelected" prefHeight="410.0" prefWidth="967.0">
+                           <columns>
+                              <TableColumn fx:id="id" prefWidth="49.0" text="ID" />
+                              <TableColumn fx:id="nom" prefWidth="101.0" text="Nom" />
+                              <TableColumn fx:id="desc" prefWidth="162.0" text="Description" />
+                              <TableColumn fx:id="idassure" prefWidth="88.0" text="Cin assure" />
+                              <TableColumn fx:id="type" prefWidth="105.0" text="Type" />
+                              <TableColumn fx:id="datedebut" prefWidth="114.0" text="Date Début" />
+                              <TableColumn fx:id="dateecheance" prefWidth="119.0" text="Date Echeance" />
+                              <TableColumn fx:id="etat" minWidth="0.0" prefWidth="100.0" text="Etat" />
+                              <TableColumn fx:id="prime" prefWidth="170.0" text="Prime" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="ajouterBtn" layoutX="109.0" layoutY="425.0" mnemonicParsing="false" onAction="#ajouterClicked" text="Ajouter" />
+                        <Button fx:id="deleteBtn" layoutX="200.0" layoutY="425.0" mnemonicParsing="false" onAction="#deleteContrat" text="Supprimer" />
+                        <Button fx:id="updateBtn" layoutX="304.0" layoutY="425.0" mnemonicParsing="false" onAction="#updateClicked" text="Update" />
+                        <Button fx:id="printBtn" layoutX="1207.0" layoutY="433.0" mnemonicParsing="false" onAction="#printClicked" text="Imprimer" />
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="71.0" layoutY="29.0" text="Gestion Contrats" textFill="#7c6b6b">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Label>
+      <VBox layoutX="1445.0" layoutY="107.0" prefHeight="200.0" prefWidth="100.0" />
+   </children>
+</AnchorPane>

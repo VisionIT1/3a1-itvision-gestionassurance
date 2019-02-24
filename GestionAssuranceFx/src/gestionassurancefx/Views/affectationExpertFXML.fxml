@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="mainViewE" prefHeight="675.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.AffectationExpertFXMLController">
+   <children>
+      <TableView fx:id="tableAffecExpert" layoutX="29.0" layoutY="152.0" onMouseClicked="#affectationExpert" prefHeight="200.0" prefWidth="753.0">
+        <columns>
+          <TableColumn fx:id="idE" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="cinE" prefWidth="75.0" text="Cin" />
+            <TableColumn fx:id="faxE" prefWidth="75.0" text="fax" />
+            <TableColumn fx:id="nomE" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="prenomE" prefWidth="75.0" text="prenom" />
+            <TableColumn fx:id="maiE" prefWidth="75.0" text="mail" />
+            <TableColumn fx:id="telephoneE" prefWidth="75.0" text="Téléphone" />
+            <TableColumn fx:id="adresseE" prefWidth="75.0" text="adresse" />
+            <TableColumn fx:id="etatE" prefWidth="75.0" text="disponibilité" />
+            <TableColumn fx:id="descriptionE" prefWidth="75.0" text="description" />
+        </columns>
+      </TableView>
+      <Button fx:id="affecterE" layoutX="315.0" layoutY="388.0" mnemonicParsing="false" onAction="#AffecterEx" text="affecter" />
+      <Label layoutX="295.0" layoutY="56.0" prefHeight="36.0" prefWidth="221.0" text="Affecter Expert">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

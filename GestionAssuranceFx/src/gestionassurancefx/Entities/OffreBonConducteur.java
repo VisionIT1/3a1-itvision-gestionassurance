@@ -29,6 +29,7 @@ public class OffreBonConducteur extends Offre {
         this.numReglement = numReglement;
         this.nbrAnnee = nbrAnnee;
     }
+    
 
     
 

@@ -5,6 +5,7 @@
  */
 package gestionassurancefx.Entities;
 
+
 import java.sql.Date;
 
 /**
@@ -14,8 +15,13 @@ import java.sql.Date;
 public class OffrePartenaire extends Offre {
      private String partenaire;
 
-    public OffrePartenaire(String partenaire,String libOffre, Date dateDebutOffre, Date dateFinOffre, int pourcentageReduction, String descripOffre) {
-        super(libOffre, dateDebutOffre, dateFinOffre, pourcentageReduction, descripOffre);
+    public OffrePartenaire() {
+        super(null, null, null, 0, null);
+    }
+     
+
+    public OffrePartenaire(int idOffre,String partenaire,String libOffre, Date dateDebutOffre, Date dateFinOffre, int pourcentageReduction, String descripOffre) {
+        super(idOffre,libOffre, dateDebutOffre, dateFinOffre, pourcentageReduction, descripOffre);
         this.partenaire = partenaire;
     }
 

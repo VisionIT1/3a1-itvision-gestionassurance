@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="mainView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="605.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gestionassurancefx.Controllers.SinistreController">
+   <children>
+      <Label layoutX="85.0" layoutY="58.0" text="Formulaire Sinistre" textFill="#526497">
+         <font>
+            <Font name="Ebrima Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="cin" layoutX="39.0" layoutY="125.0" prefHeight="25.0" prefWidth="169.0" promptText="Cin" />
+      <FontAwesomeIcon glyphStyle="-fx-fill:#7C8184" iconName="SEARCH" layoutX="213.0" layoutY="148.0" size="1.3em" text="" />
+      <Button fx:id="btnRechercheCin" layoutX="205.0" layoutY="130.0" mnemonicParsing="false" onAction="#rechercheCin" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: transparent;" />
+      <JFXToggleButton fx:id="DomageMaterelle" disable="true" layoutX="26.0" layoutY="339.0" prefHeight="33.0" prefWidth="169.0" text="Domage materelle" />
+      <DatePicker fx:id="dateDeclaration" disable="true" layoutX="37.0" layoutY="175.0" promptText="date declaration" />
+      <DatePicker fx:id="dateSinistre" disable="true" layoutX="37.0" layoutY="222.0" promptText="Date Sinistre" />
+      <JFXTextField fx:id="lieuSinistre" disable="true" layoutX="39.0" layoutY="264.0" prefHeight="25.0" prefWidth="169.0" promptText="Lieu sinistre" />
+      <JFXTextField fx:id="numeroSinistre" disable="true" layoutX="39.0" layoutY="309.0" prefHeight="25.0" prefWidth="169.0" promptText="Numero sinistre" />
+      <JFXToggleButton fx:id="DomageCorporelle" disable="true" layoutX="26.0" layoutY="397.0" prefHeight="44.0" prefWidth="169.0" text="Domage corporelle" />
+      <JFXTextArea fx:id="description" disable="true" layoutX="14.0" layoutY="455.0" prefHeight="69.0" prefWidth="316.0" promptText="description" />
+      <JFXButton fx:id="btnAjouterSinistre" disable="true" layoutX="236.0" layoutY="543.0" onAction="#AjouterSinistre" styleClass="btns" stylesheets="@StyleSheet.css" text="Ajouter Sinistre" />
+      <FontAwesomeIcon glyphStyle="-fx-fill:#333645" iconName="CROP" layoutX="395.0" layoutY="280.0" size="8em" />
+      <FontAwesomeIcon glyphStyle="-fx-fill:#333645" iconName="COGS" layoutX="572.0" layoutY="281.0" size="8em" />
+      <Label fx:id="Aexpret" disable="true" layoutX="395.0" layoutY="310.0" text="Ajouter expert" textFill="#526497">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Areparateur" disable="true" layoutX="566.0" layoutY="310.0" text="Ajouter reparateur" textFill="#526497">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAjouterExpertS" layoutX="381.0" layoutY="198.0" mnemonicParsing="false" onAction="#AjouterExS" prefHeight="137.0" prefWidth="122.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="btnAjouterReparateurS" layoutX="562.0" layoutY="194.0" mnemonicParsing="false" onAction="#AjouterRepS" prefHeight="137.0" prefWidth="122.0" style="-fx-background-color: transparent;" />
+      <Label fx:id="RecD" layoutX="37.0" layoutY="248.0" prefHeight="17.0" prefWidth="307.0" text="La date du sinistre doit etre avant la datet de declaration" textFill="RED" visible="false" />
+      <Label fx:id="Note" layoutX="224.0" layoutY="226.0" prefHeight="17.0" prefWidth="6.0" text="*" textFill="RED" visible="false" />
+      <Label fx:id="Note1" layoutX="227.0" layoutY="312.0" prefHeight="17.0" prefWidth="6.0" text="*" textFill="RED" visible="false" />
+      <Label fx:id="recN" layoutX="40.0" layoutY="339.0" prefHeight="17.0" prefWidth="295.0" text="Numero Sinistre contient selement les chiffre de 1à9" textFill="RED" visible="false" />
+   </children>
+</AnchorPane>
