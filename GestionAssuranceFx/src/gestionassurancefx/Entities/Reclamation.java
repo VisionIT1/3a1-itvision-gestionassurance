@@ -18,15 +18,35 @@ public class Reclamation {
     private Date dateSaisiRec;
     private int idCli;
     private int traitementRec; // {1,0}
+    private String typeAssure;
 
-    public Reclamation(String typeRec, String descRec, Date dateSaisiRec, int idCli, int traitementRec) {
+    public Reclamation(String typeRec, String descRec, Date dateSaisiRec,String typeAssure,int idCli, int traitementRec) {
         
         this.typeRec = typeRec;
         this.descRec = descRec;
         this.dateSaisiRec = dateSaisiRec;
         this.idCli = idCli;
         this.traitementRec = traitementRec;
+        this.typeAssure=typeAssure;
     }
+
+    public Reclamation(int idR, String typeRec, String descRec, Date dateSaisiRec,String typeAssure, int idCli, int traitementRec) {
+        this.idR = idR;
+        this.typeRec = typeRec;
+        this.descRec = descRec;
+        this.dateSaisiRec = dateSaisiRec;
+        this.idCli = idCli;
+        this.traitementRec = traitementRec;
+        this.typeAssure=typeAssure;
+    }
+
+    public Reclamation() {
+    }
+
+    public String getTypeAssure() {
+        return typeAssure;
+    }
+    
     
     
     public Date getDateSaisiRec() {
@@ -58,6 +78,10 @@ public class Reclamation {
 
     public void setDateSaisiRec(Date dateSaisiRec) {
         this.dateSaisiRec = dateSaisiRec;
+    }
+
+    public void setTypeAssure(String typeAssure) {
+        this.typeAssure = typeAssure;
     }
 
     

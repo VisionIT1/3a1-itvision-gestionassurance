@@ -13,11 +13,17 @@ import java.sql.Date;
  */
 public class OffreFidelite extends Offre {
      private int nbrContratMin;
+     
 
-    public OffreFidelite(int nbrContratMin, String libOffre, Date dateDebutOffre, Date dateFinOffre, int pourcentageReduction, String descripOffre) {
-        super(libOffre, dateDebutOffre, dateFinOffre, pourcentageReduction, descripOffre);
+    public OffreFidelite(int idOffre,int nbrContratMin, String libOffre, Date dateDebutOffre, Date dateFinOffre, int pourcentageReduction, String descripOffre) {
+        super(idOffre,libOffre, dateDebutOffre, dateFinOffre, pourcentageReduction, descripOffre);
         this.nbrContratMin = nbrContratMin;
     }
+
+    public OffreFidelite() {
+        super(null, null, null, 0, null);
+    }
+    
 
     
     
