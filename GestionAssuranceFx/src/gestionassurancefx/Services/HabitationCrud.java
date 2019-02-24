@@ -128,4 +128,23 @@ public class HabitationCrud {
          }
 
     }
+       
+            public ObservableList<Habitation> afficherHabitationparId(int id) {
+      
+         try {
+             ObservableList<Habitation> habitations= FXCollections.observableArrayList();
+             PreparedStatement pstmt=C.prepareStatement("select * from habitation where id_habitat=?");
+             pstmt.setInt(1, id);
+             ResultSet rs=pstmt.executeQuery();
+             
+             while (rs.next()){
+                 habitations.add(new Habitation((rs.getInt(1)),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getInt(5),rs.getString(6)));
+             }
+             pstmt.close();
+             return habitations;
+         } catch (SQLException ex) {
+             return null;
+         }
+
+    }
 }

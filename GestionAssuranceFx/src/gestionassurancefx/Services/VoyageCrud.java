@@ -85,6 +85,7 @@ public class VoyageCrud {
             ps.setInt(2, v.getDuree_sej());
             ps.setInt(3, v.getTranche_age());
             ps.setInt(4, v.getId_voyage());
+            ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(VoyageCrud.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -124,6 +125,25 @@ public class VoyageCrud {
              return idd;
          } catch (SQLException ex) {
              return 0;
+         }
+
+    }
+      
+           public ObservableList<Voyage> afficherVoyageparId(int id) {
+      
+         try {
+             ObservableList<Voyage> voyages=FXCollections.observableArrayList();
+             PreparedStatement pstmt=C.prepareStatement("select * from voyage where id_voyage=?");
+             pstmt.setInt(1,id);
+             ResultSet rs=pstmt.executeQuery();
+            
+             while (rs.next()){
+                 voyages.add(new Voyage((rs.getInt(1)),rs.getString(2),rs.getInt(3),rs.getInt(4)));
+             }
+             pstmt.close();
+             return voyages;
+         } catch (SQLException ex) {
+             return null;
          }
 
     }

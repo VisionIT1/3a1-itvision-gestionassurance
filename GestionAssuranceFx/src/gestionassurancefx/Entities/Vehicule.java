@@ -34,7 +34,7 @@ public class Vehicule {
     }
     
      public Vehicule( String immat, int puiss, float val_neuf, float val_venale, int annne_consruct, int id_marque, int id_garantie) {
-        this.id_vehicule = id_vehicule;
+       
         this.immat = immat;
         this.puiss = puiss;
         this.val_neuf = val_neuf;

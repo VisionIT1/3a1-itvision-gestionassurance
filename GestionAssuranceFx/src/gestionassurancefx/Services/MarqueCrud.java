@@ -107,4 +107,23 @@ public class MarqueCrud {
       
 }
     
+       public ObservableList<Marque> afficherMarqueparID(int id) {
+      
+         try {
+             ObservableList<Marque> marques= FXCollections.observableArrayList();
+             PreparedStatement pstmt=C.prepareStatement("select * from marque where id_marque=?");
+             pstmt.setInt(1, id);
+             ResultSet rs=pstmt.executeQuery();
+            
+             while (rs.next()){
+                 marques.add(new Marque((rs.getInt(1)),rs.getString(2)));
+             }
+             pstmt.close();
+             return marques;
+         } catch (SQLException ex) {
+             return null;
+         }
+
+    }
+    
 }

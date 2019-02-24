@@ -127,4 +127,22 @@ public class VehiculeCrud {
          }
 
     }
+     public ObservableList<Vehicule> afficherVehiculeparID(int id) {
+      
+         try {
+             ObservableList<Vehicule> vehicules= FXCollections.observableArrayList();
+             PreparedStatement pstmt=C.prepareStatement("select * from vehicule where id_vehicule=?");
+             pstmt.setInt(1, id);
+             ResultSet rs=pstmt.executeQuery();
+           
+             while (rs.next()){
+                 vehicules.add(new Vehicule(rs.getString(7),rs.getInt(2),rs.getFloat(3),rs.getFloat(4),rs.getInt(5),rs.getInt(6),rs.getInt(8)));
+             }
+             pstmt.close();
+             return vehicules;
+         } catch (SQLException ex) {
+             return null;
+         }
+
+    }
 }

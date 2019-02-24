@@ -54,8 +54,10 @@ public class AjoutTypeAssuranceController implements Initializable {
     private static int idm=0;
     public static int idtype;
     public static String nomtype;
+    public static float prime=0;
     private static int maxgaran=1;
     private static int maxgar=1;
+    
    
     private CheckBox[] chekb=new CheckBox[100];
     private RadioButton[] rb1=new RadioButton[100];
@@ -166,6 +168,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                 int c=retourneidmrq(null);
                 int s=retourneidbtnradio();
                 Vehicule v=new Vehicule(txtimat.getText(),Integer.parseInt(txtpuiss.getText()),Float.parseFloat(txtvalneuf.getText()),Float.parseFloat(txtvalven.getText()),Integer.parseInt(txtannconst.getText()),c,s);
+                System.out.println(calculerprime(nomtype,s));
                 vc.ajouterVehicule(v);
                 idtype=vc.retourneidvehicule();
                 AnchorPane pane=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionContrat.fxml"));
@@ -178,7 +181,7 @@ public class AjoutTypeAssuranceController implements Initializable {
             
         }else if (cbtypea.getSelectionModel().getSelectedItem().equals("Habitation")){
             nomtype="Habitation";
-          
+            System.out.println(calculerprime(nomtype, 0));
             try {
                 if (rvilla.isSelected()){
                     if(rbvo.isSelected()){
@@ -236,6 +239,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                
                 if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 1 et 3 mois")){
                     Voyage v=new Voyage(txtdest.getText(),3,Integer.parseInt(txtage.getText()));
+                    System.out.println(calculerprime(nomtype,0));
                     voyc.ajouterVoyage(v);
                     idtype=voyc.retourneidvoyage();
                     for (Garantie g : retournegarantvoyage()){
@@ -246,6 +250,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                 }
                 if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 3 et 9 mois")){
                     Voyage v=new Voyage(txtdest.getText(),9,Integer.parseInt(txtage.getText()));
+                    System.out.println(calculerprime(nomtype,0));
                     voyc.ajouterVoyage(v);
                      idtype=voyc.retourneidvoyage();
                     for (Garantie g : retournegarantvoyage()){
@@ -256,6 +261,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                 }
                 if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 9 et 12 mois")){
                     Voyage v=new Voyage(txtdest.getText(),12,Integer.parseInt(txtage.getText()));
+                    System.out.println(calculerprime(nomtype,0));
                     voyc.ajouterVoyage(v);
                      idtype=voyc.retourneidvoyage();
                     for (Garantie g : retournegarantvoyage()){
@@ -266,6 +272,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                 }
                 if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("Superieur a 1 an")){
                     Voyage v=new Voyage(txtdest.getText(),1,Integer.parseInt(txtage.getText()));
+                    System.out.println(calculerprime(nomtype,0));
                     voyc.ajouterVoyage(v);
                      idtype=voyc.retourneidvoyage();
                     for (Garantie g : retournegarantvoyage()){
@@ -361,7 +368,113 @@ public class AjoutTypeAssuranceController implements Initializable {
         
         return l;
     }
-
+public float calculerprime(String type,int l){
+    prime=0;
+    if (type.equalsIgnoreCase("Vehicule")){
+         if (Integer.parseInt(txtpuiss.getText())==4||Integer.parseInt(txtpuiss.getText())==5){
+                    prime+=500;
+                }
+         if (Integer.parseInt(txtpuiss.getText())>=6 && Integer.parseInt(txtpuiss.getText())<=9){
+                    prime+=1000;
+                }
+         if (Integer.parseInt(txtpuiss.getText())>=10 && Integer.parseInt(txtpuiss.getText())<=12){
+                    prime+=1500;
+                }
+         if (Integer.parseInt(txtpuiss.getText())>12){
+                    prime+=2000;
+                }
+          float s= (Float.parseFloat(txtvalneuf.getText())-Float.parseFloat(txtvalven.getText()))/5000;
+          float k=s*200;
+          prime+=k;
+          if (Integer.parseInt(txtannconst.getText())<2000){
+              prime+=150;
+          }else{
+              prime+=300;
+          }
+          for (Garantie gg : gc.afficherGarantie()){
+              if (gg.getId_garantie()==l){
+                  prime+=gg.getPrime();
+              }
+          }
+    }
+      if (type.equalsIgnoreCase("Voyage")){
+          
+          if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 1 et 3 mois")){
+              prime+=120;
+          }
+           if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 3 et 9 mois")){
+               prime+=220;
+           }
+          if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 9 et 12 mois")){
+              prime+=320;
+          }
+             if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("Superieur a 1 an")){
+                 prime+=400;
+             }
+          if (Integer.parseInt(txtage.getText())<=25){
+              prime+=40;
+          }
+          if (Integer.parseInt(txtage.getText())>25 && Integer.parseInt(txtage.getText())<=45){
+              prime+=80;
+          }
+             if (Integer.parseInt(txtage.getText())>45){
+              prime+=120;
+          }
+          
+          
+          
+          
+          for (Garantie g : gc.afficherGarantie()){
+              for (Garantie lg : retournegarantvoyage()){
+                  if (g.getId_garantie()==lg.getId_garantie()){
+                      prime+=g.getPrime();
+                  }
+              }
+          }
+          
+          
+          
+          
+      }
+      if (type.equalsIgnoreCase("Habitation")){
+          
+          if (rbvo.isSelected()){
+              prime+=500;
+          }
+          if (Integer.parseInt(txtnbpiece.getText())==1){
+              prime+=100;
+          }
+           if (Integer.parseInt(txtnbpiece.getText())==2){
+              prime+=200;
+          }
+          if (Integer.parseInt(txtnbpiece.getText())>=3 &&Integer.parseInt(txtnbpiece.getText())<=5){
+              prime+=400;
+          }
+           if (Integer.parseInt(txtnbpiece.getText())>5 &&Integer.parseInt(txtnbpiece.getText())<=10){
+              prime+=650;
+          }
+              if (Integer.parseInt(txtnbpiece.getText())>10){
+              prime+=900;
+          }
+          
+              float valm=Float.parseFloat(txtcapass.getText())/10000;
+              float kj=valm*1000;
+              prime+=kj;
+           if (rsysan.isSelected()){
+               prime+=1200;
+           }   
+          if (rvilla.isSelected()){
+              prime+=1500;
+          }
+          if (rapp.isSelected()){
+              prime+=450;
+          }
+          
+      }
+      
+      
+         return prime;
+}
     @FXML
     private void retourduresej(ActionEvent event) {
     }
