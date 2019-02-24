@@ -15,10 +15,10 @@ and open the template in the editor.
     -fx-background-color: #333645;
 }
 .btns{
-    -fx-background-color: transparent;
+    -fx-background-color: #3391FF;
 }
 .btns:hover{
-    -fx-background-color: #202332;
+    -fx-background-color: #0757B4;
 }
 .box{
     -fx-border-color: #3B3F4B;
