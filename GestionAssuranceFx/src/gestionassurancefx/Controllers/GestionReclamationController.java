@@ -20,7 +20,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import gestionassurancefx.Entities.*;
 import gestionassurancefx.Services.*;
-import gestionassurancefx.Utils.pdf;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.logging.Level;
@@ -232,9 +231,6 @@ public class GestionReclamationController implements Initializable {
        
     }
 
-    @FXML
-    private void ExporterGD(ActionEvent event) {
-        pdf.ExporterPDF(SR.afficherReclamation());
-    }
+    
 
 }
