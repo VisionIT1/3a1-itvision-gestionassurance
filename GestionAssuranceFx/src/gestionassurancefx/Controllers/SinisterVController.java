@@ -206,18 +206,16 @@ public class SinisterVController implements Initializable {
     @FXML
     private void export(ActionEvent event) throws FileNotFoundException, IOException {
         
-        ObservableList<Sinistre> listeone=FXCollections.observableArrayList();
+       // ObservableList<Sinistre> listeone=FXCollections.observableArrayList();
         
         try {
-            Statement pstmt =c.createStatement();
+          /*  Statement pstmt =c.createStatement();
            String req = "select *from sinistre where code_assureur="+s.getCode_assureur();
-            ResultSet rs= pstmt.executeQuery(req);
-            
-            
-            
-             XSSFWorkbook wb= new XSSFWorkbook();
-        
-        XSSFSheet sheet =wb.createSheet("User details");
+            ResultSet rs= pstmt.executeQuery(req); */
+       
+        XSSFWorkbook kk=new XSSFWorkbook();
+        /*
+        XSSFSheet sheet =kk.createSheet("User details");
         XSSFRow head=sheet.createRow(0);
         head.createCell(0).setCellValue("Cin");
         head.createCell(1).setCellValue("Date declaration");
@@ -241,11 +239,11 @@ public class SinisterVController implements Initializable {
             row.createCell(6).setCellValue(rs.getInt(7));
             row.createCell(7).setCellValue(rs.getString(9));
             i++;
-         }
+         }*/
        
         
         FileOutputStream fileout=new FileOutputStream("Userdetails.xlsx");
-        wb.write(fileout);
+        kk.write(fileout);
         fileout.close();
             
         } catch (Exception e) {
