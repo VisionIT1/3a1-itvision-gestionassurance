@@ -136,7 +136,7 @@
                      <HBox.margin>
                      </HBox.margin>
                   </FontAwesomeIcon>
-                  <Label onMouseClicked="#AgentClicked" text="Agent" textFill="#7c8184">
+                  <Label fx:id="agentlabel" onMouseClicked="#AgentClicked" text="Agent" textFill="#7c8184">
                      <font>
                         <Font name="Calibri Light" size="15.0" />
                      </font>

@@ -66,6 +66,8 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
     private Button btnClientPart;
     @FXML
     private Label logoutLabel;
+    @FXML
+    static public Label agentlabel;
     
     /**
      * Initializes the controller class.
@@ -79,6 +81,7 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
             login=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/Login.fxml"));
             AssurePart=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionAssurePartEntr.fxml"));
             constat=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sinistre.fxml"));
+            
         } catch (IOException ex) {
             Logger.getLogger(DashBController.class.getName()).log(Level.SEVERE, null, ex);
         }
