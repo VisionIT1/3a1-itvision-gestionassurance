@@ -2,15 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="gestionassurancefx">
-            <file>file:/C:/Users/Psico/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/AjoutTypeAssuranceController.java</file>
-            <file>file:/C:/Users/Psico/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/LoginController.java</file>
-            <file>file:/C:/Users/Psico/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/GestionContratController.java</file>
-            <file>file:/C:/Users/Psico/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/UpdateDeleteContratController.java</file>
-        </group>
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/ASUS/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/GestionAssuranceFx.java</file>
             <file>file:/C:/Users/ASUS/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/ReparateurFXMLController.java</file>
+=======
+            <file>file:/C:/Users/Ahmed%20Derbel/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Entities/User.java</file>
+            <file>file:/C:/Users/Ahmed%20Derbel/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/GestionAssuranceFx.java</file>
+            <file>file:/C:/Users/Ahmed%20Derbel/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Services/UserCrud.java</file>
+            <file>file:/C:/Users/Ahmed%20Derbel/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/StatistiqueController.java</file>
+            <file>file:/C:/Users/Ahmed%20Derbel/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/StatistiqueExpertController.java</file>
+            <file>file:/C:/Users/Ahmed%20Derbel/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/DashBController.java</file>
+            <file>file:/C:/Users/Ahmed%20Derbel/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/LoginController.java</file>
+            <file>file:/C:/Users/Ahmed%20Derbel/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/GestionContratController.java</file>
+>>>>>>> 8bed0a6abe2614ddc283331515d76d16ea72efb9
+        </group>
+        <group name="gestionassurancefx">
+            <file>file:/C:/Users/Psico/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/AjoutTypeAssuranceController.java</file>
+            <file>file:/C:/Users/Psico/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/ModifierTypeAssuranceController.java</file>
+            <file>file:/C:/Users/Psico/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/UpdateDeleteContratController.java</file>
+            <file>file:/C:/Users/Psico/Documents/GitHub/3a1-itvision-gestionassurance/GestionAssuranceFx/src/gestionassurancefx/Controllers/GestionMarqueController.java</file>
         </group>
     </open-files>
 </project-private>

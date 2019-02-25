@@ -117,7 +117,7 @@ public class SinistreController implements Initializable {
         dateDeclaration.setDisable(false);
         dateSinistre.setDisable(false);
         lieuSinistre.setDisable(false);
-        numeroSinistre.setDisable(false);
+        numeroSinistre.setDisable(true);
         DomageCorporelle.setDisable(false);
         DomageMaterelle.setDisable(false);
         description.setDisable(false);
@@ -128,15 +128,22 @@ public class SinistreController implements Initializable {
     System.out.println(dateFormat.format(date));
     //get current date time with Calendar()
     Calendar cal = Calendar.getInstance();
-    dateDeclaration.setValue(asLocalDate(date));     
+    dateDeclaration.setValue(asLocalDate(date)); 
+    int cinas=0;
+        cinas=crud.countass(c);
+        numeroSinistre.setText(""+cinas);
+        
         } 
     }
 
     @FXML
     private void AjouterSinistre(ActionEvent event) {
         int ajout;
+        int d=0,num=0;
+        
         Sinistre sn = new Sinistre();
         int code=Integer.parseInt(cin.getText());
+        
         if(code%2==0){
         code=(code+2)/2;
         }else{
@@ -149,9 +156,25 @@ public class SinistreController implements Initializable {
         
         sn.setDate_declaration(date_declaration);
         sn.setDate_sinistre(date_sinistre);
+        if(sn.getDate_declaration().after(sn.getDate_sinistre()))
+        {
+            d=1;
+            RecD.setVisible(true);
+            Note.setVisible(true);
+            date_sinistre=null;
+        }else{
+            RecD.setVisible(false);
+            Note.setVisible(false);
+        }
         sn.setLieu_sinistre(lieuSinistre.getText());
-        if(validateNumber()){
-        sn.setNumero_sinistre(Integer.parseInt(numeroSinistre.getText()));
+        if(!validateNumber()){
+             num=1;
+        }else{
+            sn.setNumero_sinistre(Integer.parseInt(numeroSinistre.getText()));
+            Note1.setVisible(false);
+            recN.setVisible(false);
+        }
+       
         if (DomageMaterelle.isSelected()) {
             sn.setDomage_mat(1);
         } else {
@@ -166,8 +189,12 @@ public class SinistreController implements Initializable {
         sn.setDescription(description.getText());
         int k;
         
-        
+        if(d==0 & num==0){
             ajout=crud.ajouterSinistre(sn);
+            RecD.setVisible(false);
+            Note.setVisible(false);
+            Note1.setVisible(false);
+            recN.setVisible(false);
         Aexpret.setDisable(true);
            Areparateur.setDisable(true);
            btnAjouterExpertS.setDisable(true);
@@ -181,6 +208,7 @@ public class SinistreController implements Initializable {
            ajout=0;
         }
         }
+        
         
         
         
