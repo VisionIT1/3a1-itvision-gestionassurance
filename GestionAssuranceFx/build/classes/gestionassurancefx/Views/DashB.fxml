@@ -62,10 +62,10 @@
                         <FontAwesomeIcon glyphStyle="-fx-fill:#333645" iconName="COGS" layoutX="226.0" layoutY="382.0" size="8em" />
                         <Button fx:id="btnGestonstat" layoutX="38.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnConstatClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
                         <Button fx:id="btnGContrat" layoutX="205.0" layoutY="80.0" mnemonicParsing="false" onAction="#constatView" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
-                        <Button fx:id="btnGOffre" layoutX="362.0" layoutY="80.0" mnemonicParsing="false" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+                        <Button fx:id="btnGOffre" layoutX="362.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnOffreClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
                         <Button fx:id="btnGReclamation" layoutX="521.0" layoutY="80.0" mnemonicParsing="false" prefHeight="153.0" prefWidth="149.0" style="-fx-background-color: transparent;" />
-                        <Button fx:id="btnGExpert" layoutX="38.0" layoutY="271.0" mnemonicParsing="false" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
-                        <Button fx:id="btnGReparateur" layoutX="205.0" layoutY="271.0" mnemonicParsing="false" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+                        <Button fx:id="btnGExpert" layoutX="38.0" layoutY="271.0" mnemonicParsing="false" onAction="#btnExpertClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+                        <Button fx:id="btnGReparateur" layoutX="205.0" layoutY="271.0" mnemonicParsing="false" onAction="#btnReparateurClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
                      </children></AnchorPane>
                </children></VBox>
          </children></VBox>

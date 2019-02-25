@@ -59,7 +59,7 @@ public class DashBController  implements Initializable  {
     private Button btnGestonstat;
     @FXML
     private AnchorPane mainAnchor;
-AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
+AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,reparateur;
     @FXML
     private Label projectBtn;
     @FXML
@@ -81,7 +81,9 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
             login=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/Login.fxml"));
             AssurePart=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionAssurePartEntr.fxml"));
             constat=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sinistre.fxml"));
-            
+            offre=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionOffre.fxml"));
+            expert=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ExpertFXML.fxml"));
+            reparateur=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ReparateurFXML.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(DashBController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -163,5 +165,22 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat;
        stage.show();
        closeDashB();
     }
+
+    @FXML
+    private void btnOffreClicked(ActionEvent event) {
+        setNode(offre);
+    }
+
+    @FXML
+    private void btnExpertClicked(ActionEvent event) {
+        setNode(expert);
+    }
+
+    @FXML
+    private void btnReparateurClicked(ActionEvent event) {
+        setNode(reparateur);
+    }
+    
+    
     
 }
