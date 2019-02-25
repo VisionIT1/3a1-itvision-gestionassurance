@@ -5,9 +5,6 @@
  */
 package gestionassurancefx.Controllers;
 
-import static gestionassurancefx.Controllers.AjoutTypeAssuranceController.idtype;
-import static gestionassurancefx.Controllers.AjoutTypeAssuranceController.nomtype;
-import static gestionassurancefx.Controllers.AjoutTypeAssuranceController.primee;
 import static gestionassurancefx.Controllers.GestionAssureParticulierController.cinCont;
 import static gestionassurancefx.Controllers.GestionAssureParticulierController.nomEntrCont;
 import gestionassurancefx.Entities.Contrat;
@@ -141,14 +138,10 @@ public class GestionContratController implements Initializable {
         
         initColumns();
         crud = new ContratCrud();
-        //typeContratField.getItems().addAll("Habitation", "Voyage", "Voiture");
+        typeContratField.getItems().addAll("Habitation", "Voyage", "Voiture");
         etatField.getItems().addAll("Paye", "Non paye");
         cinAssureField.setText(cinCont);
-       typeContratField.getSelectionModel().select(nomtype);
-       typeContratField.setDisable(true);
-       idTypeField.setText(Integer.toString(idtype));
         nomEntrField.setText(nomEntrCont);
-        primeField.setText(Float.toString(primee));
         //cinAssureField.setText(nomEntrCont);
         contratview.setItems(crud.getAllContrat());
      
@@ -186,7 +179,7 @@ public class GestionContratController implements Initializable {
         
         Date date_debut = java.sql.Date.valueOf(dateDebutField.getValue());
         Date date_echeance = java.sql.Date.valueOf(dateEcheanceField.getValue());
-        float prime = Float.parseFloat(primeField.getText());
+        int prime = Integer.parseInt(primeField.getText());
         int etat = 0;
       //  int idass = Integer.parseInt(etatField.getSelectionModel().getSelectedItem());
         if (etatField.getSelectionModel().getSelectedItem().equalsIgnoreCase("Paye")) {

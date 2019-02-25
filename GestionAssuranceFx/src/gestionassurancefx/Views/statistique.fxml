@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="791.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="gestionassurancefx.Controllers.StatistiqueController">
+   <children>
+      <AnchorPane fx:id="statPane" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="791.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="532.0" layoutY="206.0" text="Statistiques des reclamation" textFill="#4f5886">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <FontAwesomeIcon glyphStyle="-fx-fill:#333645" iconName="BRIEFCASE" layoutX="60.0" layoutY="185.0" size="8em" />
+            <Label layoutX="50.0" layoutY="206.0" text="Statistiques des contrats" textFill="#4f5886">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="215.0" layoutY="206.0" text="Statistiques des constats" textFill="#4f5886">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <FontAwesomeIcon glyphStyle="-fx-fill:#333645" iconName="FILE" layoutX="225.0" layoutY="185.0" size="8em" />
+            <FontAwesomeIcon glyphStyle="-fx-fill:#333645" iconName="GIFT" layoutX="392.0" layoutY="185.0" size="8em" />
+            <Label layoutX="382.0" layoutY="206.0" text="Statistiques des offres" textFill="#4f5886">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="51.0" layoutY="403.0" text="Statistiques des expert" textFill="#4f5886">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <FontAwesomeIcon glyphStyle="-fx-fill:#333645" iconName="CROP" layoutX="61.0" layoutY="382.0" size="8em" />
+            <Label layoutX="205.0" layoutY="403.0" text="Statistiques des reparateurs" textFill="#4f5886">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <FontAwesomeIcon fx:id="btnStatReparateur" glyphStyle="-fx-fill:#333645" iconName="COGS" layoutX="226.0" layoutY="382.0" onDragDetected="#btnStatReparateurClicked" size="8em" />
+            <Button fx:id="btnStatContrat" layoutX="38.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnStatConstatClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="btnStatConstat" layoutX="205.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnStatConstatClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="btnStatOffre" layoutX="362.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnStatOffreClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="btnStatExpert" layoutX="38.0" layoutY="271.0" mnemonicParsing="false" onAction="#btnStatExpertClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="btnGReparateur" layoutX="205.0" layoutY="271.0" mnemonicParsing="false" onAction="#btnReparateurClicked" prefHeight="153.0" prefWidth="141.0" style="-fx-background-color: transparent;" />
+            <FontAwesomeIcon glyphStyle="-fx-fill:#333645" iconName="WARNING" layoutX="548.0" layoutY="185.0" size="8em" />
+            <Button fx:id="btnStatRec" layoutX="521.0" layoutY="80.0" mnemonicParsing="false" onAction="#btnStatRecClicked" prefHeight="153.0" prefWidth="149.0" style="-fx-background-color: transparent;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

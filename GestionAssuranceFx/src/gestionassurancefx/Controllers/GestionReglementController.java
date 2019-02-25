@@ -6,6 +6,11 @@
 
 package gestionassurancefx.Controllers;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXToggleButton;
@@ -17,6 +22,8 @@ import gestionassurancefx.Entities.Expert;
 import gestionassurancefx.Entities.Reglement;
 import gestionassurancefx.Entities.Sinistre;
 import gestionassurancefx.Services.Service_Reglement;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -191,6 +198,23 @@ public class GestionReglementController implements Initializable {
         btnSuppReg.setDisable(true);
         idExperet.setDisable(true);
         idRperateur.setDisable(true);
+    }
+
+    @FXML
+    private void pdf(ActionEvent event) {
+        String file =Crud.getAllR();
+        Paragraph par=new Paragraph(file);
+        Document doc=new Document(PageSize.A4);
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream("holla.pdf"));
+            doc.open();
+           
+            doc.add(par);
+            doc.close();
+        } catch (Exception e) {
+            System.out.println("lol");
+        }
+        
     }
         
 }

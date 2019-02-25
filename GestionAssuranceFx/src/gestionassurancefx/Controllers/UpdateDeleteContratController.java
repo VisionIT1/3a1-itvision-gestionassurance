@@ -11,18 +11,13 @@ import static gestionassurancefx.Controllers.GestionAssureParticulierController.
 import static gestionassurancefx.Controllers.GestionContratController.printNode;
 import gestionassurancefx.Entities.Contrat;
 import gestionassurancefx.Services.ContratCrud;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.print.PageLayout;
 import javafx.print.PageOrientation;
@@ -43,7 +38,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
-import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -110,19 +104,24 @@ public class UpdateDeleteContratController implements Initializable {
     private AnchorPane tableviewPane;
     @FXML
     private Button UpdateTypeContrat;
+<<<<<<< HEAD
     public static String typeselected;
     public static int idtypeselected=0;
     @FXML
     private AnchorPane updatedeletepane;
 
    
+=======
+     static String typeselected="";
+        static int idtypeselected;
+    
+>>>>>>> 616455686acbd55b209aeaa467c8064afb08224f
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
         if(nomEntrCont != null ){
             nomAssLabel.setVisible(true);//label du nom d entreprise
             nomEntrField.setVisible(true);
@@ -132,7 +131,11 @@ public class UpdateDeleteContratController implements Initializable {
          crud = new ContratCrud();
                     initColumns();
        contratview.setItems(crud.getAllContrat());
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 616455686acbd55b209aeaa467c8064afb08224f
     }    
 
      public void initColumns() {
@@ -285,6 +288,7 @@ public class UpdateDeleteContratController implements Initializable {
 
     }
 
+<<<<<<< HEAD
     
       private void setNode(Node node) {
        updatedeletepane.getChildren().clear();
@@ -311,6 +315,15 @@ public class UpdateDeleteContratController implements Initializable {
         }
         
        
+=======
+    @FXML
+    private void UpdateTypeContratClicked(ActionEvent event) {
+         typeselected = contratview.getSelectionModel().getSelectedItem().getType();
+        idtypeselected=contratview.getSelectionModel().getSelectedItem().getId_type();
+        
+        System.out.println(typeselected);
+        System.out.println(idtypeselected);
+>>>>>>> 616455686acbd55b209aeaa467c8064afb08224f
     }
 
     

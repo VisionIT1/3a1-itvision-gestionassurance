@@ -59,7 +59,9 @@ public class DashBController  implements Initializable  {
     private Button btnGestonstat;
     @FXML
     private AnchorPane mainAnchor;
-AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,reparateur;
+    AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,reparateur;
+    AnchorPane stat;
+    AnchorPane sinistre,sinistreview;
     @FXML
     private Label projectBtn;
     @FXML
@@ -68,7 +70,9 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,repar
     private Label logoutLabel;
     @FXML
     static public Label agentlabel;
-    
+    @FXML
+    private Label DashBoardBtn;
+
     /**
      * Initializes the controller class.
      */
@@ -84,10 +88,13 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,repar
             offre=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionOffre.fxml"));
             expert=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ExpertFXML.fxml"));
             reparateur=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ReparateurFXML.fxml"));
+            stat=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/statistique.fxml"));
+            sinistre=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sinistre.fxml"));
+            sinistreview=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sin.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(DashBController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }   
+    }
     
        private void setNode(Node node) {
         mainView.getChildren().clear();
@@ -105,7 +112,7 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,repar
     
     @FXML
     private void constatView(ActionEvent event) throws IOException{
-        setNode(constat);
+        setNode(sinistre);
     }
     
      @FXML
@@ -167,8 +174,8 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,repar
     }
 
     @FXML
-    private void btnOffreClicked(ActionEvent event) {
-        setNode(offre);
+    private void SinistreViewClicked(MouseEvent event) {
+        setNode(sinistreview);
     }
 
     @FXML
@@ -180,7 +187,13 @@ AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,repar
     private void btnReparateurClicked(ActionEvent event) {
         setNode(reparateur);
     }
+
+    @FXML
+    private void StatClicked(MouseEvent event) {
+        setNode(stat);
+        
+    }
     
-    
+   
     
 }

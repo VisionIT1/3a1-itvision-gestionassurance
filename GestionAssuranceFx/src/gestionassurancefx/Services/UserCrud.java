@@ -115,7 +115,6 @@ public class UserCrud {
                             
                             u.setUsername(rs.getString(2));
                             u.setPassword(rs.getString(8));
-                            u.setRoles(rs.getString(12));
 			
 			}
 			return u;
@@ -125,6 +124,4 @@ public class UserCrud {
                 }
 		
 	}
-    
-   
 }

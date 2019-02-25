@@ -29,8 +29,9 @@
       <JFXToggleButton fx:id="DomCorp" layoutX="219.0" layoutY="471.0" text="Domage Corporelle: Non/Oui" />
       <JFXButton fx:id="btnsupp" layoutX="585.0" layoutY="465.0" onAction="#suppSinistre" text="Supprimer" />
       <JFXButton fx:id="btnmodif" layoutX="474.0" layoutY="465.0" onAction="#modifierSinistre" prefHeight="25.0" prefWidth="72.0" text="Modifier" />
-      <JFXTextField fx:id="search" layoutX="510.0" layoutY="10.0" />
+      <JFXTextField fx:id="search" layoutX="510.0" layoutY="10.0" onKeyTyped="#searchon3" />
       <FontAwesomeIcon iconName="SEARCH" layoutX="651.0" layoutY="29.0" size="1.3em" />
-      <Button fx:id="btnsearch" layoutX="644.0" layoutY="10.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="btnsearch" layoutX="644.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="31.0" style="-fx-background-color: transparent;" />
+      <JFXButton layoutX="582.0" layoutY="545.0" onAction="#export" text="Exporter xls" />
    </children>
 </AnchorPane>

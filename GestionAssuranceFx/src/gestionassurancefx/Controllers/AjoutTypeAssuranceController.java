@@ -54,7 +54,7 @@ public class AjoutTypeAssuranceController implements Initializable {
     private static int idm=0;
     public static int idtype;
     public static String nomtype;
-    public static float primee=0;
+    public static float prime=0;
     private static int maxgaran=1;
     private static int maxgar=1;
     
@@ -180,7 +180,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                 int c=retourneidmrq(null);
                 int s=retourneidbtnradio();
                 Vehicule v=new Vehicule(txtimat.getText(),Integer.parseInt(txtpuiss.getText()),Float.parseFloat(txtvalneuf.getText()),Float.parseFloat(txtvalven.getText()),Integer.parseInt(txtannconst.getText()),c,s);
-                primee=calculerprime(nomtype,s);
+                System.out.println(calculerprime(nomtype,s));
                 vc.ajouterVehicule(v);
                 idtype=vc.retourneidvehicule();
                 AnchorPane pane=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionContrat.fxml"));
@@ -193,7 +193,7 @@ public class AjoutTypeAssuranceController implements Initializable {
             
         }else if (cbtypea.getSelectionModel().getSelectedItem().equals("Habitation")){
             nomtype="Habitation";
-            primee=calculerprime(nomtype, 0);
+            System.out.println(calculerprime(nomtype, 0));
             try {
                 if (rvilla.isSelected()){
                     if(rbvo.isSelected()){
@@ -248,10 +248,10 @@ public class AjoutTypeAssuranceController implements Initializable {
     } else if (cbtypea.getSelectionModel().getSelectedItem().equals("Voyage")){
             try {
                 nomtype="Voyage";
-               primee=calculerprime(nomtype,0);
+               
                 if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 1 et 3 mois")){
                     Voyage v=new Voyage(txtdest.getText(),3,Integer.parseInt(txtage.getText()));
-                    
+                    System.out.println(calculerprime(nomtype,0));
                     voyc.ajouterVoyage(v);
                     idtype=voyc.retourneidvoyage();
                     for (Garantie g : retournegarantvoyage()){
@@ -262,7 +262,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                 }
                 if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 3 et 9 mois")){
                     Voyage v=new Voyage(txtdest.getText(),9,Integer.parseInt(txtage.getText()));
-                    
+                    System.out.println(calculerprime(nomtype,0));
                     voyc.ajouterVoyage(v);
                      idtype=voyc.retourneidvoyage();
                     for (Garantie g : retournegarantvoyage()){
@@ -273,7 +273,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                 }
                 if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("entre 9 et 12 mois")){
                     Voyage v=new Voyage(txtdest.getText(),12,Integer.parseInt(txtage.getText()));
-                
+                    System.out.println(calculerprime(nomtype,0));
                     voyc.ajouterVoyage(v);
                      idtype=voyc.retourneidvoyage();
                     for (Garantie g : retournegarantvoyage()){
@@ -284,7 +284,7 @@ public class AjoutTypeAssuranceController implements Initializable {
                 }
                 if( cbdsej.getSelectionModel().getSelectedItem().trim().equals("Superieur a 1 an")){
                     Voyage v=new Voyage(txtdest.getText(),1,Integer.parseInt(txtage.getText()));
-                 
+                    System.out.println(calculerprime(nomtype,0));
                     voyc.ajouterVoyage(v);
                      idtype=voyc.retourneidvoyage();
                     for (Garantie g : retournegarantvoyage()){
@@ -381,7 +381,7 @@ public class AjoutTypeAssuranceController implements Initializable {
         return l;
     }
 public float calculerprime(String type,int l){
-    float prime=0;
+    prime=0;
     if (type.equalsIgnoreCase("Vehicule")){
          if (Integer.parseInt(txtpuiss.getText())==4||Integer.parseInt(txtpuiss.getText())==5){
                     prime+=500;
