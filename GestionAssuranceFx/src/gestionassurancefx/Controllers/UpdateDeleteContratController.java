@@ -110,12 +110,12 @@ public class UpdateDeleteContratController implements Initializable {
     private AnchorPane tableviewPane;
     @FXML
     private Button UpdateTypeContrat;
-     static String typeselected="";
-        static int idtypeselected;
+    public static String typeselected;
+    public static int idtypeselected=0;
     @FXML
     private AnchorPane updatedeletepane;
 
-    AnchorPane modiftypeass;
+   
 
     /**
      * Initializes the controller class.
@@ -132,11 +132,7 @@ public class UpdateDeleteContratController implements Initializable {
          crud = new ContratCrud();
                     initColumns();
        contratview.setItems(crud.getAllContrat());
-        try {
-            modiftypeass=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ModifierTypeAssurance.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(UpdateDeleteContratController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
     }    
 
      public void initColumns() {
@@ -294,7 +290,7 @@ public class UpdateDeleteContratController implements Initializable {
        updatedeletepane.getChildren().clear();
         updatedeletepane.getChildren().add((Node) node);
 
-        FadeTransition ft = new FadeTransition(Duration.millis(1500));
+        FadeTransition ft = new FadeTransition(Duration.millis(500));
         ft.setNode(node);
         ft.setFromValue(0.1);
         ft.setToValue(1);
@@ -305,9 +301,15 @@ public class UpdateDeleteContratController implements Initializable {
     
     @FXML
     private void UpdateTypeContratClicked(ActionEvent event) {
-         typeselected = contratview.getSelectionModel().getSelectedItem().getType();
-        idtypeselected=contratview.getSelectionModel().getSelectedItem().getId_type();
-        setNode(modiftypeass);
+        try {
+            typeselected = contratview.getSelectionModel().getSelectedItem().getType();
+            idtypeselected=contratview.getSelectionModel().getSelectedItem().getId_type();
+            AnchorPane pane=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ModifierTypeAssurance.fxml"));
+            updatedeletepane.getChildren().setAll(pane);
+        } catch (IOException ex) {
+            Logger.getLogger(UpdateDeleteContratController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
        
     }
 

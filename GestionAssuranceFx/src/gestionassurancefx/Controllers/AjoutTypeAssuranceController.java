@@ -121,6 +121,18 @@ public class AjoutTypeAssuranceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
         
+         ToggleGroup group0 = new ToggleGroup();
+        rbvo.setToggleGroup(group0);
+        rbvn.setToggleGroup(group0);
+        
+        ToggleGroup group1 = new ToggleGroup();
+        rapp.setToggleGroup(group1);
+        rvilla.setToggleGroup(group1);
+        
+        ToggleGroup group2 = new ToggleGroup();
+        rsysan.setToggleGroup(group2);
+        rsysao.setToggleGroup(group2);
+        
         cbtypea.getItems().addAll("Vehicule", "Habitation","Voyage");
         cbdsej.getItems().addAll("entre 1 et 3 mois","entre 3 et 9 mois","entre 9 et 12 mois","Superieur a 1 an");
            c1.setVisible(false);
