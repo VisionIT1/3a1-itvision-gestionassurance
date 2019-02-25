@@ -296,98 +296,7 @@ public class ModifierTypeAssuranceController implements Initializable {
     @FXML
     private void cliqueme(MouseEvent event) {
         
-        if (typeselected.equalsIgnoreCase("Vehicule")){
-        SelectionModel<Vehicule> v1= tbvehicule.getSelectionModel();
-    	Vehicule c=v1.getSelectedItem();
-    	
-        String idm=""+c.getId_vehicule();
-            System.out.println(idm);
-        if (idm!=null){
-            btnmodif.setVisible(true);
-              for (Vehicule v :vc.afficherVehiculeparID(idtypeselected)){
-        txtpf.setText(""+v.getPuiss());
-        txtimmat.setText(v.getImmat());
-        txtvalneuf.setText(""+v.getVal_neuf());
-        txtvalven.setText(""+v.getVal_venale());
-        txtannconst.setText(""+v.getAnnne_consruct());
-            for (Marque m : mc.afficherMarque()){
-                if (m.getId_marque()== v.getId_marque()){
-                    cbmrq.getSelectionModel().select(m.getLib_mrq());
-                    tbmarque.setItems(mc.afficherMarqueparID(m.getId_marque()));
-                     
-                    break;
-                }
-            }
-        }
-    	
-        
-        }
        
-        }
-        if (typeselected.equalsIgnoreCase("Habitation")){
-        SelectionModel<Habitation> h1= tbhabitat.getSelectionModel();
-    	Habitation c=h1.getSelectedItem();
-    	
-        String idm=""+c.getId_habitat();
-         
-        if (idm!=null){
-                    for (Habitation h : hc.afficherHabitationparId(idtypeselected)){
-                System.out.println(h);
-                txtnbp.setText(""+h.getNb_pieces());
-                txtcapmob.setText(""+h.getValeur_mob());
-                if (h.getBaie_vitre()==1){
-                    rbbvo.setSelected(true);
-                }else {
-                    rbbvn.setSelected(true);
-                }
-                if(h.getNature_local().equalsIgnoreCase("Appartement")){
-                    rbappart.setSelected(true);
-                }else{
-                    rbvilla.setSelected(true);
-                }
-                if (h.getSys_alarm()==1){
-                    rbsysao.setSelected(true);
-                  
-                }else{
-                  
-                    rbsysan.setSelected(true);
-                    
-                }
-            }    
-    	btnmodif.setVisible(true);
-        
-        }
-        }
-        
-        if (typeselected.equalsIgnoreCase("Voyage")){
-        SelectionModel<Voyage> voy1= tbvoyage.getSelectionModel();
-    	Voyage c=voy1.getSelectedItem();
-    	
-        String idm=""+c.getId_voyage();
-         
-        if (idm!=null){
-          for (Voyage voy : voyc.afficherVoyageparId(idtypeselected)){
-            txtdest.setText(voy.getDest());
-            txtage.setText(""+voy.getTranche_age());
-            if (voy.getDuree_sej()==3){
-                cbdursej.getSelectionModel().select("entre 1 et 3 mois");
-            }else if (voy.getDuree_sej()==9){
-                cbdursej.getSelectionModel().select("entre 3 et 9 mois");
-            }else if (voy.getDuree_sej()==12){
-                 cbdursej.getSelectionModel().select("entre 9 et 12 mois");
-            }else{
-                 cbdursej.getSelectionModel().select("Superieur a 1 an");
-            }
-            
-            
-                    
-            }
-    	btnmodif.setVisible(true);
-        
-        }
-        }
-        
-    	
     	
     }
 
@@ -408,7 +317,7 @@ public class ModifierTypeAssuranceController implements Initializable {
         tbvehicule.setItems(vc.afficherVehiculeparID(idtypeselected));
         
         }
-        btnmodif.setVisible(false);
+      
         }
         
         
@@ -443,7 +352,7 @@ public class ModifierTypeAssuranceController implements Initializable {
                tbvoyage.getItems().clear();
                tbvoyage.setItems(voyc.afficherVoyageparId(idtypeselected));
         }
-         btnmodif.setVisible(false);
+        
          }
         
         //si c'est une habitation
@@ -499,7 +408,7 @@ public class ModifierTypeAssuranceController implements Initializable {
             tbhabitat.getItems().clear();
             tbhabitat.setItems(hc.afficherHabitationparId(idtypeselected));
         }
-         btnmodif.setVisible(false);
+       
         }
         
     }
