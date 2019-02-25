@@ -117,4 +117,35 @@ public class Service_Reglement {
             return null;
         }
     }
+            public String getAllR() {
+        
+
+        try {
+            Statement st = c.createStatement();
+
+            String req = "select * from reglement";
+            String ch="Les reglements :\n";
+            ResultSet rs = st.executeQuery(req); //retourne un résulat
+
+            while (rs.next()) {
+                Reglement Rg = new Reglement();
+                Rg.setCode_regl(rs.getInt(1));
+                Rg.setDate_regl(rs.getDate(2));
+                Rg.setFrais_expert(rs.getInt(3));
+                Rg.setMode_regl(rs.getString(4));
+                Rg.setMontant_regl(rs.getInt(5));
+                Rg.setIdEx(rs.getInt(6));
+                Rg.setCinAssureur(rs.getInt(7));
+                Rg.setIdRep(rs.getInt(8));
+                Rg.setCode_sin(rs.getInt(9));
+                ch+="Date de reglement:"+rs.getInt(2)+"\n"+"Frais de l expert: "+rs.getInt(3)+"\n"+
+                        "Montant totale: "+rs.getString(5)+"\n"+"Le client avec le CIN: "+rs.getInt(7)+"\n"+"------------------------------------------------------";
+            }
+
+            return ch;
+        } catch (SQLException ex) {
+            System.out.println("erreur" + ex.getMessage());
+            return null;
+        }
+    }
 }

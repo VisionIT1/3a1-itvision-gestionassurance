@@ -59,8 +59,11 @@ public class DashBController  implements Initializable  {
     private Button btnGestonstat;
     @FXML
     private AnchorPane mainAnchor;
-AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,reparateur;
-AnchorPane stat;
+    AnchorPane contrat,user,login,AssurePart,ajoutcontrat,constat,offre,expert,reparateur;
+    AnchorPane stat;
+    AnchorPane sinistre,sinistreview;
+    @FXML
+    private Label projectBtn;
     @FXML
     private Button btnClientPart;
     @FXML
@@ -69,7 +72,7 @@ AnchorPane stat;
     static public Label agentlabel;
     @FXML
     private Label DashBoardBtn;
-    
+
     /**
      * Initializes the controller class.
      */
@@ -86,10 +89,12 @@ AnchorPane stat;
             expert=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ExpertFXML.fxml"));
             reparateur=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/ReparateurFXML.fxml"));
             stat=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/statistique.fxml"));
+            sinistre=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sinistre.fxml"));
+            sinistreview=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/sin.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(DashBController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }   
+    }
     
        private void setNode(Node node) {
         mainView.getChildren().clear();
@@ -107,7 +112,7 @@ AnchorPane stat;
     
     @FXML
     private void constatView(ActionEvent event) throws IOException{
-        setNode(constat);
+        setNode(sinistre);
     }
     
      @FXML
@@ -169,8 +174,8 @@ AnchorPane stat;
     }
 
     @FXML
-    private void btnOffreClicked(ActionEvent event) {
-        setNode(offre);
+    private void SinistreViewClicked(MouseEvent event) {
+        setNode(sinistreview);
     }
 
     @FXML
@@ -189,6 +194,6 @@ AnchorPane stat;
         
     }
     
-    
+   
     
 }

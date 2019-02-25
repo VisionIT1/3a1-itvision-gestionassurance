@@ -5,7 +5,6 @@
  */
 package gestionassurancefx.Controllers;
 
-import static gestionassurancefx.Controllers.DashBController.agentlabel;
 import gestionassurancefx.Entities.User;
 import static gestionassurancefx.GestionAssuranceFx.LoginStage;
 import gestionassurancefx.Services.UserCrud;
@@ -60,6 +59,7 @@ public class LoginController implements Initializable {
 
     public Boolean AuthenticateUser(String username, String password) {
         u = crud.VerifyUser(username, password);
+        User u = crud.VerifyUser(username, password);
         if ((username.equals(u.getUsername())) && (password.equals(u.getPassword()))) {
             return true;
         } else {
@@ -94,6 +94,7 @@ public class LoginController implements Initializable {
                 stage.setScene(new Scene(root1));
                 dashBStage = stage;
                 stage.show();
+               
                 closeLogin();
                 /*  if(u.getRoles().equals("Agent")){
                  agentlabel.setVisible(false);

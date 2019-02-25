@@ -287,7 +287,7 @@ public class GestionAssureParticulierController implements Initializable {
            // smstut.SendSMS("ahmedderbel","j25w5nkg","Bienvneue chez notre assurance","numtelField.getText()","https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
 
             cinCont=getCinFromCont();
-            AnchorPane pane=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/AjoutTypeAssurance.fxml"));
+            AnchorPane pane=FXMLLoader.load(getClass().getResource("/gestionassurancefx/Views/GestionContrat.fxml"));
             assPartPane1.getChildren().setAll(pane);
             
                 Alert alert = new Alert(AlertType.INFORMATION);
