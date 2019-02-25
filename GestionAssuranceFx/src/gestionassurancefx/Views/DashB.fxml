@@ -101,7 +101,7 @@
                      <HBox.margin>
                      </HBox.margin>
                   </FontAwesomeIcon>
-                  <Label onMouseClicked="#dashBoardClicked" text="Project" textFill="#7c8184">
+                  <Label onMouseClicked="#dashBoardClicked" text="Assurance" textFill="#7c8184">
                      <HBox.margin>
                         <Insets left="10.0" top="2.0" />
                      </HBox.margin>
@@ -120,7 +120,7 @@
                      <HBox.margin>
                      </HBox.margin>
                   </FontAwesomeIcon>
-                  <Label fx:id="projectBtn" text="Tableau de bord" textFill="#7c8184">
+                  <Label fx:id="DashBoardBtn" onMouseClicked="#StatClicked" text="Tableau de bord" textFill="#7c8184">
                      <font>
                         <Font name="Calibri Light" size="15.0" />
                      </font>

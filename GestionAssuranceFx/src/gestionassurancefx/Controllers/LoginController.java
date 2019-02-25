@@ -37,7 +37,8 @@ import javafx.stage.Window;
  * @author Ahmed Derbel
  */
 public class LoginController implements Initializable {
-    public static Stage dashBStage=null;
+
+    public static Stage dashBStage = null;
     @FXML
     private TextField usernameLoginField;
     @FXML
@@ -46,7 +47,6 @@ public class LoginController implements Initializable {
     @FXML
     public Button connectBtn;
     private User u;
-   
 
     /**
      * Initializes the controller class.
@@ -54,12 +54,12 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         crud = new UserCrud();
-        
-        u=new User();
+
+        u = new User();
     }
 
     public Boolean AuthenticateUser(String username, String password) {
-         u = crud.VerifyUser(username, password);
+        u = crud.VerifyUser(username, password);
         if ((username.equals(u.getUsername())) && (password.equals(u.getPassword()))) {
             return true;
         } else {
@@ -67,39 +67,38 @@ public class LoginController implements Initializable {
         }
     }
 
-    public Boolean VerifyEnable(User u){
-        if(u.getEnabled()==true){
+    public Boolean VerifyEnable(User u) {
+        if (u.getEnabled() == true) {
             return true;
         }
         return false;
     }
-    
+
     public void closeLogin() {
         LoginStage = (Stage) LoginStage.getScene().getWindow();
         LoginStage.close();
     }
-    
-    
-    public void Login(){
+
+    public void Login() {
         Stage appStage;
         Parent root;
-      
-        if (AuthenticateUser(usernameLoginField.getText(), mdpLoginField.getText() ) ) {
+
+        if (AuthenticateUser(usernameLoginField.getText(), mdpLoginField.getText())) {
 
             try {
-                
+
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gestionassurancefx/Views/DashB.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root1));
-                 dashBStage=stage;
+                dashBStage = stage;
                 stage.show();
                 closeLogin();
-            /*  if(u.getRoles().equals("Agent")){
-                   agentlabel.setVisible(false);
-               }*/
-                
+                /*  if(u.getRoles().equals("Agent")){
+                 agentlabel.setVisible(false);
+                 }*/
+
             } catch (IOException ex) {
                 Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -109,6 +108,7 @@ public class LoginController implements Initializable {
 
         }
     }
+
     @FXML
     private void ConnectBtnClicked(ActionEvent event) {
 
@@ -118,8 +118,8 @@ public class LoginController implements Initializable {
 
     @FXML
     private void EntrKeyPressed(KeyEvent event) {
-        if(event.getCode()==KeyCode.ENTER){
-             Login();
+        if (event.getCode() == KeyCode.ENTER) {
+            Login();
         }
     }
 
