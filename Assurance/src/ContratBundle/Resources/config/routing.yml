@@ -1,0 +1,3 @@
+contrat_homepage:
+    path:     /
+    defaults: { _controller: ContratBundle:Default:index }

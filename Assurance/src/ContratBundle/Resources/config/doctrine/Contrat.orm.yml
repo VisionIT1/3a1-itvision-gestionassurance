@@ -1,0 +1,24 @@
+ContratBundle\Entity\Contrat:
+    type: entity
+    table: null
+    repositoryClass: ContratBundle\Repository\ContratRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idClient:
+            type: integer
+            column: id_client
+        type:
+            type: string
+            length: 255
+        dateDebut:
+            type: datetime
+            column: date_debut
+        dateEcheance:
+            type: datetime
+            column: date_echeance
+    lifecycleCallbacks: {  }

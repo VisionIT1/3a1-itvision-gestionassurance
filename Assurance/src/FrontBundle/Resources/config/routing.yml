@@ -1,0 +1,21 @@
+front_homepage:
+    path:     /home
+    defaults: { _controller: FrontBundle:Default:index }
+
+front_service:
+    path:     /service
+    defaults: { _controller: FrontBundle:Default:service }
+
+
+front_ressourcepage:
+    path:     /ressource
+    defaults: { _controller: FrontBundle:Default:ressource }
+
+
+front_contactpage:
+    path:     /contact
+    defaults: { _controller: FrontBundle:Default:contact }
+
+front_aboutpage:
+    path:     /about
+    defaults: { _controller: FrontBundle:Default:about }
