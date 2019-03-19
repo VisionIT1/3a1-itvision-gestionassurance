@@ -58,6 +58,5 @@
       <Button fx:id="btnRafraichir" layoutX="694.0" layoutY="401.0" mnemonicParsing="false" onAction="#rafraichirRec" prefHeight="25.0" prefWidth="74.0" styleClass="btns" stylesheets="@StyleSheet.css" text="Rafraichir" textFill="WHITE" />
       <TextField fx:id="recherche" layoutX="363.0" layoutY="401.0" />
       <Button fx:id="btnrechercheR" layoutX="526.0" layoutY="401.0" mnemonicParsing="false" onAction="#rechercherR" styleClass="btns" stylesheets="@StyleSheet.css" text="Rechercher" textFill="WHITE" />
-      <Button fx:id="btnGoogleDrive" layoutX="694.0" layoutY="429.0" mnemonicParsing="false" onAction="#ExporterGD" prefHeight="25.0" prefWidth="177.0" styleClass="btns" stylesheets="@StyleSheet.css" text="Exporter to GoogleDrive" textFill="WHITE" />
    </children>
 </AnchorPane>
