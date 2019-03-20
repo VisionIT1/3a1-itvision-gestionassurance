@@ -19,3 +19,4 @@ front_contactpage:
 front_aboutpage:
     path:     /about
     defaults: { _controller: FrontBundle:Default:about }
+

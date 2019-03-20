@@ -2,141 +2,102 @@
 
 namespace ContratBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Contrat
+ *
+ * @ORM\Table(name="contrat")
+ * @ORM\Entity
  */
 class Contrat
 {
     /**
-     * @var int
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var int
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=30, nullable=false)
      */
-    private $idClient;
+    private $nom;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="description", type="text", length=65535, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cin_assure", type="integer", nullable=true)
+     */
+    private $cinAssure;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomEntr", type="string", length=20, nullable=true)
+     */
+    private $nomentr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_type", type="integer", nullable=false)
+     */
+    private $idType;
+
+    /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="date_debut", type="datetime", nullable=true)
      */
     private $dateDebut;
 
     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="date_echeance", type="datetime", nullable=true)
      */
     private $dateEcheance;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="etat", type="integer", nullable=false)
+     */
+    private $etat;
 
     /**
-     * Get id
+     * @var float
      *
-     * @return int
+     * @ORM\Column(name="prime", type="float", precision=10, scale=0, nullable=false)
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $prime;
 
     /**
-     * Set idClient
+     * @var integer
      *
-     * @param integer $idClient
-     *
-     * @return Contrat
+     * @ORM\Column(name="nvprime", type="integer", nullable=true)
      */
-    public function setIdClient($idClient)
-    {
-        $this->idClient = $idClient;
+    private $nvprime;
 
-        return $this;
-    }
 
-    /**
-     * Get idClient
-     *
-     * @return int
-     */
-    public function getIdClient()
-    {
-        return $this->idClient;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return Contrat
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set dateDebut
-     *
-     * @param \DateTime $dateDebut
-     *
-     * @return Contrat
-     */
-    public function setDateDebut($dateDebut)
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDebut
-     *
-     * @return \DateTime
-     */
-    public function getDateDebut()
-    {
-        return $this->dateDebut;
-    }
-
-    /**
-     * Set dateEcheance
-     *
-     * @param \DateTime $dateEcheance
-     *
-     * @return Contrat
-     */
-    public function setDateEcheance($dateEcheance)
-    {
-        $this->dateEcheance = $dateEcheance;
-
-        return $this;
-    }
-
-    /**
-     * Get dateEcheance
-     *
-     * @return \DateTime
-     */
-    public function getDateEcheance()
-    {
-        return $this->dateEcheance;
-    }
 }
 
