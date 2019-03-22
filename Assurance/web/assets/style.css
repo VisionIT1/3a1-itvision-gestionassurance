@@ -1209,6 +1209,19 @@ form textarea {
       .main-navigation .menu li.current-menu-item a {
         color: #1392ec; }
 
+
+.login-link {
+  float: right; }
+
+  .login-link .menu-toggle {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 20px;
+    font-size: 1.25em;
+    display: none;
+    outline: none; }
+
 .social-links {
   float: right; }
   .social-links a {

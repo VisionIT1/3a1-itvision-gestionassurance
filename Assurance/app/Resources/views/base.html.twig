@@ -69,11 +69,21 @@
 
                         <li class="menu-item"><a href="{{ url('front_aboutpage') }}">About us</a></li>
 
-                        <li class="menu-item"><a href="{{ url('front_service') }}">Nos <Services></Services></a></li>
+                        <li class="menu-item"><a href="{{ url('front_service') }}">Nos Services</a></li>
 
                         <li class="menu-item"><a href="{{ url('front_ressourcepage') }}">Resources</a></li>
                         <li class="menu-item"><a href="{{ url('front_contactpage') }}">Contact</a></li>
-                        <li class="menu-item"><a href="{{ url('front_contactpage') }}">Login</a></li>
+                        {% if app.user ==null %}
+
+                        <li class="menu-item"><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                        <li class="menu-item"><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+
+                        {% else %}
+                        <li class="menu-item"><a href="#">Mon Compte</a></li>
+                            <li class="menu-item"><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
+                        {% endif %}
+
+
                     </ul> <!-- .menu -->
                 </div> <!-- .main-navigation -->
 
@@ -92,7 +102,7 @@
     {% endblock %}
 
 
-    {% block main %}{% endblock %}
+    {% block main %} {% endblock %}
 
     {% block footer %}
     <div class="site-footer">

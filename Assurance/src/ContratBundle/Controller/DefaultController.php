@@ -8,10 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager()->getRepository('ContratBundle:Contrat');
-
         return $this->render('ContratBundle:Default:index.html.twig');
     }
-
-
 }
