@@ -14,7 +14,12 @@
     <link href="{{ asset('assets/fonts/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/fonts/lineo-icon/style.css') }}" rel="stylesheet" type="text/css">
 
-    <!-- Loading main css file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+     <link rel="stylesheet" href="{{ asset('assets/css/tablestyle.css')}}">
+
+        <!-- Loading main css file -->
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     {% endblock %}
 
@@ -27,6 +32,11 @@
 <script src="{{ asset('assets/js/app.js') }}"></script>
 
 
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+
+
+    <script  src="{{ asset('assets/js/index.js')}}"></script>
 
 
 </head>
@@ -79,7 +89,7 @@
                         <li class="menu-item"><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
 
                         {% else %}
-                        <li class="menu-item"><a href="#">Mon Compte</a></li>
+                        <li class="menu-item"><a href="{{ url('profile') }}">Mon Compte</a></li>
                             <li class="menu-item"><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
                         {% endif %}
 

@@ -1,3 +1,11 @@
+assure_entreprise:
+    resource: "@AssureEntrepriseBundle/Resources/config/routing.yml"
+    prefix:   /
+
+assure_particulier:
+    resource: "@AssureParticulierBundle/Resources/config/routing.yml"
+    prefix:   /
+
 contrat:
     resource: "@ContratBundle/Resources/config/routing.yml"
     prefix:   /

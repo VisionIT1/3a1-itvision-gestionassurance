@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new FrontBundle\FrontBundle(),
             new BackBundle\BackBundle(),
             new ContratBundle\ContratBundle(),
+            new AssureParticulierBundle\AssureParticulierBundle(),
+            new AssureEntrepriseBundle\AssureEntrepriseBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

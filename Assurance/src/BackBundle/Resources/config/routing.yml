@@ -1,3 +1,25 @@
 back_homepage:
     path:     /admindashboard
     defaults: { _controller: BackBundle:Default:index }
+
+afficher_contrat_admin:
+    path:     /ContratAdmin
+    defaults: { _controller: ContratBundle:Contrat:AfficherContrat }
+deletecontrat:
+    path:     /SupprimerC/{id}
+    defaults: { _controller: ContratBundle:Contrat:SupprimerContrat }
+modifiercontrat:
+    path:     /ModifierC/{id}
+    defaults: { _controller: ContratBundle:Contrat:ModifierContrat }
+
+ajoutercontrat:
+    path:     /ajouterC/
+    defaults: { _controller: ContratBundle:Contrat:AjouterContratAdmin }
+
+afficherinactivecontrat:
+    path:     /ContratInactive
+    defaults: { _controller: ContratBundle:Contrat:AfficherContratInactive }
+
+activercontrat:
+    path:     /activercontrat/{id}
+    defaults: { _controller: ContratBundle:Contrat:ActiverContrat }

@@ -2,9 +2,10 @@ contrat_homepage:
     path:     /
     defaults: { _controller: ContratBundle:Default:index }
 
-affiche:
-    path:     /afficheC
-    defaults: { _controller: ContratBundle:Contrat:afficheC }
-ajout:
+ajouter_contrat:
     path:     /ajouterContrat
-    defaults: { _controller: ContratBundle:Contrat:AjouterC }
+    defaults: { _controller: ContratBundle:Contrat:ajouterContrat }
+
+ajoutusersucces:
+    path:     /ajoutSuccess
+    defaults: { _controller: ContratBundle:Contrat:afficherSuccess }

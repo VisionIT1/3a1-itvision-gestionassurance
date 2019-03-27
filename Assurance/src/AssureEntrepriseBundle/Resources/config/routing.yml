@@ -1,0 +1,7 @@
+assure_entreprise_homepage:
+    path:     /
+    defaults: { _controller: AssureEntrepriseBundle:Default:index }
+
+ajouter_assentr:
+    path:     /creerProfileEntreprise
+    defaults: { _controller: AssureEntrepriseBundle:AssureEntreprise:ajouterAssEntr }

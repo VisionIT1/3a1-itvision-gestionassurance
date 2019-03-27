@@ -1,14 +1,14 @@
 <?php
 
 namespace ContratBundle\Entity;
-
+use Symfony\Component\Console\Input\StringInput;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Contrat
  *
  * @ORM\Table(name="contrat")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ContratBundle\Repository\ContratRepository")
  */
 class Contrat
 {

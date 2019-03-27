@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+
+{% block main %}
+
+
+
+    <div align="center" >
+        <div class="col-md-12">
+
+            <div align="center" >
+                <div class="col-md-12">
+
+                    <form method="post" class="ajout-form" id ="assurerentreprise" id="assureentrepriseForm">
+                        <br><h2 class="section-title text-center">Profile Assuré Entreprise</h2>
+                        <div class="col-md-4">Nom Entreprise:<input type="text" name="nomEntr"></br><br></div>
+                        <div class="col-md-4">Email Entreprise<input type="text" name="emailEntrdisabled" value="{{ app.user.email }}" disabled></br><br></div>
+                        <input type="text" name="emailEntr" value="{{ app.user.email }}" hidden>
+                        <div class="col-md-4">Num tel : <input type="text" name="numtelEntr" ></br><br></div>
+
+                        <div class="col-md-4">Adresse:<input type="text" name="adresseEntr" ></br><br></div>
+
+                        <div class="col-md-4"><input type="submit" value="Créer profile"><br><br><br></div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

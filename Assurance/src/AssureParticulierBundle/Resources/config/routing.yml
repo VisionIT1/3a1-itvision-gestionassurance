@@ -1,0 +1,13 @@
+assure_particulier_homepage:
+    path:     /
+    defaults: { _controller: AssureParticulierBundle:Default:index }
+ajouter_asspart:
+    path:     /creerProfile
+    defaults: { _controller: AssureParticulierBundle:AssureParticulier:ajouterAssPart }
+profile:
+    path:     /afficherProfile
+    defaults: { _controller: AssureParticulierBundle:AssureParticulier:AssPartProfileDashboard }
+
+redirect_choixprofile:
+    path:     /ChoixProfile
+    defaults: { _controller: AssureParticulierBundle:AssureParticulier:redirectPartForm }

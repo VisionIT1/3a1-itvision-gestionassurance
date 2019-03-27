@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+
+{% block main %}
+
+
+    <div align="center" >
+        <div class="col-md-12">
+
+            <form method="post" class="ajout-form" id="assureparticulierForm" >
+                <br><h2 class="section-title text-center">Profile Assuré Particulier</h2>
+                <div class="col-md-4">Cin:<input type="text" name="cin"></br><br></div>
+                <div class="col-md-4">Nom:<input type="text" name="nom"></br><br></div>
+                <div class="col-md-4">Prenom:<input type="text" name="prenom" > </br><br></div>
+                <div class="col-md-4">Email<input type="text" name="emaildisabled" value="{{ app.user.email }}" disabled></br><br></div>
+                <input type="text" name="email" value="{{ app.user.email }}" hidden>
+                <div class="col-md-4">Num tel : <input type="text" name="numtel" ></br><br></div>
+
+                <div class="col-md-4">Adresse:<input type="text" name="adresse" ></br><br></div>
+
+                <div class="col-md-4"><input type="submit" value="Créer profile"><br><br><br></div>
+
+            </form>
+
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
