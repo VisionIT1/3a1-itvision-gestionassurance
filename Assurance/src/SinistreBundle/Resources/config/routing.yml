@@ -1,0 +1,27 @@
+sinistre_homepage:
+    path:     /
+    defaults: { _controller: SinistreBundle:Default:index }
+
+front_AfficherAllSpage:
+    path:     /afficherS
+    defaults: { _controller: SinistreBundle:Sinistre:showAll }
+
+front_AddNewSinistreSpage:
+    path:     /addNewSinistre
+    defaults: { _controller: SinistreBundle:Sinistre:new }
+
+front_DeleteSpage:
+    path:     /supprimerS/{id}
+    defaults: { _controller: SinistreBundle:Sinistre:delete }
+
+front_EditSpage:
+    path:     /affmodS/{id}
+    defaults: { _controller: SinistreBundle:Sinistre:affmod }
+
+front_Edit1Spage:
+    path:     /edit
+    defaults: { _controller: SinistreBundle:Sinistre:edit }
+
+Exporter:
+    path:     /Exporter
+    defaults: { _controller: SinistreBundle:Sinistre:import }

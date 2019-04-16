@@ -1,0 +1,67 @@
+{% extends 'Backbase.html.twig' %}
+
+{% block main %}
+<center>
+   <div class="card-body">
+      <div class="table-responsive">
+         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+      <tr>
+         <th scope="col">#</th>
+         <th scope="col">Date de reglement</th>
+         <th scope="col">Frais Expert</th>
+         <th scope="col">Mode de payement</th>
+         <th scope="col">Montant</th>
+         <th scope="col">Cin Assureur</th>
+         <th scope="col">Reparateur</th>
+         <th scope="col">Code Sinistre</th>
+         <th scope="col">Expert</th>
+         <th scope="col"> </th>
+         <th scope="col"> </th>
+
+      </tr>
+            </thead>
+            <tfoot>
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Date de reglement</th>
+               <th scope="col">Frais Expert</th>
+               <th scope="col">Mode de payement</th>
+               <th scope="col">Montant</th>
+               <th scope="col">Cin Assureur</th>
+               <th scope="col">Reparateur</th>
+               <th scope="col">Code Sinistre</th>
+               <th scope="col">Expert</th>
+               <th scope="col"> </th>
+               <th scope="col"> </th>
+
+            </tr>
+            </tfoot>
+      <tbody>
+      <tr>
+         {% for i in c  %}
+         <td> # </td>
+         <td> {{ i.getDateRegl()|date("m/d/Y") }} </td>
+         <td> {{ i.getFraisExpert() }} </td>
+         <td> {{ i.getModeRegl() }} </td>
+         <td> {{ i.getMontantRegl() }} </td>
+         <td> {{ i.getCinassureur()|number_format }} </td>
+         <td> {{ i.getIdrep()|number_format }} </td>
+         <td> {{ i.getCodeSin() }} </td>
+         <td> {{ i.getIdex() }} </td>
+         <td><a href="{{ path('Modifregl', {'id':i.CodeRegl}) }}"> <input type="submit" name="edit" value="edit"></a></td>
+         <td><a href="{{ path('DEL_regl', {'id':i.CodeRegl}) }}"> <input type="submit" name="Delete" value="Delete"></a></td>
+
+      </tr>
+      {% endfor %}
+
+
+      </tbody>
+         </table>
+      </div>
+   </div>
+   <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+   </div>
+</center>
+
+{% endblock %}

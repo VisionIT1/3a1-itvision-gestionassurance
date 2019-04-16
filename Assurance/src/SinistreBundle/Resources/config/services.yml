@@ -1,0 +1,4 @@
+services:
+#    sinistre.example:
+#        class: SinistreBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

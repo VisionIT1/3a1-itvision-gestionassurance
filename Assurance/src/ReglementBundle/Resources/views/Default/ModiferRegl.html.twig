@@ -1,0 +1,92 @@
+{% extends 'Backbase.html.twig' %}
+
+{% block main %}
+        <!-- .page -->
+
+
+    <div class="container">
+        <div class="card card-register mx-auto mt-12">
+            <div class="card-header">Modifier Reglement</div>
+            <div class="card-body">
+                <form action="{{ path('Modifregl',{'id':k.coderegl})}}" method="post">
+                    <input type="text" hidden value="{{ k.codesin }}" name="cr">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <input type="date" id="Date Reglement" class="form-control" placeholder="Date Reglement" hidden name="dater" value="{{ "now"|date('Y-m-d') }}" required="required" autofocus="autofocus">
+
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <input type="date" id="Date Reglement" class="form-control" placeholder="Date Reglement" disabled name="" value="{{ "now"|date('Y-m-d') }}" required="required" autofocus="autofocus">
+                                    <label for="Date Reglement">Date Reglement</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <input type="number" id="Frais Expert" class="form-control" placeholder="Frais Expert" name="fe" required="required" value="{{ k.fraisexpert }}" min="200">
+                                    <label for="Frais Expert">Frais Expert</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label >Mode payement :</label>
+                                <div class="form-label-group">
+                                    <select name="mode" size="1">
+                                        <option value="Cheque">Cheque</option>
+                                        <OPTION value="Espece">Espece</OPTION>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <input type="number" id="Cin assureur" class="form-control" placeholder="Cin assureur" hidden name="ca" value="{{ k.cinassureur }}"  required="required" >
+
+                                    <input type="number" id="Cin assureur" class="form-control" placeholder="Cin assureur" disabled name="" value="{{ k.cinassureur }}"  required="required" >
+
+                                    <label for="Cin assureur">Cin assureur</label>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    Nom Reparateur :
+                                    <select name="idRep" size="1">
+                                        {%  for z in rep %}
+                                        <option value="{{ z.idrep }}">{{ z.nomrep  }}</option>
+                                        {%  endfor %}
+                                    </select>
+
+                                </div>
+                                Nom Expert :
+                                <select name="idEx" size="1">
+                                    {%  for l in ex %}
+                                        <option value="{{ l.idex }}">{{ l.nomex  }}</option>
+                                    {%  endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Montant Reglement">Montant Reglement</label>
+
+                        <input type="number" id="Montant Reglement" class="form-control" placeholder="Montant Reglement" name="mntr"  value="{{ k.montantregl }}" required="required" min="300" >
+
+
+
+                    </div>
+                    <input type="submit" value="Ajouter" class="btn btn-primary btn-block">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+{% endblock %}

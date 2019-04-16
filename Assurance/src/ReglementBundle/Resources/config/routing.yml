@@ -1,0 +1,52 @@
+reglement_homepage:
+    path:     /
+    defaults: { _controller: ReglementBundle:Default:index }
+
+Consulter_NouvSin:
+    path:     /ShowNewSin
+    defaults: { _controller: ReglementBundle:Reglement:ShowNewSin }
+
+Rejeter_NouvSin:
+    path:     /RejeterNewSin/{id}
+    defaults: { _controller: ReglementBundle:Reglement:RejeterNewSin }
+
+
+SupprimerSin:
+    path:     /SupprimerSin/{id}
+    defaults: { _controller: ReglementBundle:Reglement:SupprimerSin }
+
+Valider_NouvSin:
+    path:     /ValiderNewSin/{id}
+    defaults: { _controller: ReglementBundle:Reglement:ValiderNewSin }
+
+AffEditSinPage:
+    path:     /AffEditSinPage/{id}
+    defaults: { _controller: ReglementBundle:Reglement:AffEditSinPage }
+
+back_Edit:
+    path:     /Edit
+    defaults: { _controller: ReglementBundle:Reglement:AffEdit }
+
+ShowAllSin:
+    path:     /ShowAllSin
+    defaults: { _controller: ReglementBundle:Reglement:ShowAllSin }
+
+Affregl:
+    path:     /AffRegl
+    defaults: { _controller: ReglementBundle:Reglement:affregl }
+
+AffAllregl:
+    path:     /AffAllRegl
+    defaults: { _controller: ReglementBundle:Reglement:affAllregl }
+
+DEL_regl:
+    path:     /DeleteRegl/{id}
+    defaults: { _controller: ReglementBundle:Reglement:DeleteRegl }
+
+Modifregl:
+    path:     /ModiferRegl/{id}
+    defaults: { _controller: ReglementBundle:Reglement:ModifierRegl }
+
+report:
+    path:     /report
+    defaults: { _controller: ReglementBundle:Reglement:report }

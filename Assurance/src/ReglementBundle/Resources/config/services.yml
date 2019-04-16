@@ -1,0 +1,4 @@
+services:
+#    reglement.example:
+#        class: ReglementBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

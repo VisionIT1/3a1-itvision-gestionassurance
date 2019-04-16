@@ -8,6 +8,8 @@ imports:
     - { resource: "@ContratBundle/Resources/config/services.yml" }
     - { resource: "@AssureParticulierBundle/Resources/config/services.yml" }
     - { resource: "@AssureEntrepriseBundle/Resources/config/services.yml" }
+    - { resource: "@SinistreBundle/Resources/config/services.yml" }
+    - { resource: "@ReglementBundle/Resources/config/services.yml" }
     
 
 
@@ -87,3 +89,8 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+fos_ck_editor:
+    default_config: my_config
+    configs:
+        my_config:
+            extraPlugins: "templates"

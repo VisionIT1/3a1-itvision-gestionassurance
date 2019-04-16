@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <main class="main-content">
+        <div class="page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="section-title text-left">Contact form</h2>
+                        <form action="addNewSinistre" class="contact-form" method="post" >
+                            <div class="row">
+                                <div class="col-md-6"><input type="date" max="{{ "now"|date('Y-m-d') }}" placeholder="Your name..."name="dates"></div>
+                                <div class="col-md-6"><input type="text" placeholder="lieu sinistre" name="lieus"></div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-6"><select name="dc" >
+                                       <option value="1">oui</option>
+                                        <option value="0">non</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6"><select name="dm" >
+                                        <option value="1">oui</option>
+                                        <option value="0">non</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <textarea aria-required="true"    placeholder="description..."name="desc"  id="desc"></textarea>
+                            <p class="text-right">
+                                <input type="submit" value="Ajouter Sinistre" name="btn" class="col-md-12">
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .page -->
+
+    </main>
+
+
+{% endblock %}

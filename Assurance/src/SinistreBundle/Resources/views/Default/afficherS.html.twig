@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+<center>
+   <table class="table">
+      <thead>
+      <tr>
+         <th scope="col">#</th>
+         <th scope="col">Date declaration</th>
+         <th scope="col">Date sinistre</th>
+         <th scope="col">Lieu sinsitre</th>
+         <th scope="col">Numero Sinistre</th>
+         <th scope="col">Domage corporelle</th>
+         <th scope="col">Domage materiel</th>
+         <th scope="col">Description</th>
+         <th scope="col"> </th>
+         <th scope="col"> </th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+         {% for i in m  %}
+         <td> # </td>
+         <td> {{ i.getDateDeclaration()|date("m/d/Y") }} </td>
+         <td> {{ i.getDateSinistre()|date("m/d/Y") }} </td>
+         <td> {{ i.getLieuSinistre() }} </td>
+         <td> {{ i.getNumeroSinistre() }} </td>
+         <td> {{ i.getDommageCorp()|number_format }} </td>
+         <td> {{ i.getDommageMat()|number_format }} </td>
+         <td> {{ i.getDescription() }} </td>
+         <td><a href="{{ path('front_EditSpage', {'id':i.codeSinistre}) }}"> <input type="submit" name="edit" value="edit"></a></td>
+         <td><a href="{{ path('front_DeleteSpage', {'id':i.codeSinistre}) }}"> <input type="submit" name="Delete" value="Delete"></a></td>
+
+
+      </tr>
+      {% endfor %}
+
+
+      </tbody>
+   </table>
+   <a href="{{ path('Exporter')}}"><input type="submit" name="Delete" value="Importer Xls"></a>
+</center>
+
+{% endblock %}

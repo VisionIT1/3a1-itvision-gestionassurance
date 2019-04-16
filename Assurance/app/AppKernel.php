@@ -25,6 +25,10 @@ class AppKernel extends Kernel
             new ContratBundle\ContratBundle(),
             new AssureParticulierBundle\AssureParticulierBundle(),
             new AssureEntrepriseBundle\AssureEntrepriseBundle(),
+            new SinistreBundle\SinistreBundle(),
+            new ReglementBundle\ReglementBundle(),
+            new \Onurb\Bundle\ExcelBundle\OnurbExcelBundle(),
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
