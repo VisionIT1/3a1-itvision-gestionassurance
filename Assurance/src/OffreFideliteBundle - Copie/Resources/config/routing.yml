@@ -1,0 +1,9 @@
+OffreFB:
+    path:     /AjoutOFB
+    defaults: { _controller: OffreFideliteBundle:OffreFB:formFB }
+modifierFB:
+    path:     /modifierFB/{id}
+    defaults: { _controller: OffreFideliteBundle:OffreFB:modifierFB }
+supprimerFB:
+    path:     /supprimerFB/{id}
+    defaults: { _controller: OffreFideliteBundle:OffreFB:supprimerFB }

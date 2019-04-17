@@ -1,0 +1,9 @@
+OffrePB:
+    path:     /AjoutOPB
+    defaults: { _controller: OffrePartenaireBundle:OffrePB:formPB }
+modifierPB:
+    path:     /modifierPB/{id}
+    defaults: { _controller: OffrePartenaireBundle:OffrePB:modifierPB }
+supprimerPB:
+    path:     /supprimerPB/{id}
+    defaults: { _controller: OffrePartenaireBundle:OffrePB:supprimerPB }

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+
+{% block main %}
+
+    <div class="fullwidth-block" data-bg-color="#f1f1f1">
+        <div class="container">
+            <h2 class="section-title">Nos Offres assurances:</h2>
+
+
+
+                <div class="col-md-9">
+                    <div class="row">
+
+                        {% for i in o2  %}
+
+
+                        <div class="col-md-4">
+                            <div class="offer caption-bottom">
+                                <img src="{{ asset(i.getImgOff() ) }}" alt="offer 2">
+                                <div class="caption">
+                                    <h3 class="offer-title">{{ i.libOffre }}</h3>
+                                    <small>{{ i.descripOffre }}</small>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% for i in o1  %}
+
+
+                            <div class="col-md-4">
+                                <div class="offer caption-bottom">
+                                    <img src="{{ asset(i.getImgOff() ) }}" alt="offer 2">
+                                    <div class="caption">
+                                        <h3 class="offer-title">{{ i.libOffre }}</h3>
+                                        <small>{{ i.descripOffre }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        {% for i in o3  %}
+
+
+                            <div class="col-md-4">
+                                <div class="offer caption-bottom">
+                                    <img src="{{ asset(i.getImgOff() ) }}" alt="offer 2">
+                                    <div class="caption">
+                                        <h3 class="offer-title">{{ i.libOffre }}</h3>
+                                        <small>{{ i.descripOffre }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+            </div> <!-- .row -->
+
+        </div> <!-- .container -->
+    </div> <!-- .offer-section -->
+
+
+{% endblock %}
