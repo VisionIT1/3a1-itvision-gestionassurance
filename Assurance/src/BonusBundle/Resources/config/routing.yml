@@ -1,0 +1,21 @@
+bonus_homepage:
+    path:     /
+    defaults: { _controller: BonusBundle:Default:index }
+rechercher_bonus:
+    path:     /rechercherBonus
+    defaults: { _controller: BonusBundle:Bonus:rechercherBonus }
+ajouter_Bonus:
+    path:     /ajouterBonus/{id}
+    defaults: { _controller: BonusBundle:Bonus:ajouterBonus }
+rechercher_BonusEcheable:
+    path:     /rechercherBonusEcheable
+    defaults: { _controller: BonusBundle:Bonus:rechercherBonusEcheable }
+calculer_score:
+    path:     /calculerScore/{id_bonus}
+    defaults: { _controller: BonusBundle:Bonus:calculerScore }
+afficher_bonusFront:
+    path:     /afficherBonusFront/{cin}
+    defaults: { _controller: BonusBundle:Bonus:afficherBonusFront }
+afficher_Listebo:
+    path:     /afficherListeBo
+    defaults: { _controller: BonusBundle:Bonus:afficherListeBo }

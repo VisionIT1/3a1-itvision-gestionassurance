@@ -1,0 +1,210 @@
+
+{% extends 'Backbase.html.twig' %}
+
+{% block main %}
+<div class="form-style-6">
+    {% if n is defined %}
+
+    <h1 style="color: #0c5460">Liste des Bonus :</h1>
+        <br>
+        <br>
+
+
+
+        <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Data Table Example</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+        <tr>
+            <th scope="col">ID_Bonus</th>
+            <th scope="col">ID Contrat</th>
+            <th scope="col">Cin Assureur</th>
+            <th scope="col">Score</th>
+            <th scope="col">Etat</th>
+
+
+        </tr>
+        <tr>
+            {% for k in n %}
+            <td>{{ k.getIdBonus()}}</td>
+            <td>{{ k.getIdContrat() }}</td>
+            <td>{{ k.getIdAssureur() }}</td>
+            <td>{{ k.getScore() }}</td>
+            <td>{{ k.getEtat() }}</td>
+        </tr>
+
+            {% endfor %}
+    </table>
+            </div>
+        </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+<br>
+        <br>
+
+        <form>
+            <button style="background-color: #0c5460" id="ajouterBonus"  ><a href={{path('rechercher_bonus')}}>ajouter un Bonus a un nouveau Contrat</a></button>
+            <button style="background-color: #0c5460" id="ajouter"  ><a href={{path('rechercher_BonusEcheable')}}>modifier le score d'un contrat Echéable</a></button>
+        </form>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="navigation">
+            {{ knp_pagination_render(n) }}
+        </div>
+    {% endif %}
+
+
+    {% if m is defined %}
+    <h1 style="color: #0c5460">Gestion des bonus</h1>
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Data Table Example</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Description</th>
+        <th scope="col">cinAssure</th>
+        <th scope="col">nomEntr</th>
+        <th scope="col">type</th>
+        <th scope="col">idType</th>
+        <th scope="col">dateDebut</th>
+        <th scope="col">DateEcheance</th>
+        <th scope="col">Etat</th>
+        <th scope="col">Prime</th>
+        <th scope="col">nvPrime</th>
+        <th scope="col">Détaille</th>
+
+
+
+    </tr>
+    <tr>
+        {% for i in m %}
+        <td>{{ i.id}}</td>
+        <td>{{ i.nom }}</td>
+        <td>{{ i.description }}</td>
+        <td>{{ i.cinAssure }}</td>
+        <td>{{ i.nomentr }}</td>
+        <td>{{ i.type }}</td>
+        <td>{{ i.idType }}</td>
+        <td>{{ i.dateDebut|date("m/d/Y") }}</td>
+        <td>{{ i.dateEcheance|date("m/d/Y")}}</td>
+        <td>{{ i.etat}}</td>
+        <td>{{ i.prime }}</td>
+        <td>{{ i.nvprime }}</td>
+        <td><button style="background-color: #0c5460"  ><a href={{path('ajouter_Bonus',{'id':i.id})}}>Ajouter un bonus a ce contrat</a></button></td>
+
+
+
+
+
+
+    </tr>
+
+
+
+    {% endfor %}
+</table>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+    {% endif %}
+
+    {% if frm is defined %}
+        <link href="{{ asset('assets/fonts/form.css') }}" rel="stylesheet" type="text/css">
+        <h1 style="color: #0c5460"> Ajouter/Modifier Un Bonus </h1>
+
+    {{ form_start(frm, {'attr': {'class': 'form-style-6'}}) }}
+
+        <div class="row">
+            <div class="col-md-12">{{ form_row(frm.id_contrat) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{{ form_row(frm.id_assureur) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{{ form_row(frm.score) }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{{ form_row(frm.etat) }}</div>
+        </div>
+        {{ form_rest(frm) }}
+        <br>
+        <br>
+        {{ form_end(frm) }}
+    {% endif %}
+
+
+    {% if c is defined %}
+        <h1 style="color: #0c5460">Gestion Bonus Echéables</h1>
+        <br>
+        <br>
+        <br>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Data Table Example</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+
+            <tr>
+                <th scope="col">ID_Bonus</th>
+                <th scope="col">ID Contrat</th>
+                <th scope="col">Cin Assureur</th>
+                <th scope="col">Score</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Detaille</th>
+
+
+
+
+            </tr>
+            <tr>
+                {% for j in c %}
+                <td>{{ j.getIdBonus()}}</td>
+                <td>{{ j.getIdContrat() }}</td>
+                <td>{{ j.getIdAssureur() }}</td>
+                <td>{{ j.getScore() }}</td>
+                <td>{{ j.getEtat() }}</td>
+                <td><button style="background-color: #0c5460"  ><a href={{path('calculer_score',{'id_bonus':j.getIdBonus()})}}>Calculer le score de ce bonus</a></button></td>
+
+
+
+
+
+
+
+            </tr>
+
+
+
+            {% endfor %}
+        </table>
+                </div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

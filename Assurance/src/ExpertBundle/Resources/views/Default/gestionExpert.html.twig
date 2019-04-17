@@ -1,0 +1,191 @@
+{% extends 'Backbase.html.twig' %}
+
+{% block main %}
+
+
+<div class="form-style-6">
+
+
+    {% if frm is defined %}
+        <h1 style="color: #0c5460"> Ajouter/Modifier Un expert </h1>
+        <link href="{{ asset('assets/fonts/form.css') }}" rel="stylesheet" type="text/css">
+    {{ form_start(frm, {'attr': {'class': 'form-style-6'}}) }}
+        <div class="row">
+            <div class="col-md-6">{{ form_row(frm.cinex) }}</div>
+            <div class="col-md-6">{{ form_row(frm.faxex) }}</div>
+            <div class="col-md-6">{{ form_row(frm.nomex) }}</div>
+            <div class="col-md-6">{{ form_row(frm.prenomex) }}</div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">{{ form_row(frm.mailex) }}</div>
+            <div class="col-md-6">{{ form_row(frm.numeroex) }}</div>
+            <div class="col-md-6">{{ form_row(frm.adresseex) }}</div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">{{ form_row(frm.etatex) }}</div>
+            <div class="col-md-6">{{ form_row(frm.descriptionex) }}</div>
+            <div class="col-md-6">{{ form_row(frm.imageFile) }}</div>
+
+
+        </div>
+{{ form_rest(frm) }}
+        <br>
+        <br>
+        {{ form_end(frm) }}
+    {% endif %}
+
+    {% if m is defined %}
+        <h1 style="color: #0c5460"> Gestion des experts </h1>
+
+        <form method="post" action="{{ path('rechercher_expert') }}">
+            <input type="text" name="cinExpert">
+            <input type="submit" value="rechercher" name="rechercher">
+        </form>
+    <br>
+        <br>
+        <br>
+
+        <table name="tableExpert" border="1"  class="form-style-6">
+
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">CIN</th>
+            <th scope="col">Fax</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Etat</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image de lexpert</th>
+            <th scope="col">Suppression</th>
+            <th scope="col">Modification</th>
+
+        </tr>
+        <tr>
+            {% for i in m %}
+            <td>{{ i.idex }}</td>
+            <td>{{ i.cinex }}</td>
+            <td>{{ i.faxex }}</td>
+            <td>{{ i.nomex }}</td>
+            <td>{{ i.prenomex }}</td>
+            <td>{{ i.mailex }}</td>
+            <td>{{ i.numeroex}}</td>
+            <td>{{ i.adresseex}}</td>
+            <td>{{ i.etatex }}</td>
+            <td>{{ i.descriptionex }}</td>
+            <td>
+                {% if i.fileName %}
+
+
+                <img src="{{ asset('assets/images/') }}{{ i.fileName }}"  style="width: 80%;height: 16%;">
+
+{% endif %}
+              </td>
+
+            <td><button class="btn-danger" data-toggle="modal" data-target="#delete" href={{path('supprimer_expert',{'idex':i.idex})}}>supprimer</button></td>
+            <td><button style="background-color: #0c5460"><a href={{path('modifier_expert',{'idex':i.idex})}}>modifier</a></button></td>
+
+
+
+          
+
+        </tr>
+
+
+
+        {% endfor %}
+    </table>
+
+        <br>
+
+<form>
+    <button style="background-color: #0c5460" id="ajouter"  ><a href={{path('ajouter_expert')}}>ajouter un nouveau expert</a></button>
+    <button style="background-color: #0c5460" id="ajouter"  ><a href={{path('export_expert')}}>exporter data en csv file</a></button>
+</form>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="navigation">
+            {{ knp_pagination_render(m) }}
+        </div>
+
+    {% endif %}
+
+
+    <div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;
+
+                    </span></button>
+                    <h4 class="modal-title text-center" id="myModelLabel">Confirmer la suppression</h4>
+                </div>
+
+
+                <div class="modal-body">
+                    <p class="text-center"> Vous voulez vraiment supprimer cet expert</p>
+                    <input type="hidden" name="expert_id" id="exp_id" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="annuler">annuler</button>
+                    <button type="submit "class="btn btn-primary" id="confirmer" >Confirmer</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src=" {{ asset('javaJQ/jquery-3.3.1.js')}}">
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+
+
+
+
+            var theHREF;
+
+            $(".btn-danger").click(function(e) {
+                e.preventDefault();
+                theHREF = $(this).attr("href");
+                $("#delete").modal("show");
+            });
+
+            $("#annuler").click(function(e) {
+                $("#delete").modal("hide");
+            });
+
+            $("#confirmer").click(function(e) {
+                window.location.href = theHREF;
+            });
+
+
+        });
+
+    </script>
+
+<script>
+    $("#ajouter").css('position','center');
+</script>
+
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+reparateur_homepage:
+    path:     /
+    defaults: { _controller: ReparateurBundle:Default:index }
+ajouter_reparateur:
+    path:     /ajouterReparateur
+    defaults: { _controller: ReparateurBundle:Reparateur:ajouterReparateur }
+afficher_reparateur:
+    path:     /afficherReparateur
+    defaults: { _controller: ReparateurBundle:Reparateur:afficheReparateur }
+supprimer_reparateur:
+    path:     /supprimerReparateur/{idrep}
+    defaults: { _controller: ReparateurBundle:Reparateur:supprimerReparateur }
+modifier_reparateur:
+    path:     /modifierReparateur/{idrep}
+    defaults: { _controller: ReparateurBundle:Reparateur:modifierReparateur }
+rechercher_reparateur:
+    path:     /rechercherReparateur/
+    defaults: { _controller: ReparateurBundle:Reparateur:rechercherReparateur }
+export_reparateur:
+    path:     /exportReparateur
+    defaults: { _controller: ReparateurBundle:Reparateur:export }

@@ -1,0 +1,49 @@
+
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <div class="row">
+    {% if m is defined %}
+
+        <div style="position: center"><h1>Afficher les détailles du bonus</h1></div>
+        <br>
+                <div class="col-md-12">
+        <table name="BonusFront" border="1"  class="form-style-6">
+
+            <tr>
+                <th scope="col" style="width: 20%;height: 20%;">ID Bonus</th>
+                <th scope="col"  style="width: 20%;height: 20%;">ID Contrat</th>
+                <th scope="col"  style="width: 20%;height: 20%;">Cin Assureur</th>
+
+                <th scope="col"  style="width: 20%;height: 20%;">Score</th>
+                <th scope="col"  style="width: 20%;height: 20%;">Etat</th>
+
+
+            </tr>
+            <tr>
+            <td  style="width: 20%;height: 20%;">{{ m[0].getIdBonus() }}</td>
+
+                <td  style="width: 20%;height: 20%;">{{ m[0].getIdContrat() }}</td>
+
+
+                <td  style="width: 20%;height: 20%;">{{ m[0].getIdAssureur() }}</td>
+
+                <td  style="width: 20%;height: 20%;"> {{ m[0].getScore() }}</td>
+
+                <td  style="width: 20%;height: 20%;">{{ m[0].getEtat() }}</td>
+            </tr>
+        </table>
+            </div>
+
+    {% endif %}
+    </div>
+    {% if frm is defined %}
+        <link href="{{ asset('assets/fonts/form.css') }}" rel="stylesheet" type="text/css">
+        <h1> Voir Bonus/Malus </h1>
+
+        {{ form(frm, {'attr': {'class': 'form-style-6'}}) }}
+    {% endif %}
+
+
+{% endblock %}

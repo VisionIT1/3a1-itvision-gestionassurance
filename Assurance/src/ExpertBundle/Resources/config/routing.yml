@@ -1,0 +1,22 @@
+expert_homepage:
+    path:     /
+    defaults: { _controller: ExpertBundle:Default:index }
+ajouter_expert:
+    path:     /ajouterExpert
+    defaults: { _controller: ExpertBundle:Expert:ajouterExpert }
+afficher_expert:
+    path:     /afficherExpert
+    defaults: { _controller: ExpertBundle:Expert:afficherExpert }
+supprimer_expert:
+    path:     /supprimerExpert/{idex}
+    defaults: { _controller: ExpertBundle:Expert:supprimerExpert }
+modifier_expert:
+    path:     /modifierExpert/{idex}
+    defaults: { _controller: ExpertBundle:Expert:modifierExpert }
+rechercher_expert:
+    path:     /rechercherExpert
+    defaults: { _controller: ExpertBundle:Expert:rechercherExpert }
+export_expert:
+    path:     /exportExpert
+    defaults: { _controller: ExpertBundle:Expert:export }
+

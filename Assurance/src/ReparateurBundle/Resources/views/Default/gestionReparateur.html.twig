@@ -1,0 +1,184 @@
+{% extends 'Backbase.html.twig' %}
+
+{% block main %}
+
+
+<div class="form-style-6">
+
+
+    {% if frm is defined %}
+        <h1 style="color: #0c5460"> Ajouter/Modifier Un Reparateur </h1>
+        <link href="{{ asset('assets/fonts/form.css') }}" rel="stylesheet" type="text/css" >
+
+        {{ form_start(frm, {'attr': {'class': 'form-style-6'}}) }}
+        <div class="row">
+            <div class="col-md-6">{{ form_row(frm.cinrep) }}</div>
+            <div class="col-md-6">{{ form_row(frm.faxrep) }}</div>
+            <div class="col-md-6">{{ form_row(frm.nomrep) }}</div>
+            <div class="col-md-6">{{ form_row(frm.prenomrep) }}</div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">{{ form_row(frm.mailrep) }}</div>
+            <div class="col-md-6">{{ form_row(frm.numerorep) }}</div>
+            <div class="col-md-6">{{ form_row(frm.adresserep) }}</div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-6">{{ form_row(frm.etatrep) }}</div>
+            <div class="col-md-6">{{ form_row(frm.descriptionrep) }}</div>
+
+
+        </div>
+        {{ form_rest(frm) }}
+        <br>
+        <br>
+        {{ form_end(frm) }}
+    {% endif %}
+
+
+    {% if m is defined %}
+        <h1 style="color: #0c5460"> Gestion des Reparateurs </h1>
+        <br>
+        <br>
+        <form method="post" action="{{ path('rechercher_reparateur') }}">
+            <input type="text" name="cinReparateur">
+            <input type="submit" value="rechercher" name="rechercher">
+        </form>
+
+        <br>
+        <br>
+        <br>
+    <table name="tableReparateur" border="1"  class="form-style-6">
+
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">CIN</th>
+            <th scope="col">Fax</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Mail</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Etat</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image du Reparateur</th>
+            <th scope="col">Suppression</th>
+            <th scope="col">Modification</th>
+
+        </tr>
+        <tr>
+            {% for i in m %}
+            <td>{{ i.idrep}}</td>
+            <td>{{ i.cinrep }}</td>
+            <td>{{ i.faxrep}}</td>
+            <td>{{ i.nomrep }}</td>
+            <td>{{ i.prenomrep }}</td>
+            <td>{{ i.mailrep }}</td>
+            <td>{{ i.numerorep}}</td>
+            <td>{{ i.adresserep}}</td>
+            <td>{{ i.etatrep }}</td>
+            <td>{{ i.descriptionrep }}</td>
+            <td>
+                {% if i.fileName %}
+
+
+                    <img src="{{ asset('assets/images/') }}{{ i.fileName }}"  style="width: 80%;height: 16%;">
+                {% endif %}
+            </td>
+
+            <td><button class="btn-danger" data-toggle="modal" data-target="#delete" href={{path('supprimer_reparateur',{'idrep':i.idrep})}}>supprimer</button></td>
+            <td><button style="background-color: #0c5460"  ><a href={{path('modifier_reparateur',{'idrep':i.idrep})}}>modifier</a></button></td>
+
+
+
+
+
+
+        </tr>
+
+
+
+        {% endfor %}
+    </table>
+
+<br>
+
+<form>
+    <button style="background-color: #0c5460" id="ajouter"  ><a href={{path('ajouter_reparateur')}}>ajouter un nouveau reparateur</a></button>
+    <button style="background-color: #0c5460" id="ajouter"  ><a href={{path('export_reparateur')}}>exporter data en csv file</a></button>
+
+</form>
+<br>
+<br>
+<br>
+<br>
+        <div class="navigation">
+    {{ knp_pagination_render(m) }}
+</div>
+
+{% endif %}
+
+    <div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;
+
+                    </span></button>
+                    <h4 class="modal-title text-center" id="myModelLabel">Confirmer la suppression</h4>
+                </div>
+
+
+                <div class="modal-body">
+                    <p class="text-center"> Vous voulez vraiment supprimer ce Reparateur</p>
+                    <input type="hidden" name="expert_id" id="exp_id" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="annuler">annuler</button>
+                    <button type="submit "class="btn btn-primary" id="confirmer" >Confirmer</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src=" {{ asset('javaJQ/jquery-3.3.1.js')}}">
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+
+            alert("script working properly");
+
+
+            var theHREF;
+
+            $(".btn-danger").click(function(e) {
+                e.preventDefault();
+                theHREF = $(this).attr("href");
+                $("#delete").modal("show");
+            });
+
+            $("#annuler").click(function(e) {
+                $("#delete").modal("hide");
+            });
+
+            $("#confirmer").click(function(e) {
+                window.location.href = theHREF;
+            });
+
+
+        });
+
+    </script>
+
+
+</div>
+{% endblock %}
