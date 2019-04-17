@@ -1,0 +1,9 @@
+OffreBC:
+    path:     /AjoutOBC
+    defaults: { _controller: OffreBonConducteurBundle:OffreBCB:formBC }
+modifierOBCB:
+    path:     /modifierOBCB/{id}
+    defaults: { _controller: OffreBonConducteurBundle:OffreBCB:modifierOBCB }
+supprimerOBCB:
+    path:     /supprimerOBCB/{id}
+    defaults: { _controller: OffreBonConducteurBundle:OffreBCB:supprimerOBCB }

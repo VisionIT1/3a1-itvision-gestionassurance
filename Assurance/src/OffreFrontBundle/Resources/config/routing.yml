@@ -1,0 +1,3 @@
+offreFront:
+    path:     /offreFront
+    defaults: { _controller: OffreFrontBundle:OffreFront:afficherOffre }

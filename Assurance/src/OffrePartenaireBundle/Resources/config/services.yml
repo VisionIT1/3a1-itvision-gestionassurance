@@ -1,0 +1,4 @@
+services:
+#    offre_partenaire.example:
+#        class: OffrePartenaireBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

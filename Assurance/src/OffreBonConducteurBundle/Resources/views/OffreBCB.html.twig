@@ -1,0 +1,139 @@
+{% extends 'Backbase.html.twig' %}
+{% block main %}
+    <link href="{{ asset('assets/fonts/form.css') }}" rel="stylesheet" type="text/css">
+   <div>
+<div class="form-style-6">
+    <h1> Saisir une offre bon conducteur:  </h1>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-12">{{ form_row(form.liboffre) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">{{ form_row(form.datedebutoffre) }}</div>
+        <div class="col-md-6">{{ form_row(form.datefinoffre) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">{{ form_row(form.pourcentagereduction) }}</div>
+        <div class="col-md-6">{{ form_row(form.imgOff) }}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">{{ form_row(form.descripoffre) }}</div>
+    </div>
+    {{ form_end(form) }}
+
+</div>
+    <div class="card mb-3" style="width:1120px">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Liste des offres</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="50%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Libelle</th>
+                        <th>DateDebut</th>
+                        <th>DateFin</th>
+                        <th>Pourcentage</th>
+                        <th>NumReg</th>
+                        <th>NbrAnnee</th>
+                        <th>Description</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Libelle</th>
+                        <th>DateDebut</th>
+                        <th>DateFin</th>
+                        <th>Pourcentage</th>
+                        <th>NumReg</th>
+                        <th>NbrAnnee</th>
+                        <th>Description</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    <tr>
+                        {% for i in o  %}
+                        <td>{{ i.liboffre }}</td>
+                        <td>{{ i.datedebutoffre|date }}</td>
+                        <td>{{ i.datefinoffre|date }}</td>
+                        <td>{{ i.pourcentagereduction }}</td>
+                        <td>{{ i.numreglement  }}</td>
+                        <td>{{ i.nbrannee }}</td>
+                        <td>{{ i.descripoffre }}</td>
+                        <td><a href={{ path('modifierOBCB',{'id':i.idoffre}) }}> Modifier</a></td>
+                        <td><a class="btn-danger" data-toggle="modal" data-target="#delete" href={{ path('supprimerOBCB',{'id':i.idoffre}) }}> Supprimer</a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+   </div>
+    <div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModelLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;
+
+                    </span></button>
+                    <h4 class="modal-title text-center" id="myModelLabel">Confirmer la suppression</h4>
+                </div>
+
+
+                <div class="modal-body">
+                    <p class="text-center"> Vous voulez vraiment supprimer cet expert</p>
+                    <input type="hidden" name="expert_id" id="exp_id" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="annuler">annuler</button>
+                    <button type="submit "class="btn btn-primary" id="confirmer" >Confirmer</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src=" {{ asset('javaJQ/jquery-3.3.1.js')}}">
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+
+
+
+
+            var theHREF;
+
+            $(".btn-danger").click(function(e) {
+                e.preventDefault();
+                theHREF = $(this).attr("href");
+                $("#delete").modal("show");
+            });
+
+            $("#annuler").click(function(e) {
+                $("#delete").modal("hide");
+            });
+
+            $("#confirmer").click(function(e) {
+                window.location.href = theHREF;
+            });
+
+
+        });
+
+    </script>
+
+{% endblock %}
