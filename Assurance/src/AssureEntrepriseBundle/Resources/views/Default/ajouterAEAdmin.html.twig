@@ -1,0 +1,55 @@
+{% extends 'Backbase.html.twig' %}
+
+{% block main %}
+
+    <div class="container">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Ajouter 'assuré entreprise</div>
+            <div class="card-body">
+                <form method="post" >
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input type="text" id="inputcin" name="nomentr" class="form-control" placeholder="Nom de l'entreprise" required="required" autofocus="autofocus" >
+                            <label for="inputCin">Nom de l'entreprise</label>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input type="text" id="inputNom" name="emailentr" class="form-control" placeholder="Email" required="required" autofocus="autofocus">
+              <label for="inputNom">Email</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input type="text" id="inputPrenom" name="numtelentr" class="form-control" placeholder="num tel" required="required" autofocus="autofocus" >
+                            <label for="inputPrenom">Num tel</label>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-label-group">
+                            <input type="text" id="inputadresse" name="adresseentr" class="form-control" placeholder="Adresse" required="required" autofocus="autofocus">
+                            <label for="inputadresse">Adresse de l'entreprise</label>
+
+                        </div>
+                    </div>
+                    <div  class="btn btn-primary btn-block"><input type="submit" value="Ajouter"></div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+{% endblock %}

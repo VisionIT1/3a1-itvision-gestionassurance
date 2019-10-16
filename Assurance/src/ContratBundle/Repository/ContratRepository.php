@@ -19,5 +19,22 @@ class ContratRepository extends EntityRepository
         return $q->getResult();
     }
 
+    public function RechercherContratParticulier($cin){
+        $q=$this->getEntityManager()->createQuery("select c from ContratBundle:Contrat c where c.etat=1 and c.cinAssure =:cin")->setParameter('cin',$cin);
+    return $q->getResult();
+    }
+
+    public function RechercherContratEntreprise($nom){
+        $q=$this->getEntityManager()->createQuery("select c from ContratBundle:Contrat c where c.etat=1 and c.nomentr =:nom")->setParameter('nom',$nom);
+        return $q->getResult();
+    }
+
+    public function archive(){
+        $date = new \DateTime();
+
+        $q=$this->getEntityManager()->createQuery("select c from ContratBundle:Contrat c where c.dateEcheance = :date")->setParameter('date',$date->format('Y-m-d 00:00:00'));
+       // $req=$this->getEntityManager()->createQuery("insert into c from ContratBundle:Contrat c where c.dateEcheance = CURDATE()");
+        return $q->getResult();
+    }
 
 }

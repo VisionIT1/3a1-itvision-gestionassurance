@@ -1,0 +1,70 @@
+{% extends 'Backbase.html.twig' %}
+{% block main %}
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Listes des Assurés Particulier</div>
+
+
+    <div class="card card-login mx-auto mt-3">
+        <a class="btn btn-primary btn-block" href="{{ url('ajouter_ap_admin') }}">Ajouter un assuré particulier</a>
+    </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Cin</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>N° Tel</th>
+                        <th>Adresse</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                        <th>Activer</th>
+                        <th>Désactiver</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Cin</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>N° Tel</th>
+                        <th>Adresse</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                        <th>Activer</th>
+                        <th>Désactiver</th>
+
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for i in ap %}
+                        <tr>
+
+                            <td>{{  i.cin }}</td>
+                            <td>{{  i.nom }}</td>
+                            <td>{{  i.prenom }}</td>
+                            <td>{{  i.email }}</td>
+                            <td>{{  i.numtel }}</td>
+                            <td>{{  i.adresse }}</td>
+                            <td><a href={{ path('modifier_ap_admin',{'cin':i.cin}) }}> Modifier</a></td>
+                            <td><a href={{ path('supprimer_ap_admin',{'cin':i.cin}) }}> Supprimer</a></td>
+                            <td><a href={{ path('activerap',{'email':i.email}) }}> Activer</a></td>
+                            <td><a href={{ path('desactiverap',{'email':i.email}) }}> Desactiver</a></td>
+
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+
+{% endblock %}

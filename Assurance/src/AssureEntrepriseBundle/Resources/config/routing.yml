@@ -5,3 +5,11 @@ assure_entreprise_homepage:
 ajouter_assentr:
     path:     /creerProfileEntreprise
     defaults: { _controller: AssureEntrepriseBundle:AssureEntreprise:ajouterAssEntr }
+
+profileEntr:
+    path:     /afficherProfileEntr
+    defaults: { _controller: AssureEntrepriseBundle:AssureEntreprise:AssEntrProfileDashboard }
+
+modifierprofileentr:
+    path:     /ModifierProfileEntr
+    defaults: { _controller: AssureEntrepriseBundle:AssureEntreprise:modifierEntr }

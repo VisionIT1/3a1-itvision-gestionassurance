@@ -8,13 +8,15 @@
 
                 <div class="col-md-4">Nom du contrat:<input type="text" name="nom"></br><br></div>
                 <div class="col-md-4">Description:<input type="text" name="description" ></br><br></div>
-                <div class="col-md-4"> Cin de l'assure:<input type="text" name="cin_assure" > </br><br></div>
-                <div class="col-md-4">  Nom Entreprise<input type="text" name="nomEntr" ></br><br></div>
-                <div class="col-md-4">  ID Type<input type="text" name="id_type" ></br><br></div>
+                {% if app.user.type=="particulier" %}
+                <div class="col-md-4"> Cin de l'assure:<input type="text" name="cin_assure" value="{{ ap[0].cin }}"> </br><br></div>
+                {% else %}
+                <div class="col-md-4">  Nom Entreprise<input type="text" name="nomEntr" value="{{ ae[0].nomentr }}"></br><br></div>
+                {% endif %}
+                <div class="col-md-4">  ID Type<input type="text" name="id_type" value="{{ id }}" ></br><br></div>
                 <div class="col-md-4"> <select name="type">
-                        <option value="vehicule">Vehicule</option>
-                        <option value="voyage">Voyage</option>
-                        <option value="habitation">Habitation</option>
+                        <option selected value="{{ type }}">{{ type }}</option>
+
                     </select></br><br></div>
                 <div class="col-md-4">Date Debut<input type="date" name="date_debut"></br><br></div>
                 <div class="col-md-4"> Date Echeance<input type="date" name="date_echeance"></br><br></div>
@@ -22,8 +24,9 @@
 
                         <option selected value="0">Non paye</option>
                     </select></br><br></div>
-                <div class="col-md-4">Prime:<input type="text" name="prime" ></br><br></div>
-
+                {% if prime is defined %}
+                <div class="col-md-4">Prime:<input type="text" name="prime" value="{{ prime }}" ></br><br></div>
+                {% endif %}
                 <div class="col-md-4"><input type="submit" value="Créer le Contrat"><br><br><br></div>
 
             </form>

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * AssureParticulier
  *
  * @ORM\Table(name="assure_particulier")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AssureParticulierBundle\Repository\AssureParticulierRepository")
  */
 class AssureParticulier
 {

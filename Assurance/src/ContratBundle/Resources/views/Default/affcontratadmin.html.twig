@@ -55,8 +55,8 @@
                             <td>{{  i.cinassure }}</td>
                             <td>{{  i.nomEntr }}</td>
                             <td>{{  i.type }}</td>
-                            <td>{{  i.dateDebut | date }}</td>
-                            <td>{{  i.dateEcheance | date }}</td>
+                            <td>{{  i.dateDebut | date ('Y/m/d') }}</td>
+                            <td>{{  i.dateEcheance | date ('Y/m/d')}}</td>
                             <td>{{  i.etat }}</td>
                             <td>{{  i.prime }}</td>
                             <td><a href={{ path('modifiercontrat',{'id':i.id}) }}> Modifier</a></td>

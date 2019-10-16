@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+{% block main %}
+
+
+    <div align="center" >
+        <div class="col-md-12">
+
+            <form method="post" class="ajout-form" id="assureparticulierForm" >
+                <br><h2 class="section-title text-center">Modifier vos informations</h2>
+                <div class="col-md-4">Cin:<input type="text" name="cin" value="{{ p.cin }}"></br><br></div>
+                <div class="col-md-4">Nom:<input type="text" name="nom" value="{{ p.nom }}"></br><br></div>
+                <div class="col-md-4">Prenom:<input type="text" name="prenom" value="{{ p.prenom }}"> </br><br></div>
+
+                <div class="col-md-4">Email<input type="text" name="emaildisabled" value="{{ p.email }}" disabled></br><br></div>
+                <input type="text" name="email" value="{{ p.email }}" hidden>
+                <div class="col-md-4">Num tel : <input type="text" name="numtel" value="{{ p.numtel }}"></br><br></div>
+
+                <div class="col-md-4">Adresse:<input type="text" name="adresse" value="{{ p.adresse }}"></br><br></div>
+
+                <div class="col-md-4"><input type="submit" value="Sauvegarder les modifications"><br><br><br></div>
+
+            </form>
+
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

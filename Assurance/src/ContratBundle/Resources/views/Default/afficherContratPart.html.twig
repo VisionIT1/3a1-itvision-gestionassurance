@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <section>
+        <h1>Vos contrats:</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>cin_assure</th>
+                    <th>Type</th>
+                    <th>Date Debut</th>
+                    <th>Date Echeance</th>
+                    <th>Etat</th>
+                    <th>Prime</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                {% for i in cp %}
+                    <tr>
+
+                        <td>{{  i.nom }}</td>
+                        <td>{{  i.description }}</td>
+                        <td>{{  i.cinassure }}</td>
+                        <td>{{  i.type }}</td>
+                        <td>{{  i.dateDebut | date }}</td>
+                        <td>{{  i.dateEcheance | date }}</td>
+                        <td>Payé</td>
+                        <td>{{  i.prime }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}

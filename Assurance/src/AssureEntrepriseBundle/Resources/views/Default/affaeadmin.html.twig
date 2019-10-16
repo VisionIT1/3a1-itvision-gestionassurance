@@ -1,0 +1,64 @@
+{% extends 'Backbase.html.twig' %}
+{% block main %}
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Listes des Assurés Entreprise</div>
+
+
+    <div class="card card-login mx-auto mt-3">
+        <a class="btn btn-primary btn-block" href="{{ url('ajouter_ae_admin') }}">Ajouter un assuré Entreprise</a>
+    </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th>Nom Entreprise</th>
+                        <th>Email Entreprise</th>
+                        <th>N° Tel Entreprise</th>
+                        <th>Adresse Entreprise</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                        <th>Activer</th>
+                        <th>Désactiver</th>
+                    </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Nom Entreprise</th>
+                        <th>Email Entreprise</th>
+                        <th>N° Tel Entreprise</th>
+                        <th>Adresse Entreprise</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                        <th>Activer</th>
+                        <th>Désactiver</th>
+
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for i in ae %}
+                        <tr>
+
+                            <td>{{  i.nomentr }}</td>
+                            <td>{{  i.emailentr }}</td>
+                            <td>{{  i.numtelentr }}</td>
+                            <td>{{  i.adresseentr }}</td>
+
+                            <td><a href={{ path('modifier_ae_admin',{'nomentr':i.nomentr}) }}> Modifier</a></td>
+                            <td><a href={{ path('supprimer_ae_admin',{'nomentr':i.nomentr}) }}> Supprimer</a></td>
+                            <td><a href={{ path('activerae',{'emailentr':i.emailentr}) }}> Activer</a></td>
+                            <td><a href={{ path('desactiverae',{'emailentr':i.emailentr}) }}> Desactiver</a></td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+
+{% endblock %}

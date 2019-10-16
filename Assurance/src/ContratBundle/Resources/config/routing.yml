@@ -3,9 +3,17 @@ contrat_homepage:
     defaults: { _controller: ContratBundle:Default:index }
 
 ajouter_contrat:
-    path:     /ajouterContrat
+    path:     /ajouterContrat/{id_type}/{typecon}/{prime}
     defaults: { _controller: ContratBundle:Contrat:ajouterContrat }
 
-ajoutusersucces:
+ajoutsucces:
     path:     /ajoutSuccess
     defaults: { _controller: ContratBundle:Contrat:afficherSuccess }
+
+affichercontratpart:
+    path:     /afficherContratPart/{cin}
+    defaults: { _controller: ContratBundle:Contrat:AfficherContratParticulier }
+
+affichercontratentr:
+    path:     /afficherContratEntr/{nom}
+    defaults: { _controller: ContratBundle:Contrat:AfficherContratEntreprise }
